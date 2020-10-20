@@ -1,0 +1,417 @@
+-- MySQL dump 10.13  Distrib 5.7.31, for Linux (x86_64)
+--
+-- Host: 127.0.0.1    Database: qrcodes
+-- ------------------------------------------------------
+-- Server version	5.7.31-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `company_products`
+--
+
+DROP TABLE IF EXISTS `company_products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `company_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brand_name` varchar(250) DEFAULT NULL,
+  `license` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sku_size` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `antidote_statement` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `caution_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `company_products`
+--
+
+LOCK TABLES `company_products` WRITE;
+/*!40000 ALTER TABLE `company_products` DISABLE KEYS */;
+INSERT INTO `company_products` VALUES (1,1,'Acetpyramid','Starcetapyramid','LICi2379842/0-11','SKU001','5 Kg','1600851784_nitve-smaple.jpg','lkjsl lkdrelkfg',3,'2020-09-23 09:03:04','2020-09-23 09:03:04',NULL),(2,1,'Acetpyramid',NULL,'jdlkjdjljkldjkfldkjfldjfld','dfdg','5 Kg','products/1601220418_stickers.jpg','In case of poisoning, contact a doctor immediately and show the can for ingredient details. Treat symptomatically.',1,'2020-09-27 15:26:58','2020-09-27 15:26:58',NULL),(3,1,'Acetamiprid 20% SP','Lamborghini','4343094304384034','PROD1234','10 KG','products/1601220662_stickers.jpg','In case of poisoning, contact a doctor immediately and show the can for ingredient details. Treat symptomatically.',3,'2020-09-27 15:31:02','2020-09-27 15:31:02',NULL);
+/*!40000 ALTER TABLE `company_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `manufacturers`
+--
+
+DROP TABLE IF EXISTS `manufacturers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `manufacturers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `m_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_alias` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_license` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state_id` varchar(5) DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
+  `city_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_address` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `m_pincode` varchar(10) DEFAULT NULL,
+  `phone_no` varchar(15) DEFAULT NULL,
+  `state_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `manufacturers`
+--
+
+LOCK TABLES `manufacturers` WRITE;
+/*!40000 ALTER TABLE `manufacturers` DISABLE KEYS */;
+INSERT INTO `manufacturers` VALUES (1,1,'Start Industries','sind','LIC8739823/00-11','AP',NULL,'Noida','house no. 149\r\nsubhash nagar, bhel jhansi','284120','07081259690','Andhra Pradesh'),(2,1,'Dharmas Crops',NULL,'LIC8739823/00-983093','UP',NULL,'NOIDA','c 67\r\nsector 63','201301','08802035788','Uttar Pradesh');
+/*!40000 ALTER TABLE `manufacturers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mapped_codes`
+--
+
+DROP TABLE IF EXISTS `mapped_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mapped_codes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `manufacturer_id` int(11) NOT NULL,
+  `marketer_id` int(11) DEFAULT NULL,
+  `mapped_id` int(11) NOT NULL,
+  `prefix` varchar(11) NOT NULL,
+  `sequence_start` int(11) NOT NULL,
+  `sequence_end` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `batch_number` varchar(50) NOT NULL,
+  `manufactured_date` date DEFAULT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `can_be_unmapped` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'cannot be unmapped after expiry',
+  `file_path` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mapped_codes`
+--
+
+LOCK TABLES `mapped_codes` WRITE;
+/*!40000 ALTER TABLE `mapped_codes` DISABLE KEYS */;
+INSERT INTO `mapped_codes` VALUES (1,1,1,1,0,6,'PKSD',259,339,80,'SKU1234ABSH','2020-09-26','2020-09-29','2020-09-23 19:11:33','2020-09-23 19:11:33',NULL,1,'PKS-1600888292-34.csv'),(2,1,1,1,0,7,'PKSD',340,420,80,'SKU1234ABSH','2020-09-26','2020-09-29','2020-09-23 19:12:32','2020-09-23 19:12:32',NULL,0,'PKS-1600888351-26.csv'),(4,1,1,1,0,4,'PKSD',100,150,-99,'SKU1234ABSH','2020-09-18','2020-09-18','2020-09-24 05:31:02','2020-09-24 05:31:02',NULL,1,'PKS-1600925461-31.csv'),(5,1,1,1,NULL,10,'PKSD',443,453,10,'SKU1234ABSH','2020-09-09','2020-09-30','2020-09-26 14:16:00','2020-09-26 14:16:00',NULL,1,'PKS-1601129760-25.csv'),(6,1,1,2,NULL,11,'PKSD',454,477,23,'SKU1234ABSH','2020-09-25','2020-09-30','2020-09-26 14:28:14','2020-09-26 14:28:14',NULL,1,'PKS-1601130493-42.csv'),(7,1,1,1,1,12,'PKSD',478,483,5,'SKU1234ABSH','2020-09-24','2020-09-22','2020-09-26 14:30:25','2020-09-26 14:30:25',NULL,1,'PKS-1601130625-98.csv');
+/*!40000 ALTER TABLE `mapped_codes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `marketers`
+--
+
+DROP TABLE IF EXISTS `marketers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `marketers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `marketers`
+--
+
+LOCK TABLES `marketers` WRITE;
+/*!40000 ALTER TABLE `marketers` DISABLE KEYS */;
+INSERT INTO `marketers` VALUES (1,1,'Start Marketers','2020-09-26 13:53:44','2020-09-26 13:53:44',NULL);
+/*!40000 ALTER TABLE `marketers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `membership_plans`
+--
+
+DROP TABLE IF EXISTS `membership_plans`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `membership_plans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `color_code` varchar(20) NOT NULL,
+  `count` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `price` int(11) NOT NULL DEFAULT '0',
+  `cut_price` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `is_trial` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `membership_plans`
+--
+
+LOCK TABLES `membership_plans` WRITE;
+/*!40000 ALTER TABLE `membership_plans` DISABLE KEYS */;
+INSERT INTO `membership_plans` VALUES (1,'Basic Trial Plan','000000',2500,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.',0,0,NULL,NULL,NULL,1),(2,'Silver Plan','000000',10000,'sjc',1000,0,NULL,NULL,NULL,0),(3,'Gold Plan','000000',250000,'sjc',5000,0,NULL,NULL,NULL,0),(4,'Platinum Plan','000000',1000000,'sjc',10000,0,NULL,NULL,NULL,0),(5,'Platinum Plan','000000',50000,'sjc',1500,0,NULL,NULL,NULL,0);
+/*!40000 ALTER TABLE `membership_plans` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payments`
+--
+
+DROP TABLE IF EXISTS `payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `refid` varchar(30) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `order_id` varchar(30) DEFAULT NULL,
+  `order_id_response` text,
+  `payment_id` varchar(30) DEFAULT NULL,
+  `payment_id_response` text,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `is_paid` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payments`
+--
+
+LOCK TABLES `payments` WRITE;
+/*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `payments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `isactive` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` int(11) DEFAULT NULL,
+  `deleted_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL COMMENT 'if product added by company',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `qr_codes`
+--
+
+DROP TABLE IF EXISTS `qr_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `qr_codes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `refid` varchar(50) NOT NULL,
+  `sequence_prefix` varchar(5) NOT NULL,
+  `sequence_start` bigint(20) NOT NULL,
+  `sequence_end` bigint(20) NOT NULL,
+  `total` int(11) NOT NULL DEFAULT '0',
+  `remaining` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `file_path` varchar(250) DEFAULT NULL,
+  `is_expired` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `qr_codes`
+--
+
+LOCK TABLES `qr_codes` WRITE;
+/*!40000 ALTER TABLE `qr_codes` DISABLE KEYS */;
+INSERT INTO `qr_codes` VALUES (1,1,'PKS1600884820669','PKS',1,21,21,21,'2020-09-23 18:13:40','2020-09-23 18:13:40',NULL,'PKS-1600884820-40.csv',1),(2,1,'PKS1600888119738','PKS',22,72,50,50,'2020-09-23 19:08:39','2020-09-23 19:08:39',NULL,'PKS-1600888118-82.csv',1),(3,1,'PKS1600888173952','PKS',73,96,23,23,'2020-09-23 19:09:33','2020-09-23 19:09:33',NULL,'PKS-1600888173-85.csv',0),(4,1,'PKS1600888203344','PKS',97,177,80,-1,'2020-09-23 19:10:03','2020-09-24 05:31:02',NULL,'PKS-1600888202-37.csv',0),(5,1,'PKS1600888271258','PKS',178,258,80,0,'2020-09-23 19:11:11','2020-09-23 19:11:11',NULL,'PKS-1600888270-60.csv',0),(6,1,'PKS1600888293258','PKS',259,339,80,0,'2020-09-23 19:11:33','2020-09-23 19:11:33',NULL,'PKS-1600888292-34.csv',0),(7,1,'PKS1600888351962','PKS',340,420,80,0,'2020-09-23 19:12:31','2020-09-23 19:12:31',NULL,'PKS-1600888351-26.csv',0),(8,1,'PKS1601129709222','PKS',421,431,10,10,'2020-09-26 14:15:09','2020-09-26 14:15:09',NULL,'PKS-1601129708-68.csv',0),(9,1,'PKS1601129717059','PKS',432,442,10,10,'2020-09-26 14:15:17','2020-09-26 14:15:17',NULL,'PKS-1601129716-24.csv',0),(10,1,'PKS1601129760710','PKS',443,453,10,0,'2020-09-26 14:16:00','2020-09-26 14:16:00',NULL,'PKS-1601129760-25.csv',0),(11,1,'PKS1601130494357','PKS',454,477,23,0,'2020-09-26 14:28:14','2020-09-26 14:28:14',NULL,'PKS-1601130493-42.csv',0),(12,1,'PKS1601130625827','PKS',478,483,5,0,'2020-09-26 14:30:25','2020-09-26 14:30:26',NULL,'PKS-1601130625-98.csv',0),(13,1,'PKS1601131147755','PKS',484,1484,1000,1000,'2020-09-26 14:39:07','2020-09-26 14:39:07',NULL,'PKS-1601131147-78.csv',0),(14,1,'PKS1601131155182','PKS',1485,2485,1000,1000,'2020-09-26 14:39:15','2020-09-26 14:39:15',NULL,'PKS-1601131154-12.csv',0),(15,1,'PKS1601131187749','PKS',2486,3486,1000,1000,'2020-09-26 14:39:47','2020-09-26 14:39:47',NULL,'PKS-1601131186-19.csv',0),(16,1,'PKS1601131256070','PKS',3487,4487,1000,1000,'2020-09-26 14:40:56','2020-09-26 14:40:56',NULL,'PKS-1601131255-73.csv',0);
+/*!40000 ALTER TABLE `qr_codes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `retrieved_products`
+--
+
+DROP TABLE IF EXISTS `retrieved_products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `retrieved_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_name` varchar(200) NOT NULL,
+  `license` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `retrieved_products`
+--
+
+LOCK TABLES `retrieved_products` WRITE;
+/*!40000 ALTER TABLE `retrieved_products` DISABLE KEYS */;
+INSERT INTO `retrieved_products` VALUES (1,1,'Pretilachlor 50% E.C.','CIR-156739/2018-Pretilachlor (EC) (393)-802','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(2,1,'Pretilachlor 37% w/w EW','CIR-156742/2018-Pretilachlor (EW) (393)-803','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(3,1,'Paraquat Dichloride 24% SL','CIR-156744/2018-Paraquat Dichloride (SL) (393)-481','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(4,1,'Imidacloprid 70% WG','CIR-156740/2018-Imidacloprid (WG) (393)-2362','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(5,1,'Imidacloprid 30.5% SC','CIR-156741/2018-Imidacloprid (SC) (393)-2363','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(6,1,'IMIDACLOPRID 17.8% SL','CIR-156743/2018-IMIDACLOPRID (SL) (393)-2364','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(7,1,'Fipronil 5% SC','CIR-156736/2018-Fipronil (SC) (393)-2182','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(8,1,'Fipronil 0.3% G.R.','CIR-156738/2018-Fipronil (GR) (393)-2183','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(9,1,'Cartap Hydrochloride 4% GR','CIR-155516/2018-Cartap Hydrochloride (GR) (391)-958','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(10,1,'Acetamiprid 20% SP','CIR-156737/2018-Acetamiprid (SP) (393)-570','2020-09-27 12:45:36',NULL,'2020-09-27 12:45:36'),(11,1,'Thiamethoxam 30% FS','CIR-152522/2018-Thiamethoxam (FS) (389)-1442','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(12,1,'Thiamethoxam 25% WG','CIR-152526/2018-Thiamethoxam (WG) (389)-1443','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(13,1,'Hexaconazole 5% SC','CIR-152527/2018-Hexaconazole (SC) (389)-997','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(14,1,'Hexaconazole 5% EC','CIR-152523/2018-Hexaconazole (EC) (389)-996','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(15,1,'Ammonium Salt of Glyphosate 71% SG','CIR-152528/2018-Ammonium Salt of Glyphosate (SG) (389)-1196','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(16,1,'Glyphosate 41% S.L.','CIR-156225/2018-Glyphosate (SL) (393)-1272','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(17,1,'Gibberellic acid 0.186% S.P','CIR-152519/2018-Gibberellic acid (SP) (389)-618','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(18,1,'Gibberellic Acid 0.001% L','CIR-152520/2018-Gibberellic Acid (L) (389)-619','2020-09-27 12:45:46',NULL,'2020-09-27 12:45:46'),(19,1,'Cypermethrin 25% E.C.','CIR-152516/2018-Cypermethrin (EC) (389)-1129','2020-09-27 12:45:47',NULL,'2020-09-27 12:45:47'),(20,1,'Chlorpyrifos 50% E.C.','CIR-152525/2018-Chlorpyrifos (EC) (389)-1240','2020-09-27 12:45:47',NULL,'2020-09-27 12:45:47'),(21,1,'Chlorpyriphos 50% + Cypermethrin 5% EC','CIR-152521/2018-Chlorpyriphos + Cypermethrin (EC) (389)-680','2020-09-27 12:45:54',NULL,'2020-09-27 12:45:54'),(22,1,'Chlorpyriphos 20%E.C','CIR-152524/2018-Chlorpyriphos (EC) (389)-1239','2020-09-27 12:45:54',NULL,'2020-09-27 12:45:54'),(23,1,'Carbendazim 50% WP','CIR-152515/2018-Carbendazim (WP) (389)-1151','2020-09-27 12:45:54',NULL,'2020-09-27 12:45:54'),(24,1,'Neem Based Granular Formulation Containing Azadirachtin 0.15% (1500 ppm) w/w min indigenous manufacture','CIR-152529/2018-Neem Based Granular Formulation (Containing Azadirachtin) (389)-908','2020-09-27 12:45:54',NULL,'2020-09-27 12:45:54'),(25,1,'Neem Seed Kernel Based EC containing AZADIRACHTIN 0.15% EC (1500 ppm) min','CIR-152518/2018-Neem Seed Kernel Based EC (containing AZADIRACHTIN) (389)-907','2020-09-27 12:45:54',NULL,'2020-09-27 12:45:54'),(26,1,'Acetpyramid','jdlkjdjljkldjkfldkjfldjfld','2020-09-27 15:26:58',NULL,'2020-09-27 15:26:58');
+/*!40000 ALTER TABLE `retrieved_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `middle_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `company_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_logo` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `registration_number` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_phone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marketed_by` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cc_email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cc_phone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cc_address` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_plan` int(11) DEFAULT NULL,
+  `plan_expiry` date DEFAULT NULL,
+  `qr_balance` int(11) NOT NULL DEFAULT '0',
+  `code_prefix` varchar(6) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'pankaj sengar',NULL,NULL,'pks.11iitr@gmail.com','',NULL,'$2y$10$UIK2olo64e8rSFj.LE3DQucwAEaAKxG1I5gOAKBLAqDcJw0EzJqcW',NULL,'2020-08-29 12:00:56','2020-09-26 09:10:56','Dev Crops',NULL,'pks11iitr@gmail.com','my address','CIBN920323032-03','8802035788','Dharmaj crops','bauya@gmail.com','8802035788','23 RD 2ND MAIN, 3RD CROSS, BEGUR MAIN ROAD, HONGASANDRA',1,'2020-10-31',8331,'PKSD'),(2,'pankaj',NULL,'sengar','pks11iitr@gmail.com','8802035788',NULL,'$2y$10$i2WHBrfLOKSKjUM2mTKsfu9kKUZ70wuqy6FirjCrgNR4OPmxYMEyW',NULL,'2020-09-26 03:13:31','2020-09-26 03:13:31','Avaskm',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2020-10-11',2500,'LVSN');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-09-27 21:11:25
