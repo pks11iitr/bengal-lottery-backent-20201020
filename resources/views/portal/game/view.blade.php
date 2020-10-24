@@ -76,7 +76,7 @@
                                 Game Time
                             </th>
                             <th style="width: 15%">
-                                Degit
+                                Digit
                             </th>
 
                             <th style="width: 10%; text-align: right">

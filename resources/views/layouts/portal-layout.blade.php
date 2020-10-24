@@ -140,9 +140,11 @@
                             <li>
                                 <a href="{{route('agents')}}" >Agents</a>
                             </li>
+                            @if(auth()->user()->hasRole('admin'))
                             <li>
                                 <a href="{{route('gamelist')}}" >Add Game</a>
                             </li>
+                            @endif
                             <li>
                                 <a href="" >Old History</a>
                             </li>
