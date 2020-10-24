@@ -112,7 +112,7 @@
                             <li>
                                 <a href="{{route('agents')}}" class="btn btn-info">Agents</a>
                             </li>
-                            @if(auth()->user()->hasRole())
+                            @if(auth()->user()->hasRole('admin'))
                             <li>
                                 <a href="{{route('gamelist')}}" class="btn btn-info">Add Game</a>
                             </li>
