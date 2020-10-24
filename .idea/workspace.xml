@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="google analytics added" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +199,7 @@
       <workItem from="1602749278805" duration="3945000" />
       <workItem from="1602954034113" duration="881000" />
       <workItem from="1603176777177" duration="19649000" />
-      <workItem from="1603514523849" duration="589000" />
+      <workItem from="1603514523849" duration="973000" />
     </task>
     <task id="LOCAL-00001" summary="theme setup, login, register">
       <created>1598722642519</created>
@@ -514,7 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1602752608843</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="google analytics added">
+      <created>1603515319381</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1603515319381</updated>
+    </task>
+    <task id="LOCAL-00047" summary="google analytics added">
+      <created>1603515390426</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1603515390426</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
