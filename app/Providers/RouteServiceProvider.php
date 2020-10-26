@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Dingo\Api\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -35,7 +36,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
+        //$this->mapApiRoutes();
+        $this->mapApiRoutes(app('Dingo\Api\Routing\Router'));
 
         $this->mapWebRoutes();
 
@@ -63,11 +65,23 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    // protected function mapApiRoutes()
+    // {
+    //     Route::prefix('api')
+    //          ->middleware('api')
+    //          ->namespace($this->namespace)
+    //          ->group(base_path('routes/api.php'));
+    // }
+
+    protected function mapApiRoutes(Router $api)
     {
-        Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+        $api->group([
+            'version' => 'v1',
+            'namespace' => $this->namespace,
+        ], function ($api) {
+            require base_path('routes/api.php');
+        });
     }
+
+    
 }
