@@ -1,100 +1,90 @@
 <?php
 
 namespace App\Http\Controllers\Auth\Api;
-use App\Http\Controllers\Controller;
+
 use App\User;
-use Illuminate\Contracts\Auth\Factory as Auth;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Tymon\JWTAuth\JWTAuth;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+
+    
 
     /**
-     * Where to redirect users after registration.
+     * Validate the user login request.
      *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function __construct(Auth $auth, JWTAuth $jwt)
+    protected function validateLogin(Request $request)
     {
-        $this->auth=$auth;
-        $this->jwt=$jwt;
+        $request->validate([
+            'email' => 'required|exists:users,email',
+            'password' => 'required|string',
+        ], ['email.exists'=>'This account is not registered with us. Please signup to continue']);
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Handle a login request to the application.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => ['required','string'],
-            'password' => ['required','string'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      *
-     * @param  array  $data
-     * @return \App\User
+     * @throws \Illuminate\Validation\ValidationException
      */
-    protected function create(array $data)
+    public function login(Request $request)
     {
-        return User::create([
-            'mobile' => $data['username'],
-            'password' => Hash::make($data['mobile']),
-            //'referral_code'=>User::generateReferralCode()
-        ]);
-    }
+        $this->validateLogin($request);
 
-
-    public function login(Request $request){
-        $this->validator($request->toArray())->validate();
-        $user=$this->ifUserExists($request->username,$request->password);
-        if(!$user){
-            return response()->json([
-                    'status'=>'failed',
-                    'message'=>'invalid login attempt',
-                    'errors'=>[
-
-                    ],
-                ], 200);
-            }
-        else{
-
-            return [
-                'status'=>'success',
-            'message'=>'Login Successfull',
-            'token'=>$this->jwt->fromUser($user),
-            ];
+        if ($token=$this->attemptLogin($request)) {
+            $user=$this->getCustomer($request);
+            $user->notification_token=$request->notification_token;
+            $user->save();
+            return $this->sendLoginResponse($this->getCustomer($request), $token);
         }
+        return [
+            'status'=>'failed',
+            'token'=>'',
+            'message'=>'Credentials are not correct'
+        ];
+
     }
 
-    protected function ifUserExists($username,$password){
-        return (User::where('email', $username)->where('password', Hash::make($password))->where('status',1)->first())??false;
+
+    protected function attemptLogin(Request $request)
+    {
+        return Auth::guard('api')->attempt(
+            ['email'=>$request->email, 'password'=>$request->password]
+        );
     }
+
+    protected function getCustomer(Request $request){
+        return User::where('email',$request->email)->first();
+    }
+
+    protected function sendLoginResponse($user, $token){
+       
+        
+            return ['status'=>'success', 'message'=>'Login Successfull', 'token'=>$token];
+        
+    }
+
+
+    /**
+     * Handle a login request to the application with otp.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+
+   
 
 
 }
