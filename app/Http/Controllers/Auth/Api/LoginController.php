@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
-    
+
 
     /**
      * Validate the user login request.
@@ -42,9 +42,9 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         if ($token=$this->attemptLogin($request)) {
-            $user=$this->getCustomer($request);
-            $user->notification_token=$request->notification_token;
-            $user->save();
+//            $user=$this->getCustomer($request);
+//            $user->notification_token=$request->notification_token;
+//            $user->save();
             return $this->sendLoginResponse($this->getCustomer($request), $token);
         }
         return [
@@ -68,10 +68,10 @@ class LoginController extends Controller
     }
 
     protected function sendLoginResponse($user, $token){
-       
-        
+
+
             return ['status'=>'success', 'message'=>'Login Successfull', 'token'=>$token];
-        
+
     }
 
 
@@ -84,7 +84,7 @@ class LoginController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
-   
+
 
 
 }
