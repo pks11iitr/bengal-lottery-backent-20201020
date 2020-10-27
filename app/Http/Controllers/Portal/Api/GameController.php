@@ -25,7 +25,7 @@ class GameController extends Controller
            }
     }
 
-<<<<<<< HEAD
+
     public function gamedetails(Request $request){
     //var_dump($request->game_id); die;
             $game=Game::find($request->game_id);
@@ -44,7 +44,5 @@ class GameController extends Controller
                }
         }
 
-=======
->>>>>>> cdf04894ce1db3bcb13c646322162b1887f61939
 
 }
