@@ -25,5 +25,23 @@ class GameController extends Controller
            }
     }
 
+    public function gamedetails(Request $request){
+    //var_dump($request->game_id); die;
+            $game=Game::find($request->game_id);
+            $balance=1500;
+            $total=2500;
+            if($game){
+             return [
+                 'status'=>'success',
+                 'data'=>compact('game','balance','total')
+                 ];
+               }else{
+                 return [
+                      'status'=>'No Record Found',
+                       'code'=>'402'
+                 ];
+               }
+        }
+
 
 }

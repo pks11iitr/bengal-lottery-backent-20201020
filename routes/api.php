@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
  $api = app('Dingo\Api\Routing\Router');
  $api->post('login', ['as'=>'api.login', 'uses'=>'Auth\Api\LoginController@login']);
  $api->get('game-list', ['as'=>'api.login', 'uses'=>'Portal\Api\GameController@index']);
+$api->get('game-details', ['as'=>'api.details', 'uses'=>'Portal\Api\GameController@gamedetails']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
