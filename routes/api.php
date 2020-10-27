@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 $api->get('game-details', ['as'=>'api.details', 'uses'=>'Portal\Api\GameController@gamedetails']);
 
  $api->get('game-list', ['as'=>'api.game', 'uses'=>'Portal\Api\GameController@index']);
+ $api->post('game-book', ['as'=>'api.gamebooking', 'uses'=>'Portal\Api\GameController@gamebooking']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
