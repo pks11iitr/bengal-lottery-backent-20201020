@@ -31,10 +31,12 @@ class GameController extends Controller
             $game=Game::find($request->game_id);
             $balance=1500;
             $total=2500;
+            $date=date('Y-m-d H:i:s');
+            $cdate=date('d M Y', strtotime($date));
             if($game){
              return [
                  'status'=>'success',
-                 'data'=>compact('game','balance','total')
+                 'data'=>compact('game','balance','total','cdate')
                  ];
                }else{
                  return [
