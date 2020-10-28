@@ -73,7 +73,7 @@ class GameController extends Controller
                                      'game_timing' =>$game->game_time,
                                      'close_date' =>$game->close_date,
                                      'name' => $game->name,
-                                     'bid_digit' => $digit,
+                                     'bid_digit' => $qt,
                                      'bid_qty' => $qt,
 
                                  ]);
