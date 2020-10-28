@@ -29,6 +29,13 @@ class GameController extends Controller
 
     public function gamedetails(Request $request){
     //var_dump($request->game_id); die;
+     /*$user=auth()->guard('api')->user();
+            if(!$user)
+                return [
+                    'status'=>'failed',
+                    'message'=>'Please login to continue'
+                ];*/
+           // var_dump($user->id);die();
             $game=Game::find($request->game_id);
             $balance=1500;
             $total=2500;
@@ -49,18 +56,25 @@ class GameController extends Controller
 
          public function gamebooking(Request $request){
             //var_dump($request->game_id); die;
+             /*$user=auth()->guard('api')->user();
+                        if(!$user)
+                            return [
+                                'status'=>'failed',
+                                'message'=>'Please login to continue'
+                            ];*/
+                       // var_dump($user->id);die();
                     $game=Game::find($request->game_id);
-                 $digit=  $request->bid_digit;
+                 $digit=  $request->bid_digit??0;
                  $qty=  $request->bid_qty;
-                 foreach($digit as $key=>$dig){
+                 foreach($qty as $key=>$qt){
                 $book=  GameBook::create([
                                      'user_id' => 5,
                                      'game_id' => $request->game_id,
                                      'game_timing' =>$game->game_time,
                                      'close_date' =>$game->close_date,
                                      'name' => $game->name,
-                                     'bid_digit' => $dig,
-                                     'bid_qty' => $qty[$key],
+                                     'bid_digit' => $digit,
+                                     'bid_qty' => $qt,
 
                                  ]);
                  }

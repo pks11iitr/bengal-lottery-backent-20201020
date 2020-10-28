@@ -20,8 +20,14 @@ $api->get('game-details', ['as'=>'api.details', 'uses'=>'Portal\Api\GameControll
 
  $api->get('game-list', ['as'=>'api.game', 'uses'=>'Portal\Api\GameController@index']);
  $api->post('game-book', ['as'=>'api.gamebooking', 'uses'=>'Portal\Api\GameController@gamebooking']);
+$api->get('game-history', ['as'=>'api.gamehistory', 'uses'=>'Portal\Api\BookingHistoryController@index']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+
+
+
+
+
 });
