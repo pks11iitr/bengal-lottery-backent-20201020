@@ -12,13 +12,13 @@ class BookingHistoryController extends Controller
 {
 
     public function index(Request $request){
-      /* $user=auth()->guard('api')->user();
-        if(!$user)
-            return [
-                'status'=>'failed',
-                'message'=>'Please login to continue'
-            ];
-        var_dump($user->id);die();*/
+//       $user=auth()->guard('api')->user();
+//        if(!$user)
+//            return [
+//                'status'=>'failed',
+//                'message'=>'Please login to continue'
+//            ];
+//        var_dump($user->id);die();
         $bookgames=GameBook::where('user_id',5)->get();
         if($bookgames->count()>0){
             return [
