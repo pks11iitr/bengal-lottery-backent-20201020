@@ -110,11 +110,13 @@
                                 <a href="{{route('dashboard')}}" class="btn btn-info">Dashboard</a>
                             </li>
                             <li>
-                                <a href="{{route('agents')}}" class="btn btn-info">Agents</a>
+                                <a href="{{route('agents')}}" class="btn btn-info">Agents </a>
                             </li>
+
                             <li>
-                                <a href="{{route('gamelist')}}" class="btn btn-info">Add Game</a>
+                                <a href="{{route('gamelist')}}" class="btn btn-info">Add Game </a>
                             </li>
+
                             <li>
                                 <a href="" class="btn btn-info">OLD History</a>
                             </li>
@@ -140,9 +142,9 @@
                             <li>
                                 <a href="{{route('agents')}}" >Agents</a>
                             </li>
-                            <li>
-                                <a href="{{route('gamelist')}}" >Add Game</a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a href="{{route('gamelist')}}" >Add Game</a>--}}
+{{--                            </li>--}}
                             <li>
                                 <a href="" >Old History</a>
                             </li>

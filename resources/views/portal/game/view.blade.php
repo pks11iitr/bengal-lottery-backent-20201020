@@ -73,10 +73,16 @@
                                 Game Name
                             </th>
                             <th style="width: 15%">
+                                Game Date
+                            </th>
+                            <th style="width: 15%">
                                 Game Time
                             </th>
                             <th style="width: 15%">
-                                Degit
+                                Game Price
+                            </th>
+                            <th style="width: 15%">
+                                Status
                             </th>
 
                             <th style="width: 10%; text-align: right">
@@ -94,15 +100,22 @@
                                         {{$gmae->name}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{$gmae->game_time}}
+                                        {{date('d M Y', strtotime($gmae->close_date))}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{date('h:i A', strtotime($gmae->game_time))}}
                                     </td>
 
                                     <td style="text-transform: capitalize;">
-                                        {{$gmae->degit}}
+                                        {{$gmae->price}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        @if($gmae->isactive==1)
+                                        {{'Active'}}@else{{'Inactive'}}@endif
                                     </td>
 
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$gmae->id}})" title="Edit">
+                                        <a class="btn btn-primary btn-sm" href="{{route('gameedit',['id'=>$gmae->id])}}" title="Edit">
                                             <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
                                         </a>
                                         <!-- <a class="btn btn-danger btn-sm" href="#">

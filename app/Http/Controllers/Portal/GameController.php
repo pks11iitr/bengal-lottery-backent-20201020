@@ -30,20 +30,26 @@ class GameController extends Controller
     {
         $this->validate($request, array(
             "name" => "required",
+            "game_time" => "required",
+            "close_date" => "required",
+            "price" => "required",
+            "isactive" => "required",
         ));
 
         Game::create([
             'name' => $request->name,
             'game_time' => $request->game_time,
-            'degit' => $request->degit,
+            'close_date' => $request->close_date,
+            'price' => $request->price,
+            'isactive' => $request->isactive,
         ]);
         return redirect()->route("gamelist")->with('success', 'Game Created Successfully');
     }
 
     public function editgame(Request $request,$id)
     {
-        $games = Game::find($id);
-        return view('portal.game.edit',compact('games'));
+        $game = Game::find($id);
+        return view('portal.game.edit',compact('game'));
     }
 
     public function updategame(Request $request,$id)
@@ -51,13 +57,19 @@ class GameController extends Controller
 
         $this->validate($request, array(
             "name" => "required",
+            "game_time" => "required",
+            "close_date" => "required",
+            "price" => "required",
+            "isactive" => "required",
 
         ));
 
         $game = Game::find($id);
         $game->name = $request->name;
         $game->game_time = $request->game_time;
-        $game->degit = $request->degit;
+        $game->close_date = $request->close_date;
+        $game->price = $request->price;
+        $game->isactive = $request->isactive;
         $game->save();
 
         return redirect()->route("gamelist");

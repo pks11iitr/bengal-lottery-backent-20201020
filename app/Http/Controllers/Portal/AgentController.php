@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Models\CompanyProducts;
-use App\Models\Marketer;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +71,21 @@ class AgentController extends Controller
         $agentdetails->withdraw = $request->withdraw_edit;
         $agentdetails->status = $request->status_edit;
         $agentdetails->save();
+        if((int)$request->deposit_edit>=0){
+            $deposit=Transaction::create([
+                'user_id' => $request->agent_id,
+                'amount' => $request->deposit_edit,
+                'type' => 'Deposit',
+            ]);
+        }
+        if((int)$request->withdraw_edit>=0){
+
+            $withdraw=Transaction::create([
+                'user_id' => $request->agent_id,
+                'amount' => $request->withdraw_edit,
+                'type' => 'Withdraw',
+            ]);
+        }
 
         return redirect()->route("agents");
 
