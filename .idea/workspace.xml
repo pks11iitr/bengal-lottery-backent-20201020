@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="gitignore changes">
-      <change beforePath="$PROJECT_DIR$/.idea/qrcodes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/qrcodes.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="gitignore changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +35,9 @@
         <option value="composer.json" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="master-backup" />
   </component>
   <component name="Git.Pull.Settings">
     <option name="BRANCH" value="master" />
@@ -232,14 +232,7 @@
       <workItem from="1603514523849" duration="1617000" />
       <workItem from="1603701612778" duration="1467000" />
       <workItem from="1603710791188" duration="1265000" />
-      <workItem from="1604123852572" duration="361000" />
-    </task>
-    <task id="LOCAL-00004" summary="theme setup, login, register">
-      <created>1600107408041</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1600107408041</updated>
+      <workItem from="1604123852572" duration="953000" />
     </task>
     <task id="LOCAL-00005" summary="disallow indexing">
       <created>1600161897419</created>
@@ -577,13 +570,29 @@
       <option name="project" value="LOCAL" />
       <updated>1603710807617</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="gitignore changes">
+      <created>1604124330918</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1604124330919</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
@@ -625,13 +634,15 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl/67.27.1299.741@67.27.1299.741" timestamp="1601733278767" />
-    <state x="187" y="85" width="1039" height="622" key="MergeDialog" timestamp="1601207056161">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state x="185" y="85" width="1040" height="622" key="MergeDialog" timestamp="1604124804941">
+      <screen x="65" y="27" width="1301" height="741" />
     </state>
+    <state x="185" y="85" width="1040" height="622" key="MergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1604124804941" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1601207056161" />
-    <state x="347" y="157" width="728" height="478" key="MultipleFileMergeDialog" timestamp="1601207056163">
-      <screen x="67" y="27" width="1299" height="741" />
+    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog" timestamp="1604124804946">
+      <screen x="65" y="27" width="1301" height="741" />
     </state>
+    <state x="345" y="157" key="MultipleFileMergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1604124804946" />
     <state x="347" y="157" width="728" height="478" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1601207056163" />
     <state x="518" y="116" width="386" height="561" key="NewPhpClassDialog" timestamp="1600448527988">
       <screen x="67" y="27" width="1299" height="741" />
