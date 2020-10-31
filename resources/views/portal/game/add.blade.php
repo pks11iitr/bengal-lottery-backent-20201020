@@ -81,24 +81,45 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cname">Name <small class="text-success">*</small> :</label>
-                                                            <input type="text" id="name" name="name" class="form-control" placeholder="game Name" required value="">
+                                                            <input type="text" id="name" name="name" class="form-control" placeholder="Game Name" required value="">
                                                         </div>
                                                     </div>
+
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="text-muted" for="creg">Game Time<small class="text-success">*</small> :</label>
-                                                            <input type="text" id="game_time" name="game_time" class="form-control" placeholder="game time" required value="">
+                                                            <label class="text-muted" for="cemail">Close Date <small class="text-success">*</small> :</label>
+                                                            <input type="date" id="close_date" name="close_date" class="form-control" placeholder="Close Date" required value="">
                                                         </div>
                                                     </div>
+
 
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="text-muted" for="cemail">Degit <small class="text-success">*</small> :</label>
-                                                            <input type="number" id="degit" name="degit" class="form-control" placeholder="degit" required value="">
+                                                            <label class="text-muted" for="creg">Game Time<small class="text-success">*</small> :</label>
+                                                            <input type="time" id="game_time" name="game_time" class="form-control" placeholder="Game Time" required value="">
+
                                                         </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="text-muted" for="cemail">Game Price <small class="text-success">*</small> :</label>
+                                                            <input type="number" id="price" name="price" class="form-control" placeholder="Price" required min="0">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Isactive</label>
+                                                            <select class="form-control select2" id="isactive" name="isactive" required>
+                                                                <option value="">Please Select Status</option>
+                                                                <option value="1">Active</option>
+                                                                <option value="0">Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- /.form-group -->
                                                     </div>
 
                                                 </div>

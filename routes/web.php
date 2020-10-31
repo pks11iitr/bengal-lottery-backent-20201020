@@ -21,6 +21,11 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
 
     Route::group(['is'=>'admin'], function(){
 
+        Route::get('list-game', 'Portal\GameController@index')->name('gamelist');
+        Route::get('create-game', 'Portal\GameController@create')->name('creategame');
+        Route::post('save-game', 'Portal\GameController@gamesave')->name('gamesave');
+        Route::get('game-edit/{id}', 'Portal\GameController@editgame')->name('gameedit');
+        Route::post('update-game/{id}', 'Portal\GameController@updategame')->name('gameupdate');
     });
 
     Route::group(['is'=>'admin|subadmin'], function(){
@@ -30,10 +35,6 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
     Route::post('create-agent', 'Portal\AgentController@createagent')->name('agentcreate');
     Route::get('agentdetails', 'Portal\AgentController@agentdetails')->name('agentdetails');
     Route::post('/agentupdate', 'Portal\AgentController@updateagent')->name('agentupdate');
-
-    Route::get('list-game', 'Portal\GameController@index')->name('gamelist');
-    Route::get('create-game', 'Portal\GameController@create')->name('creategame');
-    Route::post('save-game', 'Portal\GameController@gamesave')->name('gamesave');
 
 
     Route::get('/products', 'Portal\ProductController@index')->name('products');

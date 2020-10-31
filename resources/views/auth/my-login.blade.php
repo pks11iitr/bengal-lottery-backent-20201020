@@ -10,7 +10,7 @@
         <form action="{{ route('login') }}" method="post">
             @csrf
             <div class="input-group mb-3">
-                <input type="email" name="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus id="email">
+                <input type="email" name="email" class="form-control" placeholder="Username" name="email" value="{{ old('email') }}" required  autofocus id="email">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -18,7 +18,7 @@
                 @enderror
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+                        <span class="fas fa-user"></span>
                     </div>
                 </div>
             </div>
@@ -66,9 +66,9 @@
         </div>
         <!-- /.social-auth-links -->
 
-        <p class="mb-0">
-            Dont Have An Account?<a href="{{ route('register') }}" class="text-center"> Register Now</a>
-        </p>
+{{--        <p class="mb-0">--}}
+{{--            Dont Have An Account?<a href="{{ route('register') }}" class="text-center"> Register Now</a>--}}
+{{--        </p>--}}
     </div>
     <!-- /.login-card-body -->
 </div>

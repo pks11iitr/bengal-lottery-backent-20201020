@@ -110,13 +110,14 @@
                                 <a href="{{route('dashboard')}}" class="btn btn-info">Dashboard</a>
                             </li>
                             <li>
-                                <a href="{{route('agents')}}" class="btn btn-info">Agents</a>
+                                <a href="{{route('agents')}}" class="btn btn-info">Agents </a>
                             </li>
                             @if(auth()->user()->hasRole('admin'))
                             <li>
-                                <a href="{{route('gamelist')}}" class="btn btn-info">Add Game</a>
+                                <a href="{{route('gamelist')}}" class="btn btn-info">Add Game </a>
                             </li>
                             @endif
+
                             <li>
                                 <a href="" class="btn btn-info">OLD History</a>
                             </li>
