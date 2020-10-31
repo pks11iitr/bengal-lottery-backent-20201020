@@ -5,10 +5,12 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/public/uploads" />
       <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/05" />
       <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/c2" />
       <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/d8" />
       <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/f1" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/aws/aws-sdk-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/aws/aws-sdk-php-laravel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/beyondcode/laravel-dump-server" />
