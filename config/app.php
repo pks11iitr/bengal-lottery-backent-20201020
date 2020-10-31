@@ -177,7 +177,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Aws\Laravel\AwsServiceProvider::class,
         'Kodeine\Acl\AclServiceProvider',
-
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
     ],
 
     /*
@@ -229,7 +229,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
 
     ],
 
