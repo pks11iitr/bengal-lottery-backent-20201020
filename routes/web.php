@@ -35,6 +35,9 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
     Route::post('create-agent', 'Portal\AgentController@createagent')->name('agentcreate');
     Route::get('agentdetails', 'Portal\AgentController@agentdetails')->name('agentdetails');
     Route::post('/agentupdate', 'Portal\AgentController@updateagent')->name('agentupdate');
+    Route::get('game-book-list/{id}', 'Portal\AgentController@index')->name('gamebooklist');
+    Route::get('book-history-edit/{id}', 'Portal\AgentController@bookhistoryedit')->name('historyedit');
+        Route::post('book-history-update/{id}', 'Portal\AgentController@bookhistoryupdate')->name('historyupdate');
 
 
     Route::get('/products', 'Portal\ProductController@index')->name('products');

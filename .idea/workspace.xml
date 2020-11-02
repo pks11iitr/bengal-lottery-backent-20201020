@@ -19,15 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="auth user id">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="admin and api work">
+      <change afterPath="$PROJECT_DIR$/resources/views/portal/agent/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,14 +242,7 @@
       <workItem from="1603701612778" duration="1467000" />
       <workItem from="1603710791188" duration="1265000" />
       <workItem from="1604123852572" duration="7318000" />
-      <workItem from="1604298111475" duration="5614000" />
-    </task>
-    <task id="LOCAL-00007" summary="add product">
-      <created>1600275505781</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1600275505781</updated>
+      <workItem from="1604298111475" duration="13699000" />
     </task>
     <task id="LOCAL-00008" summary="add product">
       <created>1600275843384</created>
@@ -587,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604148394842</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="admin and api work">
+      <created>1604303744475</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1604303744476</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,17 +625,18 @@
     <MESSAGE value="google analytics added" />
     <MESSAGE value="gitignore changes" />
     <MESSAGE value="auth user id" />
-    <option name="LAST_COMMIT_MESSAGE" value="auth user id" />
+    <MESSAGE value="admin and api work" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin and api work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="391" y="198" width="639" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604130019579">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
     <state x="391" y="198" width="639" height="396" key="#com.intellij.fileTypes.FileTypeChooser/65.27.1301.741@65.27.1301.741" timestamp="1604130019579" />
-    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604302005851">
+    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604314661829">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1604302005851" />
+    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1604314661829" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1601733429688" />
     <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1603710807420">
       <screen x="67" y="27" width="1299" height="741" />
@@ -664,15 +665,15 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="518" y="116" width="386" height="561" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1600448527988" />
-    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1603194883981">
+    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1604314239204">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1603194883981" />
+    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1604314239204" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
-    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1604148374180">
+    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1604303770111">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1604148374180" />
+    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1604303770111" />
     <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1603710831521" />
     <state x="406" y="106" width="620" height="580" key="find.popup" timestamp="1601217896931">
       <screen x="67" y="27" width="1299" height="741" />

@@ -15,8 +15,15 @@ class Game extends Model
     public function getCloseDateAttribute($value) {
         return \Carbon\Carbon::parse($value)->format('d M Y');
     }
-
+  protected $appends=['orginal','time'];
     public function getGameTimeAttribute($value) {
         return \Carbon\Carbon::parse($value)->format('h:i A');
     }
+    public function getorginalAttribute($value){
+        return \Carbon\Carbon::parse($this->close_date)->format('Y-m-d');
+    }
+    public function getTimeAttribute($value){
+        return \Carbon\Carbon::parse($this->game_time)->format('H:i');
+    }
+
 }

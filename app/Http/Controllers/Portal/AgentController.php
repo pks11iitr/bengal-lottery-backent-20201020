@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Models\CompanyProducts;
+use App\Models\Game;
+use App\Models\GameBook;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,6 +30,7 @@ class AgentController extends Controller
         //var_dump($balance);die();
         return view('portal.agent.add', compact('agents'));
     }
+
 
     public function createagent(Request $request)
     {
@@ -96,6 +99,38 @@ class AgentController extends Controller
         }
 
         return redirect()->route("agents");
+
+    }
+
+    public function index(Request $request,$id)
+    {
+        $gamebook = GameBook::where('user_id', $id)->get();
+        return view('portal.agent.view', compact('gamebook'));
+    }
+
+    public function bookhistoryedit(Request $request,$id)
+    {
+        $game = GameBook::find($id);
+        return view('portal.agent.edit',compact('game'));
+    }
+
+    public function bookhistoryupdate(Request $request,$id)
+    {
+
+        $this->validate($request, array(
+            "draw_result" => "required",
+            "winning_amount" => "required",
+            "status" => "required",
+
+        ));
+
+        $game = GameBook::find($id);
+        $game->draw_result = $request->draw_result;
+        $game->winning_amount = $request->winning_amount;
+        $game->status = $request->status;
+        $game->save();
+
+        return redirect()->route('gamebooklist',['id'=>$game->user_id]);
 
     }
 

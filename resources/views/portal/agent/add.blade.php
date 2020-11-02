@@ -90,9 +90,9 @@
                             <th style="width: 25%">
                                 Status
                             </th>
-                            <!-- <th style="width: 9%" class="text-center">
-                                Size
-                            </th> -->
+                             <th style="width: 9%" class="text-center">
+                                Booking
+                            </th>
                             <th style="width: 10%; text-align: right">
                                 Action
                             </th>
@@ -125,6 +125,13 @@
                                         @if($product->status==1){{'Active'}}@elseif($product->status==0){{'Inactive'}}@else{{'Blocked'}}@endif
                                     </td>
 
+
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="{{route('gamebooklist',['id'=>$product->id])}}" title="Edit">
+                                            <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>
+                                        </a>
+
+                                    </td>
 
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$product->id}})" title="Edit">
