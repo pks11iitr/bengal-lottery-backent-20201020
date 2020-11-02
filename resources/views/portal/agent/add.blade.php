@@ -113,13 +113,13 @@
                                         {{$product->agent->email}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{$product->deposit-$product->withdraw}}
+                                        {{$product->balance}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{$product->deposit}}
+                                        {{$product->totaldeposit}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{$product->withdraw}}
+                                        {{$product->totalwithdraw}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         @if($product->status==1){{'Active'}}@elseif($product->status==0){{'Inactive'}}@else{{'Blocked'}}@endif

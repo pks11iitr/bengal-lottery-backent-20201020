@@ -17,7 +17,15 @@ class AgentController extends Controller
     public function userslist(Request $request)
     {
         $user = Auth::user();
+
         $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->get();
+        foreach ($agents as $agent){
+            $agent->balance=Transaction::balance($agent->id);
+           // var_dump($agents['balance']);die();
+            $agent->totaldeposit=Transaction::totaldeposit($agent->id);
+            $agent->totalwithdraw=Transaction::totalwithdraw($agent->id);
+        }
+        //var_dump($balance);die();
         return view('portal.agent.add', compact('agents'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portal;
 use App\Models\CompanyProducts;
 use App\Models\Game;
 use App\Models\Marketer;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class GameController extends Controller
     public function index(Request $request)
     {
         $games = Game::get();
+
         return view('portal.game.view', compact('games'));
     }
 
