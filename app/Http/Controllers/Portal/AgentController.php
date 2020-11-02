@@ -126,9 +126,10 @@ class AgentController extends Controller
 
         $game = Game::find($id);
 
-        if($request->bid_digit){
+
+           // var_dump($request->bid_digit);die();
             $values = GameBook::where('bid_digit', $request->bid_digit)->update(['draw_result'=>$request->draw_result,'winning_amount'=>$request->winning_amount,'status'=>$request->status]);
-        }
+
 
 //        $game->draw_result = $request->draw_result;
 //        $game->biddigit = $request->biddigit;
