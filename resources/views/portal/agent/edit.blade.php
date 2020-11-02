@@ -88,7 +88,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cemail">Draw Result Position <small class="text-success">*</small> :</label>
-                                                            <input type="number" id="close_date" name="draw_result" class="form-control" min="0" placeholder="Draw Result Position" required value="{{$game->draw_result}}">
+                                                            <input type="number" id="close_date" name="draw_result" class="form-control" min="0" placeholder="Draw Result Position" required >
                                                         </div>
                                                     </div>
 
@@ -99,16 +99,16 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="creg">Winning Amount<small class="text-success">*</small> :</label>
-                                                            <input type="number" id="game_time" name="winning_amount" class="form-control" min="0" placeholder="Winning Amount" required value="{{$game->winning_amount}}">
+                                                            <input type="number" id="game_time" name="winning_amount" class="form-control" min="0" placeholder="Winning Amount" required >
 
                                                         </div>
                                                     </div>
-{{--                                                    <div class="col-sm-6">--}}
-{{--                                                        <div class="form-group">--}}
-{{--                                                            <label class="text-muted" for="cemail">Game Price <small class="text-success">*</small> :</label>--}}
-{{--                                                            <input type="number" id="price" name="price" class="form-control" placeholder="Price" required min="0" value="{{$game->price}}">--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="text-muted" for="cemail">Game Winning Degit <small class="text-success">*</small> :</label>
+                                                            <input type="number" id="bid_digit" name="bid_digit" class="form-control" placeholder=" winning bid digit" required min="0" >
+                                                        </div>
+                                                    </div>
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">

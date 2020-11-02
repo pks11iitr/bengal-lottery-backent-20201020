@@ -110,6 +110,13 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="text-muted" for="cemail">Degit Number <small class="text-success">*</small> :</label>
+                                                            <input type="text" id="degit" name="degit" class="form-control" placeholder="degit " required >
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Isactive</label>

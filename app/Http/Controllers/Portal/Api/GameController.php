@@ -65,20 +65,24 @@ class GameController extends Controller
                             ];
 
                     $game=Game::find($request->game_id);
-                 $digit=  $request->bid_digit??0;
+               //  $digit=  $request->bid_digit??0;
                  $qty=  $request->bid_qty;
                  foreach($qty as $key=>$qt){
-                $book=  GameBook::create([
-                                     'user_id' => $user->id,
-                                     'game_id' => $request->game_id,
-                                     'game_timing' =>$game->game_time,
-                                     'close_date' =>$game->close_date,
-                                     'game_price' =>$game->price,
-                                     'name' => $game->name,
-                                     'bid_digit' => $qt,
-                                     'bid_qty' => $qt,
+                     if($qt>0){
+                         $book=  GameBook::create([
+                             'user_id' => $user->id,
+                             'game_id' => $request->game_id,
+                             'game_timing' =>$game->game_time,
+                             'close_date' =>$game->close_date,
+                             'game_price' =>$game->price,
+                             'name' => $game->name,
+                             'bid_number' => $game->degit,
+                             'bid_digit' => $key,
+                             'bid_qty' => $qt,
 
-                                 ]);
+                         ]);
+                     }
+
                  }
                     if($book){
                      return [

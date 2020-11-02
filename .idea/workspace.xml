@@ -20,14 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="admin and api work">
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/agent/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/GameBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GameBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/add.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/game/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,14 +244,7 @@
       <workItem from="1603701612778" duration="1467000" />
       <workItem from="1603710791188" duration="1265000" />
       <workItem from="1604123852572" duration="7318000" />
-      <workItem from="1604298111475" duration="13699000" />
-    </task>
-    <task id="LOCAL-00008" summary="add product">
-      <created>1600275843384</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1600275843384</updated>
+      <workItem from="1604298111475" duration="17810000" />
     </task>
     <task id="LOCAL-00009" summary="testing qr">
       <created>1600449599913</created>
@@ -587,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604303744476</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="admin and api work">
+      <created>1604316137231</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1604316137231</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,10 +672,10 @@
     </state>
     <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1604314239204" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
-    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1604303770111">
+    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1604316148585">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1604303770111" />
+    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1604316148585" />
     <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1603710831521" />
     <state x="406" y="106" width="620" height="580" key="find.popup" timestamp="1601217896931">
       <screen x="67" y="27" width="1299" height="741" />

@@ -79,6 +79,12 @@
                                 Game Time
                             </th>
                             <th style="width: 15%">
+                                Bid Number
+                            </th>
+                            <th style="width: 15%">
+                                Bid Digit
+                            </th>
+                            <th style="width: 15%">
                                 Bid QTY
                             </th>
                             <th style="width: 15%">
@@ -94,9 +100,9 @@
                                 Status
                             </th>
 
-                            <th style="width: 10%; text-align: right">
-                                Action
-                            </th>
+{{--                            <th style="width: 10%; text-align: right">--}}
+{{--                                Action--}}
+{{--                            </th>--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -114,7 +120,12 @@
                                     <td style="text-transform: capitalize;">
                                         {{date('h:i A', strtotime($gmae->game_time))}}
                                     </td>
-
+                                    <td style="text-transform: capitalize;">
+                                        {{$gmae->bid_number}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$gmae->bid_digit}}
+                                    </td>
                                     <td style="text-transform: capitalize;">
                                         {{$gmae->bid_qty}}
                                     </td>
@@ -139,16 +150,12 @@
                                         </td>
                                     @endif
 
-                                    <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="{{route('historyedit',['id'=>$gmae->id])}}" title="Edit">
-                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
-                                        </a>
-                                        <!-- <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a> -->
-                                    </td>
+{{--                                    <td class="project-actions text-right">--}}
+{{--                                        <a class="btn btn-primary btn-sm" href="{{route('historyedit',['id'=>$gmae->id])}}" title="Edit">--}}
+{{--                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>--}}
+{{--                                        </a>--}}
+{{--                                       --}}
+{{--                                    </td>--}}
                                 </tr>
                             @endforeach
                         @endif

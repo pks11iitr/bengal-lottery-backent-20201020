@@ -110,7 +110,7 @@ class AgentController extends Controller
 
     public function bookhistoryedit(Request $request,$id)
     {
-        $game = GameBook::find($id);
+        $game = Game::find($id);
         return view('portal.agent.edit',compact('game'));
     }
 
@@ -124,13 +124,19 @@ class AgentController extends Controller
 
         ));
 
-        $game = GameBook::find($id);
-        $game->draw_result = $request->draw_result;
-        $game->winning_amount = $request->winning_amount;
-        $game->status = $request->status;
-        $game->save();
+        $game = Game::find($id);
 
-        return redirect()->route('gamebooklist',['id'=>$game->user_id]);
+        if($request->bid_digit){
+            $values = GameBook::where('bid_digit', $request->bid_digit)->update(['draw_result'=>$request->draw_result,'winning_amount'=>$request->winning_amount,'status'=>$request->status]);
+        }
+
+//        $game->draw_result = $request->draw_result;
+//        $game->biddigit = $request->biddigit;
+//        $game->winning_amount = $request->winning_amount;
+//        $game->status = $request->status;
+//        $game->save();
+
+        return redirect()->route('gamelist');
 
     }
 

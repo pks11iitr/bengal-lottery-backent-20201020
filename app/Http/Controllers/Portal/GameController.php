@@ -35,6 +35,7 @@ class GameController extends Controller
             "game_time" => "required",
             "close_date" => "required",
             "price" => "required",
+            "degit" => "required",
             "isactive" => "required",
         ));
 
@@ -43,6 +44,7 @@ class GameController extends Controller
             'game_time' => $request->game_time,
             'close_date' => $request->close_date,
             'price' => $request->price,
+            'degit' => $request->degit,
             'isactive' => $request->isactive,
         ]);
         return redirect()->route("gamelist")->with('success', 'Game Created Successfully');
@@ -62,6 +64,7 @@ class GameController extends Controller
             "game_time" => "required",
             "close_date" => "required",
             "price" => "required",
+            "degit" => "required",
             "isactive" => "required",
 
         ));
@@ -71,6 +74,7 @@ class GameController extends Controller
         $game->game_time = $request->game_time;
         $game->close_date = $request->close_date;
         $game->price = $request->price;
+        $game->degit = $request->degit;
         $game->isactive = $request->isactive;
         $game->save();
 
