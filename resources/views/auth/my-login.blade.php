@@ -10,7 +10,7 @@
         <form action="{{ route('login') }}" method="post">
             @csrf
             <div class="input-group mb-3">
-                <input type="email" name="email" class="form-control" placeholder="Username" name="email" value="{{ old('email') }}" required  autofocus id="email">
+                <input type="text" name="email" class="form-control" placeholder="Username" name="email" value="{{ old('email') }}" required  autofocus id="email">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
