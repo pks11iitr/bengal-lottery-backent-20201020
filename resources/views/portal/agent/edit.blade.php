@@ -85,44 +85,44 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="text-muted" for="cemail">Draw Result Position <small class="text-success">*</small> :</label>
-                                                            <input type="number" id="close_date" name="draw_result" class="form-control" min="0" placeholder="Draw Result Position" required >
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-sm-6">--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label class="text-muted" for="cemail">Draw Result Position <small class="text-success">*</small> :</label>--}}
+{{--                                                            <input type="number" id="close_date" name="draw_result" class="form-control" min="0" placeholder="Draw Result Position" required >--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
 
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="text-muted" for="creg">Winning Amount<small class="text-success">*</small> :</label>
-                                                            <input type="number" id="game_time" name="winning_amount" class="form-control" min="0" placeholder="Winning Amount" required >
+{{--                                                    <div class="col-sm-6">--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label class="text-muted" for="creg">Winning Amount<small class="text-success">*</small> :</label>--}}
+{{--                                                            <input type="number" id="game_time" name="winning_amount" class="form-control" min="0" placeholder="Winning Amount" required >--}}
 
-                                                        </div>
-                                                    </div>
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="text-muted" for="cemail">Game Winning Degit <small class="text-success">*</small> :</label>
+                                                            <label class="text-muted" for="cemail">Game Winning Digit <small class="text-success">*</small> :</label>
                                                             <input type="number" id="bid_digit" name="bid_digit" class="form-control" placeholder=" winning bid digit" required min="0" >
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label>Winning Status</label>
-                                                            <select class="form-control" name="status" required>
-                                                                <option selected="selected"
-                                                                        value="Won" {{$game->status=='Won'?'selected':''}}>Won
-                                                                </option>
-                                                                <option value="Lose" {{$game->status=='Lose'?'selected':''}}>Lose
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                        <!-- /.form-group -->
-                                                    </div>
+{{--                                                    <div class="col-md-6">--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label>Winning Status</label>--}}
+{{--                                                            <select class="form-control" name="status" required>--}}
+{{--                                                                <option selected="selected"--}}
+{{--                                                                        value="Won" {{$game->status=='Won'?'selected':''}}>Won--}}
+{{--                                                                </option>--}}
+{{--                                                                <option value="Lose" {{$game->status=='Lose'?'selected':''}}>Lose--}}
+{{--                                                                </option>--}}
+{{--                                                            </select>--}}
+{{--                                                        </div>--}}
+{{--                                                        <!-- /.form-group -->--}}
+{{--                                                    </div>--}}
 
                                                 </div>
 

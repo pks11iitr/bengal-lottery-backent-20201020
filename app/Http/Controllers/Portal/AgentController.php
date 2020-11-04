@@ -118,23 +118,32 @@ class AgentController extends Controller
     {
 
         $this->validate($request, array(
-            "draw_result" => "required",
-            "winning_amount" => "required",
-            "status" => "required",
+            "bid_digit" => "required",
 
         ));
 
         $game = Game::find($id);
 
+        $values=GameBook::where('game_id',$id)->get();
+        foreach ($values as $v){
+            if($v->bid_digit==$request->bid_digit){
+                $win = GameBook::where('id', $v->id)->update(['draw_result'=>$request->bid_digit,'winning_amount'=>$v->bid_qty*$v->game_price,'status'=>'Won']);
 
-           // var_dump($request->bid_digit);die();
-            $values = GameBook::where('bid_digit', $request->bid_digit)->where('game_id',$id)->update(['draw_result'=>$request->draw_result,'winning_amount'=>$request->winning_amount,'status'=>$request->status]);
+                $withdraw=Transaction::create([
+                    'user_id' => $v->user_id,
+                    'amount' => $v->bid_qty*$v->game_price,
+                    'type' => 'Deposit',
+                ]);
 
-//        $game->draw_result = $request->draw_result;
-//        $game->biddigit = $request->biddigit;
-//        $game->winning_amount = $request->winning_amount;
-//        $game->status = $request->status;
-//        $game->save();
+            }else{
+                $win = GameBook::where('id', $v->id)->update(['draw_result'=>$request->bid_digit,'winning_amount'=>$v->bid_qty*$v->game_price,'status'=>'Loss']);
+                $withdraw=Transaction::create([
+                    'user_id' => $v->user_id,
+                    'amount' => $v->bid_qty*$v->game_price,
+                    'type' => 'Withdraw',
+                ]);
+            }
+        }
 
         return redirect()->route('gamelist');
 

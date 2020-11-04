@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal;
 
 use App\Models\CompanyProducts;
+use App\Models\Game;
 use App\Models\MappedCode;
 use App\QrCodes;
 use App\User;
@@ -18,6 +19,13 @@ class DashboardController extends Controller
             ->orderBy('id','DESC')
             ->limit(10)
         ->get();
+        $ag=User::where('parent_id', $user->id)
+            ->orderBy('id','DESC')
+            ->get();
+        $totalagent=$ag->count();
+        $games=Game::orderBy('id','DESC')
+            ->get();
+        $totalgames=$games->count();
       //  $qrcode=QrCodes::where('user_id', $user->id)->sum('total');
 //        $mappedqr=MappedCode::where('user_id', $user->id)->sum('total');
 //        $skus=CompanyProducts::where('user_id', $user->id)
@@ -28,6 +36,6 @@ class DashboardController extends Controller
 //            ->orderBy('id', 'desc')
 //            ->paginate(10);
 
-        return view('portal.dashboard', compact('agents'));
+        return view('portal.dashboard', compact('agents','totalagent','games','totalgames'));
     }
 }

@@ -94,7 +94,7 @@
                                 Draw Result
                             </th>
                             <th style="width: 15%">
-                                Winning Amount
+                                Amount
                             </th>
                             <th style="width: 15%">
                                 Status

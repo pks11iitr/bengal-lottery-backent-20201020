@@ -46,9 +46,9 @@
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Lottert System</span>
+                            <span class="info-box-text">Total Agents System</span>
                             <span class="info-box-number">
-                  {{$qrcode??'0'}}
+                  {{$totalagent??'0'}}
 {{--                  <small>%</small>--}}
                 </span>
                         </div>
@@ -80,7 +80,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Game</span>
-                            <span class="info-box-number">0</span>
+                            <span class="info-box-number"> {{$totalgames??'0'}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -275,10 +275,35 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- /.card-body -->
-                        <div class="card-footer text-center">
-                            <a href="#" class="uppercase">View All Agents</a>
-                        </div>
+{{--                        <div class="card-footer text-center">--}}
+{{--                            <a href="#" class="uppercase">View All Agents</a>--}}
+{{--                        </div>--}}
                         <!-- /.card-footer -->
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($games as $gm)
+                                        <tr>
+                                            <td>{{$gm->name??''}}</td>
+                                            <td><span class="badge badge-success">{{$gm->close_date??''}}</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">{{$gm->game_time}}</div></td>
+
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
