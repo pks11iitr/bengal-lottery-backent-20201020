@@ -79,25 +79,31 @@ class GameController extends Controller
                     $game=Game::find($request->game_id);
                //  $digit=  $request->bid_digit??0;
 
+            $havingorder = Order::where('user_id',$user->id)->where('game_id',$request->game_id)->first();
+            if(!$havingorder) {
 
-//             $bookorder=  Order::create([
-//                 'user_id' => $user->id,
-//                 'game_id' => $request->game_id,
-//                 'status' =>'pending',
-//                 'winning_amount' =>$request->winning_amount,
-//                 'winning_digit' =>$game->degit,
-//                 'game_timing' =>$game->game_time,
-//                 'close_date' =>$game->close_date,
-//                 'game_price' =>$game->price,
-//                 'name' => $game->name,
-//
-//             ]);
+                $bookorder = Order::create([
+                    'user_id' => $user->id,
+                    'game_id' => $request->game_id,
+                    'status' => 'pending',
+                    'winning_amount' => $request->winning_amount,
+                    'winning_digit' => $game->degit,
+                    'game_timing' => $game->game_time,
+                    'close_date' => $game->close_date,
+                    'game_price' => $game->price,
+                    'name' => $game->name,
+
+                ]);
+                $bookorder=$bookorder->id;
+            }else{
+                $bookorder= $havingorder->id;
+            }
              $qty=  $request->bid_qty;
                  foreach($qty as $key=>$qt){
                      if($qt>0){
                          $book=  GameBook::create([
                              'user_id' => $user->id,
-                            // 'order_id' => $bookorder->id,
+                             'order_id' => $bookorder,
                              'game_id' => $request->game_id,
                              'game_timing' =>$game->game_time,
                              'close_date' =>$game->close_date,

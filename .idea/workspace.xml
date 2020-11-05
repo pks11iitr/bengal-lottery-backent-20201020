@@ -20,16 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="admin work">
-      <change afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/GameBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GameBook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,6 +243,7 @@
       <workItem from="1604382485421" duration="9803000" />
       <workItem from="1604467721641" duration="828000" />
       <workItem from="1604469141774" duration="2251000" />
+      <workItem from="1604555528620" duration="16995000" />
     </task>
     <task id="LOCAL-00012" summary="qrcode generated, mapped is pending">
       <created>1600889688859</created>
@@ -639,10 +635,10 @@
       <screen x="65" y="27" width="1301" height="741" />
     </state>
     <state x="391" y="198" width="639" height="396" key="#com.intellij.fileTypes.FileTypeChooser/65.27.1301.741@65.27.1301.741" timestamp="1604130019579" />
-    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604314661829">
+    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604575542188">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1604314661829" />
+    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1604575542188" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1601733429688" />
     <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1603710807420">
       <screen x="67" y="27" width="1299" height="741" />

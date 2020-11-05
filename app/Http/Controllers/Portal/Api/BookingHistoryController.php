@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Api;
 
-use App\Models\Game;
+use App\Models\Order;
 use App\Models\GameBook;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,54 @@ class BookingHistoryController extends Controller
                 'message'=>'Please login to continue'
             ];
 
-        $bookgames=GameBook::where('user_id',$user->id)->get();
+        $bookgames=Order::where('user_id',$user->id)->get();
+        foreach ($bookgames as $book){
+            $book->bidlist=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->groupBy('created_at')->select(DB::raw('GROUP_CONCAT(bid_qty) AS qty'),DB::raw('GROUP_CONCAT(bid_digit) AS degqty'),DB::raw('GROUP_CONCAT(id) AS ids'), 'created_at')->get();
+            $totalbid=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->get();
+            $totalqty=0;$totalqty1=0;$totalqty2=0;$totalqty3=0;$totalqty4=0;$totalqty5=0;
+            $totalqty6=0;$totalqty7=0;$totalqty8=0;$totalqty9=0;
+            foreach ($totalbid as $bid){
+                if($bid->bid_digit==0){
+                    $totalqty=$totalqty+($bid->bid_qty*$bid->game_price);
+
+                }elseif($bid->bid_digit==1){
+                    $totalqty1=$totalqty1+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==2){
+                    $totalqty2=$totalqty2+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==3){
+                    $totalqty3=$totalqty3+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==4){
+                    $totalqty4=$totalqty4+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==5){
+                    $totalqty5=$totalqty5+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==6){
+                    $totalqty6=$totalqty6+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==7){
+                    $totalqty7=$totalqty7+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==8){
+                    $totalqty8=$totalqty8+($bid->bid_qty*$bid->game_price);
+                }elseif($bid->bid_digit==9){
+                    $totalqty9=$totalqty9+($bid->bid_qty*$bid->game_price);
+                }
+
+            }
+            $book->totalbidqty=array(
+                'totalqty'=>$totalqty,
+                'totalqty1'=>$totalqty1,
+                'totalqty2'=>$totalqty2,
+                'totalqty3'=>$totalqty3,
+                'totalqty4'=>$totalqty4,
+                'totalqty5'=>$totalqty5,
+                'totalqty6'=>$totalqty6,
+                'totalqty7'=>$totalqty7,
+                'totalqty8'=>$totalqty8,
+                'totalqty9'=>$totalqty9,
+            );
+
+        }
+
+
+//        ->groupBy('game_id')->select(DB::raw('GROUP_CONCAT(name) AS id'), 'game_id')
         if($bookgames->count()>0){
             return [
                 'status'=>'success',

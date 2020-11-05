@@ -12,4 +12,7 @@ class Order extends Model
 
     protected $hidden = ['created_at','deleted_at','updated_at'];
 
+    public function bits(){
+        return $this->belongsTo('App\Models\GameBook');
+    }
 }
