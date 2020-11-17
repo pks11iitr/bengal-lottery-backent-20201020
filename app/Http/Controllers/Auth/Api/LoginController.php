@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -70,7 +71,7 @@ class LoginController extends Controller
     protected function sendLoginResponse($user, $token){
 
 
-            return ['status'=>'success', 'message'=>'Login Successfull', 'token'=>$token];
+            return ['status'=>'success','check_password'=>$user->check_password, 'message'=>'Login Successfull', 'token'=>$token];
 
     }
 
@@ -84,6 +85,31 @@ class LoginController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
+ public function updatePassword(Request $request){
+        $user=auth()->guard('api')->user();
+        if(!$user){
+            return [
+                'status'=>'failed',
+                'message'=>'Please Log in to continue'
+            ];
+        }
+
+        $user->password=Hash::make($request->password);
+        $user->check_password=1;
+ if($user->save()){
+     return [
+         'status'=>'success',
+         'message'=>'Password Has Been Updated Successfully. Please log in to continue.'
+     ];
+ }else{
+     return [
+         'status'=>'failed',
+         'message'=>'Invalid Request'
+     ];
+ }
+
+
+    }
 
 
 

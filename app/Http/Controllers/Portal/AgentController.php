@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portal;
 use App\Models\CompanyProducts;
 use App\Models\Game;
 use App\Models\GameBook;
+use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -87,6 +88,7 @@ class AgentController extends Controller
                 'user_id' => $request->agent_id,
                 'amount' => $request->deposit_edit,
                 'type' => 'Deposit',
+                'mode' => 'agent',
             ]);
         }
         if((int)$request->withdraw_edit>=0){
@@ -95,6 +97,7 @@ class AgentController extends Controller
                 'user_id' => $request->agent_id,
                 'amount' => $request->withdraw_edit,
                 'type' => 'Withdraw',
+                'mode' => 'agent',
             ]);
         }
 
@@ -119,6 +122,7 @@ class AgentController extends Controller
 
         $this->validate($request, array(
             "bid_digit" => "required",
+            "winning_amount" => "required",
 
         ));
 
@@ -127,21 +131,22 @@ class AgentController extends Controller
         $values=GameBook::where('game_id',$id)->get();
         foreach ($values as $v){
             if($v->bid_digit==$request->bid_digit){
-                $win = GameBook::where('id', $v->id)->update(['draw_result'=>$request->bid_digit,'winning_amount'=>$v->bid_qty*$v->game_price,'status'=>'Won']);
+
+                $win = GameBook::where('id', $v->id)->update(['draw_result'=>(int)$request->bid_digit,'winning_amount'=>$request->winning_amount,'status'=>'Won']);
+                  // var_dump($v->id);die();
+                $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
+
 
                 $withdraw=Transaction::create([
                     'user_id' => $v->user_id,
-                    'amount' => $v->bid_qty*$v->game_price,
+                    'amount' => $v->bid_qty*$request->winning_amount,
                     'type' => 'Deposit',
+                    'mode' => 'Winner',
                 ]);
 
             }else{
-                $win = GameBook::where('id', $v->id)->update(['draw_result'=>$request->bid_digit,'winning_amount'=>$v->bid_qty*$v->game_price,'status'=>'Loss']);
-                $withdraw=Transaction::create([
-                    'user_id' => $v->user_id,
-                    'amount' => $v->bid_qty*$v->game_price,
-                    'type' => 'Withdraw',
-                ]);
+                $win = GameBook::where('id', $v->id)->update(['draw_result'=>$request->bid_digit,'winning_amount'=>0,'status'=>'Loss']);
+
             }
         }
 

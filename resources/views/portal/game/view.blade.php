@@ -87,6 +87,9 @@
                             <th style="width: 15%">
                                 Status
                             </th>
+                            <th style="width: 15%">
+                                booking History
+                            </th>
                             <th style="width: 10%">
                                 Winner
                             </th>
@@ -120,6 +123,9 @@
                                     <td style="text-transform: capitalize;">
                                         @if($gmae->isactive==1)
                                         {{'Active'}}@else{{'Inactive'}}@endif
+                                    </td>
+                                    <td class="project-actions ">
+                                        <a class="btn btn-primary btn-sm" href="{{route('booktotal',['id'=>$gmae->id])}}" title="history"><i class="fas fa-list-alt mr-1" aria-hidden="true"></i></a>
                                     </td>
                                     <td class="project-actions ">
                                         <a class="btn btn-primary btn-sm" href="{{route('historyedit',['id'=>$gmae->id])}}" title="Winner"><i class="fas fa-list-alt mr-1" aria-hidden="true"></i></a>

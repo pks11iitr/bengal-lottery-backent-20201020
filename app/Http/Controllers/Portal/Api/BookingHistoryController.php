@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Portal\Api;
 
 use App\Models\Order;
 use App\Models\GameBook;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -18,59 +19,123 @@ class BookingHistoryController extends Controller
                 'status'=>'failed',
                 'message'=>'Please login to continue'
             ];
-
-        $bookgames=Order::where('user_id',$user->id)->get();
+        $remaining_balance=Transaction::balance($user->id);
+        $totaldeposit=Transaction::totaldeposit($user->id);
+        $total=$totaldeposit;
+        if($request->game_id){
+        $bookgames=Order::where('user_id',$user->id)->where('game_id',$request->game_id)->get();
         foreach ($bookgames as $book){
-            $book->bidlist=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->groupBy('created_at')->select(DB::raw('GROUP_CONCAT(bid_qty) AS qty'),DB::raw('GROUP_CONCAT(bid_digit) AS degqty'),DB::raw('GROUP_CONCAT(id) AS ids'), 'created_at')->get();
+            $book->bidlist=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->groupBy('created_at')->select(DB::raw('GROUP_CONCAT(bid_qty) AS bid_qty'),DB::raw('GROUP_CONCAT(bid_digit) AS bid_digit'),DB::raw('GROUP_CONCAT(game_price) AS game_price'), 'created_at')->get();
             $totalbid=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->get();
-            $totalqty=0;$totalqty1=0;$totalqty2=0;$totalqty3=0;$totalqty4=0;$totalqty5=0;
-            $totalqty6=0;$totalqty7=0;$totalqty8=0;$totalqty9=0;
+            $token=0;
+            $winamt=0;
+            $winresult=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->where('status','Won')->select(DB::raw('SUM(bid_qty) as wintoken'),'winning_amount')->groupBy('winning_amount')->get();
+             if($winresult){
+             foreach ($winresult as $res){
+             $token=  $token+$res->wintoken;
+             $winamt=$res->winning_amount??0;
+             }
+             $book->totalwin_amount=$token*$winamt;
+            $book->totalwin_token=$token;
+}
+            $totaltoken=0;$totaltoken1=0;$totaltoken2=0;$totaltoken3=0;$totaltoken4=0;$totaltoken5=0;$totaltoken6=0;$totaltoken7=0;$totaltoken8=0;$totaltoken9=0;
+
             foreach ($totalbid as $bid){
+          
                 if($bid->bid_digit==0){
-                    $totalqty=$totalqty+($bid->bid_qty*$bid->game_price);
+                
+                    $status['status0']=$bid->status??'';
+                    $totaltoken=$totaltoken+$bid->bid_qty;
 
                 }elseif($bid->bid_digit==1){
-                    $totalqty1=$totalqty1+($bid->bid_qty*$bid->game_price);
+                   
+                    $status['status1']=$bid->status??'';
+                    $totaltoken1=$totaltoken1+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==2){
-                    $totalqty2=$totalqty2+($bid->bid_qty*$bid->game_price);
+
+                    $status['status2']=$bid->status??'';
+                    $totaltoken2=$totaltoken2+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==3){
-                    $totalqty3=$totalqty3+($bid->bid_qty*$bid->game_price);
+                  
+                    $status['status3']=$bid->status??'';
+                    $totaltoken3=$totaltoken3+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==4){
-                    $totalqty4=$totalqty4+($bid->bid_qty*$bid->game_price);
+
+                    $status['status4']=$bid->status;
+                    $totaltoken4=$totaltoken4+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==5){
-                    $totalqty5=$totalqty5+($bid->bid_qty*$bid->game_price);
+
+                    $status['status5']=$bid->status;
+                    $totaltoken5=$totaltoken5+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==6){
-                    $totalqty6=$totalqty6+($bid->bid_qty*$bid->game_price);
+
+                    $status['status6']=$bid->status;
+                    $totaltoken6=$totaltoken6+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==7){
-                    $totalqty7=$totalqty7+($bid->bid_qty*$bid->game_price);
+
+                    $status['status7']=$bid->status;
+                    $totaltoken7=$totaltoken7+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==8){
-                    $totalqty8=$totalqty8+($bid->bid_qty*$bid->game_price);
+ 
+                    $status['status8']=$bid->status;
+                    $totaltoken8=$totaltoken8+$bid->bid_qty;
+
                 }elseif($bid->bid_digit==9){
-                    $totalqty9=$totalqty9+($bid->bid_qty*$bid->game_price);
+                 
+                    $status['status9']=$bid->status;
+                    $totaltoken9=$totaltoken9+$bid->bid_qty;
+
                 }
 
             }
-            $book->totalbidqty=array(
-                'totalqty'=>$totalqty,
-                'totalqty1'=>$totalqty1,
-                'totalqty2'=>$totalqty2,
-                'totalqty3'=>$totalqty3,
-                'totalqty4'=>$totalqty4,
-                'totalqty5'=>$totalqty5,
-                'totalqty6'=>$totalqty6,
-                'totalqty7'=>$totalqty7,
-                'totalqty8'=>$totalqty8,
-                'totalqty9'=>$totalqty9,
+
+            $book->totalticket=array(
+                'totaltoken'=>$totaltoken,
+                'totaltoken1'=>$totaltoken1,
+                'totaltoken2'=>$totaltoken2,
+                'totaltoken3'=>$totaltoken3,
+                'totaltoken4'=>$totaltoken4,
+                'totaltoken5'=>$totaltoken5,
+                'totaltoken6'=>$totaltoken6,
+                'totaltoken7'=>$totaltoken7,
+                'totaltoken8'=>$totaltoken8,
+                'totaltoken9'=>$totaltoken9,
+            );
+            $book->finaltotalticket=$totaltoken+$totaltoken1+$totaltoken2+$totaltoken3+$totaltoken4+$totaltoken5+$totaltoken6+$totaltoken7+$totaltoken8+$totaltoken9;
+            $book->status=array(
+                'status0'=>$status['status0']??'',
+                'status1'=>$status['status1']??'',
+                'status2'=>$status['status2']??'',
+                'status3'=>$status['status3']??'',
+                'status4'=>$status['status4']??'',
+                'status5'=>$status['status5']??'',
+                'status6'=>$status['status6']??'',
+                'status7'=>$status['status7']??'',
+                'status8'=>$status['status8']??'',
+                'status9'=>$status['status9']??'',
             );
 
         }
+        
+    }else{
+            return [
+                'status'=>'failed',
+                'msg'=>'Parameter Missing'
+            ];
+        }
 
-
-//        ->groupBy('game_id')->select(DB::raw('GROUP_CONCAT(name) AS id'), 'game_id')
         if($bookgames->count()>0){
             return [
                 'status'=>'success',
                 'msg'=>'success',
+                'remaining_balance'=>$remaining_balance,
                 'data'=>compact('bookgames')
             ];
         }else{
@@ -80,58 +145,50 @@ class BookingHistoryController extends Controller
             ];
         }
     }
+    
+     public function historygame(Request $request){
+        $user=auth()->guard('api')->user();
+        if(!$user)
+            return [
+                'status'=>'failed',
+                'message'=>'Please login to continue'
+            ];
 
-//
-//    public function gamedetails(Request $request){
-//        //var_dump($request->game_id); die;
-//        $game=Game::find($request->game_id);
-//
-//        $balance=1500;
-//        $total=2500;
-//        $date=date('Y-m-d H:i:s');
-//        $cdate=date('d M Y', strtotime($date));
-//        if($game){
-//            return [
-//                'status'=>'success',
-//                'data'=>compact('game','balance','total','cdate')
-//            ];
-//        }else{
-//            return [
-//                'status'=>'No Record Found',
-//                'code'=>'402'
-//            ];
-//        }
-//    }
+        $game=Order::where('user_id',$user->id)->select('game_id','name')->get();
+        if($game->count()>0){
+            return [
+                'status'=>'success',
+                'data'=>compact('game'),
+            ];
+        }else{
+            return [
+                'status'=>'No Record Found',
+                'code'=>'402'
+            ];
+        }
+    }
+    
+    public function gameresult(Request $request){
+        $user=auth()->guard('api')->user();
+        if(!$user)
+            return [
+                'status'=>'failed',
+                'message'=>'Please login to continue'
+            ];
 
-//    public function gamebooking(Request $request){
-//        //var_dump($request->game_id); die;
-//        $game=Game::find($request->game_id);
-//        $digit=  $request->bid_digit;
-//        $qty=  $request->bid_qty;
-//        foreach($digit as $key=>$dig){
-//            $book=  GameBook::create([
-//                'user_id' => 5,
-//                'game_id' => $request->game_id,
-//                'game_timing' =>$game->game_time,
-//                'close_date' =>$game->close_date,
-//                'name' => $game->name,
-//                'bid_digit' => $dig,
-//                'bid_qty' => $qty[$key],
-//
-//            ]);
-//        }
-//        if($book){
-//            return [
-//                'status'=>'success',
-//                'msg'=>'success',
-//            ];
-//        }else{
-//            return [
-//                'status'=>'failed',
-//                'msg'=>'some error occoured'
-//            ];
-//        }
-//    }
+        $game=Order::where('user_id',$user->id)->whereNotNull('draw_result')->select('game_id','name','draw_result')->get();
+        if($game->count()>0){
+            return [
+                'status'=>'success',
+                'data'=>compact('game'),
+            ];
+        }else{
+            return [
+                'status'=>'No Record Found',
+                'code'=>'402'
+            ];
+        }
+    }
 
 
 }

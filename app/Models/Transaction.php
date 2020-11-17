@@ -9,7 +9,7 @@ use DB;
 class Transaction extends Model
 {
     protected $table='transactions';
-    protected $fillable=['user_id','type','amount'];
+    protected $fillable=['user_id','type','amount','mode'];
 
     protected $hidden = ['created_at','deleted_at','updated_at'];
 

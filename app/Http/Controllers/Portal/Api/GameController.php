@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Portal\Api;
 
 use App\Models\Game;
 use App\Models\GameBook;
+use App\Models\GamePrice;
 use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -48,7 +49,27 @@ class GameController extends Controller
                     'message'=>'Please login to continue'
                 ];
 
-            $game=Game::find($request->game_id);
+            //$game=Game::find($request->game_id);
+        $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();
+        // var_dump($game);die;
+        if(!$games){
+            return [
+                'status'=>'failed',
+                'message'=>'Please Contact to Agent'
+            ];
+        }
+        $game=array(
+            'id'=>$games->game->id,
+            'name'=>$games->game->name,
+            'close_date'=>$games->game->close_date,
+            'game_time'=>$games->game->game_time,
+            'isactive'=>$games->game->isactive,
+            'degit'=>$games->game->degit,
+            'bid_qty'=>$games->game->bid_qty,
+            'orginal'=>$games->game->orginal,
+            'time'=>$games->game->time,
+            'price'=>$games->game_price
+        );
             $balance=Transaction::balance($user->id);
             $totaldeposit=Transaction::totaldeposit($user->id);
             $total=$totaldeposit;
@@ -76,9 +97,23 @@ class GameController extends Controller
                                 'message'=>'Please login to continue'
                             ];
 
-                    $game=Game::find($request->game_id);
+                   // $game=Game::find($request->game_id);
+             $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();
+             $game=array(
+                 'id'=>$games->game->id,
+                 'name'=>$games->game->name,
+                 'close_date'=>$games->game->close_date,
+                 'game_time'=>$games->game->game_time,
+                 'isactive'=>$games->game->isactive,
+                 'degit'=>$games->game->degit,
+                 'bid_qty'=>$games->game->bid_qty,
+                 'orginal'=>$games->game->orginal,
+                 'time'=>$games->game->time,
+                 'price'=>$games->game_price
+             );
+            // var_dump($game['degit']);die();
                //  $digit=  $request->bid_digit??0;
-
+             $total=0;
             $havingorder = Order::where('user_id',$user->id)->where('game_id',$request->game_id)->first();
             if(!$havingorder) {
 
@@ -87,11 +122,11 @@ class GameController extends Controller
                     'game_id' => $request->game_id,
                     'status' => 'pending',
                     'winning_amount' => $request->winning_amount,
-                    'winning_digit' => $game->degit,
-                    'game_timing' => $game->game_time,
-                    'close_date' => $game->close_date,
-                    'game_price' => $game->price,
-                    'name' => $game->name,
+                     'winning_digit' => $game['degit'],
+                    'game_timing' => $game['game_time'],
+                    'close_date' => $game['close_date'],
+                    'game_price' => $game['price'],
+                    'name' => $game['name'],
 
                 ]);
                 $bookorder=$bookorder->id;
@@ -105,18 +140,26 @@ class GameController extends Controller
                              'user_id' => $user->id,
                              'order_id' => $bookorder,
                              'game_id' => $request->game_id,
-                             'game_timing' =>$game->game_time,
-                             'close_date' =>$game->close_date,
-                             'game_price' =>$game->price,
-                             'name' => $game->name,
-                             'bid_number' => $game->degit,
+                             'game_timing' =>$game['game_time'],
+                             'close_date' =>$game['close_date'],
+                             'game_price' =>$game['price'],
+                             'name' => $game['name'],
+                             'bid_number' => $game['degit'],
                              'bid_digit' => $key,
                              'bid_qty' => $qt,
 
                          ]);
+                         $total=$total+($qt*$game['price']??'');
                      }
 
                  }
+             $withdraw=Transaction::create([
+                 'user_id' => $user->id,
+                 'amount' => $total,
+                 'type' => 'Withdraw',
+                 'mode' => 'book',
+             ]);
+
                     if($book){
                      return [
                          'status'=>'success',

@@ -47,11 +47,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>History</h1>
+                        <h1>Total Game Book List Digit</h1>
                     </div>
-{{--                    <div class="col-sm-6">--}}
+                    <div class="col-sm-6">
 {{--                        <a href="{{route('creategame')}}"   class="btn btn-info btn-sm float-sm-right">+ Add New</a>--}}
-{{--                    </div>--}}
+                    </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -66,99 +66,86 @@
                     <table class="table projects" id="allProducts">
                         <thead>
                         <tr>
-                            <th style="width: 1%">
-                                #
+
+                            <th style="width: 10%">
+                                Zero Digit
+                            </th>
+                            <th style="width: 15%">
+                                first Digit
+                            </th>
+                            <th style="width: 15%">
+                                Second Digit
+                            </th>
+                            <th style="width: 15%">
+                                Third Digit
+                            </th>
+                            <th style="width: 15%">
+                                Fourth Digit
+                            </th>
+                            <th style="width: 15%">
+                                Fifth Digit
+                            </th>
+                            <th style="width: 15%">
+                                Sixth Digit
                             </th>
                             <th style="width: 10%">
-                                Game Name
+                                Seventh Digit
                             </th>
-                            <th style="width: 15%">
-                                Game Date
+                            <th style="width: 10%; text-align: right">
+                                Eighth Digit
                             </th>
-                            <th style="width: 15%">
-                                Game Time
+                            <th style="width: 10%; text-align: right">
+                                Ningth Digit
                             </th>
-                            <th style="width: 15%">
-                                Bid Number
+                            <th style="width: 10%; text-align: right">
+                                Total Digit
                             </th>
-                            <th style="width: 15%">
-                                Bid Digit
-                            </th>
-                            <th style="width: 15%">
-                                Bid QTY
-                            </th>
-                            <th style="width: 15%">
-                                Game Price
-                            </th>
-                            <th style="width: 15%">
-                                Draw Result
-                            </th>
-                            <th style="width: 15%">
-                             Amount
-                            </th>
-                            <th style="width: 15%">
-                                Status
-                            </th>
-
-{{--                            <th style="width: 10%; text-align: right">--}}
-{{--                                Action--}}
-{{--                            </th>--}}
                         </tr>
                         </thead>
                         <tbody>
-                        @if(!empty($gamebook) && count($gamebook) > 0)
-                            @foreach($gamebook as $key => $gmae)
+{{--                        @if(!empty($gamebooks) && count($gamebook) > 0)--}}
+{{--                            @foreach($gamebooks as $key => $gamebook)--}}
                                 <tr>
-                                    <td>{{$key+1}}</td>
+{{--                                    <td>{{$key+1}}</td>--}}
 
                                     <td style="text-transform: capitalize;">
-                                        {{$gmae->name}}
+                                        {{$zerocount}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{date('d M Y', strtotime($gmae->close_date))}}
+                                        {{$firstcount}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{date('h:i A', strtotime($gmae->game_time))}}
+                                        {{$secondcount}}
                                     </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->bid_number}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->bid_digit}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->bid_qty}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->game_price}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->draw_result}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->winning_amount}}
-                                    </td>
-                                    @if($gmae->status=='Won')
-                                    <td style="text-transform: capitalize;color: #00c054">
 
-                                        {{$gmae->status}}
+                                    <td style="text-transform: capitalize;">
+                                        {{$thirdcount}}
                                     </td>
-                                    @else
-                                        <td style="text-transform: capitalize;color: #BF1B00">
+                                    <td style="text-transform: capitalize;">
+                                        {{$fourthcount}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                       {{$fifthcount}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$sixthcount}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$seventhcount}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$eightcount}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$ningthcount}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$zerocount+$firstcount+$secondcount+$thirdcount+$fourthcount+$fifthcount+$sixthcount+$seventhcount+$eightcount+$ningthcount}}
+                                    </td>
 
-                                            {{$gmae->status}}
-                                        </td>
-                                    @endif
-
-{{--                                    <td class="project-actions text-right">--}}
-{{--                                        <a class="btn btn-primary btn-sm" href="{{route('historyedit',['id'=>$gmae->id])}}" title="Edit">--}}
-{{--                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>--}}
-{{--                                        </a>--}}
-{{--                                       --}}
-{{--                                    </td>--}}
                                 </tr>
-                            @endforeach
-                        @endif
+{{--                            @endforeach--}}
+{{--                        @endif--}}
                         </tbody>
                     </table>
                 </div>

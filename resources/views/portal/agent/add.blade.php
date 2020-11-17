@@ -364,9 +364,9 @@
                         var productData = data.returnData;
                         $('#productIdEdit').val(productData.id);
                         $('#username_edit').val(productData.email);
-                        $('#deposit_edit').val(productData.deposit);
+                        $('#deposit_edit').val(0);
                         $('#status_edit').val(productData.status);
-                        $('#withdraw_edit').val(productData.withdraw);
+                        $('#withdraw_edit').val(0);
 
                         // $('#caution'+productData.caution_id+'_edit').prop('checked', true);
                     }

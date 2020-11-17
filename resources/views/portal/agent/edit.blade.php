@@ -85,12 +85,13 @@
                                                         </div>
                                                     </div>
 
-{{--                                                    <div class="col-sm-6">--}}
-{{--                                                        <div class="form-group">--}}
-{{--                                                            <label class="text-muted" for="cemail">Draw Result Position <small class="text-success">*</small> :</label>--}}
-{{--                                                            <input type="number" id="close_date" name="draw_result" class="form-control" min="0" placeholder="Draw Result Position" required >--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
+                                                                                                        <div class="col-sm-6">
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="text-muted" for="creg">Winning Amount<small class="text-success">*</small> :</label>
+                                                                                                                <input type="number" id="winning_amount" name="winning_amount" class="form-control" min="0" placeholder="Winning Amount" required >
+
+                                                                                                            </div>
+                                                                                                        </div>
 
 
                                                 </div>
