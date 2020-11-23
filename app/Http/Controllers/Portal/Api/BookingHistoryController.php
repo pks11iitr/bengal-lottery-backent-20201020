@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portal\Api;
 use App\Models\Order;
 use App\Models\GameBook;
 use App\Models\Transaction;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -41,14 +42,14 @@ class BookingHistoryController extends Controller
             $totaltoken=0;$totaltoken1=0;$totaltoken2=0;$totaltoken3=0;$totaltoken4=0;$totaltoken5=0;$totaltoken6=0;$totaltoken7=0;$totaltoken8=0;$totaltoken9=0;
 
             foreach ($totalbid as $bid){
-          
+
                 if($bid->bid_digit==0){
-                
+
                     $status['status0']=$bid->status??'';
                     $totaltoken=$totaltoken+$bid->bid_qty;
 
                 }elseif($bid->bid_digit==1){
-                   
+
                     $status['status1']=$bid->status??'';
                     $totaltoken1=$totaltoken1+$bid->bid_qty;
 
@@ -58,7 +59,7 @@ class BookingHistoryController extends Controller
                     $totaltoken2=$totaltoken2+$bid->bid_qty;
 
                 }elseif($bid->bid_digit==3){
-                  
+
                     $status['status3']=$bid->status??'';
                     $totaltoken3=$totaltoken3+$bid->bid_qty;
 
@@ -83,12 +84,12 @@ class BookingHistoryController extends Controller
                     $totaltoken7=$totaltoken7+$bid->bid_qty;
 
                 }elseif($bid->bid_digit==8){
- 
+
                     $status['status8']=$bid->status;
                     $totaltoken8=$totaltoken8+$bid->bid_qty;
 
                 }elseif($bid->bid_digit==9){
-                 
+
                     $status['status9']=$bid->status;
                     $totaltoken9=$totaltoken9+$bid->bid_qty;
 
@@ -123,7 +124,7 @@ class BookingHistoryController extends Controller
             );
 
         }
-        
+
     }else{
             return [
                 'status'=>'failed',
@@ -145,7 +146,7 @@ class BookingHistoryController extends Controller
             ];
         }
     }
-    
+
      public function historygame(Request $request){
         $user=auth()->guard('api')->user();
         if(!$user)
@@ -154,7 +155,7 @@ class BookingHistoryController extends Controller
                 'message'=>'Please login to continue'
             ];
 
-        $game=Order::where('user_id',$user->id)->select('game_id','name')->get();
+        $game=Order::where('user_id',$user->id)->select('id as game_id','name')->get();
         if($game->count()>0){
             return [
                 'status'=>'success',
@@ -167,7 +168,30 @@ class BookingHistoryController extends Controller
             ];
         }
     }
-    
+//    public function downlinegame(Request $request){
+//        $user=auth()->guard('api')->user();
+//        if(!$user)
+//            return [
+//                'status'=>'failed',
+//                'message'=>'Please login to continue'
+//            ];
+//        $agents=User::where('parent_id',$user->id)->select('id','email')->get();
+//        foreach ($agents as $useragent) {
+//            $game = Order::where('user_id', $useragent->id)->groupBy('game_id')->select('game_id')->get();
+//        }
+//        if($game->count()>0){
+//            return [
+//                'status'=>'success',
+//                'data'=>compact('game'),
+//            ];
+//        }else{
+//            return [
+//                'status'=>'No Record Found',
+//                'code'=>'402'
+//            ];
+//        }
+//    }
+
     public function gameresult(Request $request){
         $user=auth()->guard('api')->user();
         if(!$user)
@@ -189,6 +213,5 @@ class BookingHistoryController extends Controller
             ];
         }
     }
-
 
 }

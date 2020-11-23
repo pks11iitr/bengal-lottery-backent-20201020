@@ -50,7 +50,9 @@
                         <h1>Game List</h1>
                     </div>
                     <div class="col-sm-6">
+                        @if(auth()->user()->hasRole('admin'))
                         <a href="{{route('creategame')}}"   class="btn btn-info btn-sm float-sm-right">+ Add New</a>
+                        @endif
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -78,21 +80,28 @@
                             <th style="width: 15%">
                                 Game Time
                             </th>
-                            <th style="width: 15%">
-                                Game Price
-                            </th>
+{{--                            <th style="width: 15%">--}}
+{{--                                Game Price--}}
+{{--                            </th>--}}
+{{--                            @if(auth()->user()->hasRole('subadmin'))--}}
+{{--                                <th style="width: 15%">--}}
+{{--                                    Game Price--}}
+{{--                                </th>--}}
+
                             <th style="width: 15%">
                                 Degit Number
                             </th>
                             <th style="width: 15%">
                                 Status
                             </th>
+                            @if(auth()->user()->hasRole('admin'))
                             <th style="width: 15%">
                                 booking History
                             </th>
                             <th style="width: 10%">
                                 Winner
                             </th>
+                            @endif
                             <th style="width: 10%; text-align: right">
                                 Action
                             </th>
@@ -114,9 +123,14 @@
                                         {{date('h:i A', strtotime($gmae->game_time))}}
                                     </td>
 
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae->price}}
-                                    </td>
+{{--                                    <td style="text-transform: capitalize;">--}}
+{{--                                        {{$gmae->price}}--}}
+{{--                                    </td>--}}
+{{--                                    @if(auth()->user()->hasRole('subadmin'))--}}
+{{--                                        <td style="text-transform: capitalize;">--}}
+{{--                                            {{$gmae->game_price??0}}--}}
+{{--                                        </td>--}}
+{{--                                    @endif--}}
                                     <td style="text-transform: capitalize;">
                                         {{$gmae->degit}}
                                     </td>
@@ -124,13 +138,15 @@
                                         @if($gmae->isactive==1)
                                         {{'Active'}}@else{{'Inactive'}}@endif
                                     </td>
+                                    @if(auth()->user()->hasRole('admin'))
                                     <td class="project-actions ">
+
                                         <a class="btn btn-primary btn-sm" href="{{route('booktotal',['id'=>$gmae->id])}}" title="history"><i class="fas fa-list-alt mr-1" aria-hidden="true"></i></a>
                                     </td>
                                     <td class="project-actions ">
                                         <a class="btn btn-primary btn-sm" href="{{route('historyedit',['id'=>$gmae->id])}}" title="Winner"><i class="fas fa-list-alt mr-1" aria-hidden="true"></i></a>
                                     </td>
-
+                                    @endif
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{route('gameedit',['id'=>$gmae->id])}}" title="Edit">
                                             <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>

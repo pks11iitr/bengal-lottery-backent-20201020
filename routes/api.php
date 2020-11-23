@@ -23,7 +23,9 @@ $api->get('game-details', ['as'=>'api.details', 'uses'=>'Portal\Api\GameControll
  $api->post('game-book', ['as'=>'api.gamebooking', 'uses'=>'Portal\Api\GameController@gamebooking']);
 $api->get('game-history', ['as'=>'api.gamehistory', 'uses'=>'Portal\Api\BookingHistoryController@index']);
 $api->get('history-game', ['as'=>'api.history.game', 'uses'=>'Portal\Api\BookingHistoryController@historygame']);
+$api->get('downline-game', ['as'=>'api.history.game', 'uses'=>'Portal\Api\BookingHistoryController@downlinegame']);
 $api->get('game-result', ['as'=>'api.result.game', 'uses'=>'Portal\Api\BookingHistoryController@gameresult']);
+$api->get('downline-history', ['as'=>'api.downline', 'uses'=>'Portal\Api\DownlineController@index']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

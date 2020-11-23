@@ -81,14 +81,14 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cname">Name <small class="text-success">*</small> :</label>
-                                                            <input type="text" id="name" name="name" class="form-control" placeholder="Game Name" required value="{{$game->name}}">
+                                                            <input type="text" id="name" name="name" class="form-control" placeholder="Game Name" required value="{{$game->name}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cemail">Close Date <small class="text-success">*</small> :</label>
-                                                            <input type="date" id="close_date" name="close_date" class="form-control" placeholder="Close Date" required value="{{$game->orginal}}">
+                                                            <input type="date" id="close_date" name="close_date" class="form-control" placeholder="Close Date" required value="{{$game->orginal}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
                                                         </div>
                                                     </div>
 
@@ -99,28 +99,28 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="creg">Game Time<small class="text-success">*</small> :</label>
-                                                            <input type="time" id="game_time" name="game_time" class="form-control" placeholder="Game Time" required value="{{$game->time}}">
+                                                            <input type="time" id="game_time" name="game_time" class="form-control" placeholder="Game Time" required value="{{$game->time}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="text-muted" for="cemail">Game Price <small class="text-success">*</small> :</label>
-                                                            <input type="number" id="price" name="price" class="form-control" placeholder="Price" required min="0" value="{{$game->price}}">
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-sm-6">--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label class="text-muted" for="cemail">Game Price <small class="text-success">*</small> :</label>--}}
+{{--                                                            <input type="number" id="price" name="price" class="form-control" placeholder="Price" required min="0"  @if(auth()->user()->hasRole('subadmin')) value="{{$game->game_price??0}}"@else value="{{$game->price}}" @endif>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cemail">Degit Number <small class="text-success">*</small> :</label>
-                                                            <input type="text" id="degit" name="degit" class="form-control" placeholder="degit " required  value="{{$game->degit}}">
+                                                            <input type="text" id="degit" name="degit" class="form-control" placeholder="degit " required  value="{{$game->degit}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Is Active</label>
-                                                            <select class="form-control" name="isactive" required>
+                                                            <select class="form-control" name="isactive" required @if(auth()->user()->hasRole('subadmin')) readonly @endif>
                                                                 <option selected="selected"
                                                                         value="1" {{$game->isactive==1?'selected':''}}>Active
                                                                 </option>

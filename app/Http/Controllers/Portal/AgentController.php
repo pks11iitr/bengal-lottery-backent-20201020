@@ -21,7 +21,7 @@ class AgentController extends Controller
     {
         $user = Auth::user();
 
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->get();
+        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
         foreach ($agents as $agent){
             $agent->balance=Transaction::balance($agent->id);
            // var_dump($agents['balance']);die();
@@ -31,6 +31,7 @@ class AgentController extends Controller
         //var_dump($balance);die();
         return view('portal.agent.add', compact('agents'));
     }
+
 
 
     public function createagent(Request $request)
@@ -43,15 +44,20 @@ class AgentController extends Controller
         $checkusername = User::where('email', strtoupper($request->username))->get();
    ///var_dump($request->status);die();
             if ($request->password == $request->cpassword) {
-                $user=User::create([
+                if ($user->rate <= $request->rate) {
+
+                $user = User::create([
                     'email' => strtoupper($request->username),
                     'password' => Hash::make($request->password),
                     'parent_id' => $user->id,
                     'status' => $request->status,
+                    'rate' => $request->rate,
                     'account' => 'SUPER'
                 ]);
                 $user->assignRole('subadmin');
-
+            }else{
+                    return redirect()->back()->with('error', 'Game Rate Not Less Then Our Rate');
+            }
             } else {
                 return redirect()->back()->with('error', 'Password Does Not Match');
             }
@@ -78,27 +84,79 @@ class AgentController extends Controller
             "agent_id" => "required",
 
         ));
-        $agentdetails = User::where("id", $request->agent_id)->first();
-        $agentdetails->deposit = $request->deposit_edit;
-        $agentdetails->withdraw = $request->withdraw_edit;
-        $agentdetails->status = $request->status_edit;
-        $agentdetails->save();
-        if((int)$request->deposit_edit>=0){
-            $deposit=Transaction::create([
-                'user_id' => $request->agent_id,
-                'amount' => $request->deposit_edit,
-                'type' => 'Deposit',
-                'mode' => 'agent',
-            ]);
-        }
-        if((int)$request->withdraw_edit>=0){
+           $user = Auth::user();
+           $balance=Transaction::balance($user->id);
+        if(auth()->user()->hasRole('admin')){
 
-            $withdraw=Transaction::create([
-                'user_id' => $request->agent_id,
-                'amount' => $request->withdraw_edit,
-                'type' => 'Withdraw',
-                'mode' => 'agent',
-            ]);
+                $agentdetails = User::where("id", $request->agent_id)->first();
+                $agentdetails->deposit = $request->deposit_edit;
+                $agentdetails->withdraw = $request->withdraw_edit;
+                $agentdetails->status = $request->status_edit;
+                $agentdetails->rate = $request->rate_edit;
+                $agentdetails->save();
+                if ($request->deposit_edit >= 0) {
+                    $deposit = Transaction::create([
+                        'user_id' => $request->agent_id,
+                        'amount' => $request->deposit_edit,
+                        'type' => 'Deposit',
+                        'mode' => 'agent',
+                    ]);
+                }
+                if ($request->withdraw_edit >= 0) {
+
+                    $withdraw = Transaction::create([
+                        'user_id' => $request->agent_id,
+                        'amount' => $request->withdraw_edit,
+                        'type' => 'Withdraw',
+                        'mode' => 'agent',
+                    ]);
+                }
+
+        }else{
+            if($balance>=$request->deposit_edit) {
+                if ($user->rate <= $request->rate_edit) {
+                    $agentdetails = User::where("id", $request->agent_id)->first();
+                    $agentdetails->deposit = $request->deposit_edit;
+                    $agentdetails->withdraw = $request->withdraw_edit;
+                    $agentdetails->status = $request->status_edit;
+                    $agentdetails->rate = $request->rate_edit;
+                    $agentdetails->save();
+                    if ($request->deposit_edit >= 0) {
+                        $deposit = Transaction::create([
+                            'user_id' => $request->agent_id,
+                            'amount' => $request->deposit_edit,
+                            'type' => 'Deposit',
+                            'mode' => 'agent',
+                        ]);
+                        $deposit = Transaction::create([
+                            'user_id' => $user->id,
+                            'amount' => $request->deposit_edit,
+                            'type' => 'Deposit',
+                            'mode' => 'subagent',
+                        ]);
+                    }
+                    if ($request->withdraw_edit >= 0) {
+
+                        $withdraw = Transaction::create([
+                            'user_id' => $request->agent_id,
+                            'amount' => $request->withdraw_edit,
+                            'type' => 'Withdraw',
+                            'mode' => 'agent',
+                        ]);
+
+                        $withdraw1 = Transaction::create([
+                            'user_id' => $user->id,
+                            'amount' => $request->withdraw_edit,
+                            'type' => 'Withdraw',
+                            'mode' => 'subagent',
+                        ]);
+                    }
+                }else{
+                    return redirect()->back()->with('error', 'Game Rate Not Less Then Our Rate');
+                }
+            }else{
+                return redirect()->back()->with('error', 'Check Your balance Amount');
+            }
         }
 
         return redirect()->route("agents");

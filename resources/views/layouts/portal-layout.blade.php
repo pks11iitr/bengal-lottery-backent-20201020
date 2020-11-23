@@ -98,6 +98,10 @@
         <div class="logo_header full_width row_padding box_sizzing" style="padding: 15px 10px !important;">
             <div class="second_heade full_width f_box f_btwn my_admin_head">
                 <div class="logo_container">
+                    <h4>Welcome to,</h4>
+                    <p style="text-align:left">
+                        {{ auth()->user()->email}} (Balance Amount: {{App\Models\Transaction::balance(auth()->user()->id)}}) &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}})
+                    </p>
                     <a href="{{route('login')}}">
 {{--                        <img src="/images/new-logo.jpeg" alt="">--}}
                     </a>
@@ -116,6 +120,11 @@
                             <li>
                                 <a href="{{route('gamelist')}}" class="btn btn-info">Add Game </a>
                             </li>
+                            @else
+                            <li>
+                                <a href="{{route('gamelist')}}" class="btn btn-info">Add Game </a>
+                            </li>
+
                             @endif
 
 {{--                            <li>--}}

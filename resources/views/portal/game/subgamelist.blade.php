@@ -52,7 +52,7 @@
 
                     <div class="col-sm-6">
 
-                        <a abc="{{route('products.add')}}"  href="javascript:addNew()" class="btn btn-info btn-sm float-sm-right">+ Add New</a>
+                        <a href="{{route('products.add')}}"  href="javascript:addNew()" class="btn btn-info btn-sm float-sm-right">+ Add New</a>
 
                     </div>
 
@@ -77,7 +77,7 @@
                                 Account
                             </th>
                             <th style="width: 15%">
-                               Name
+                                Name
                             </th>
 
                             <th style="width: 15%">
@@ -92,13 +92,10 @@
                             <th style="width: 15%">
                                 Withdraw
                             </th>
-                            <th style="width: 15%">
-                                Rate
-                            </th>
                             <th style="width: 25%">
                                 Status
                             </th>
-                             <th style="width: 9%" class="text-center">
+                            <th style="width: 9%" class="text-center">
                                 Booking
                             </th>
                             <th style="width: 10%; text-align: right">
@@ -112,7 +109,7 @@
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td style="text-transform: capitalize;">
-                                       {{$product->account?:'MAIN AGENT'}}
+                                        {{$product->account?:'MAIN AGENT'}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->email}}
@@ -129,9 +126,6 @@
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->totalwithdraw}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$product->rate}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         @if($product->status==1){{'Active'}}@elseif($product->status==0){{'Inactive'}}@else{{'Blocked'}}@endif
@@ -201,12 +195,7 @@
                                         <input id="cpassword" type="text" name="cpassword" class="form-control" required >
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate" name="rate" class="form-control" placeholder="Rate" required step="any">
-                                    </div>
-                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Isactive</label>
@@ -221,72 +210,72 @@
                                 </div>
                             </div>
 
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="license" class="text-muted">Registration No. <small class="text-success">*</small> :</label>--}}
-{{--                                        <input id="license" type="text" name="license" class="form-control" required >--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="sku" class="text-muted">Product Code <small class="text-success">*</small> :</label>--}}
-{{--                                        <input id="sku" type="text" name="sku" class="form-control" required >--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="row">--}}
+                            {{--                                <div class="col-md-6">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label for="license" class="text-muted">Registration No. <small class="text-success">*</small> :</label>--}}
+                            {{--                                        <input id="license" type="text" name="license" class="form-control" required >--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                                <div class="col-md-6">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label for="sku" class="text-muted">Product Code <small class="text-success">*</small> :</label>--}}
+                            {{--                                        <input id="sku" type="text" name="sku" class="form-control" required >--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
 
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="sku_size" class="text-muted">Pack Size <small class="text-success">*</small> :</label>--}}
-{{--                                        <input id="sku_size" type="text" name="sku_size" class="form-control" required >--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="txtProductImage" class="text-muted">Product Image <small class="text-success">*</small> :</label>--}}
-{{--                                        <input id="txtProductImage" type="file" name="product_image" accept="image/*" class="form-control selectImg btn btn-info">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-12">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="antidote_statement" class="text-muted">Antidote Statement <small class="text-success">*</small> :</label>--}}
-{{--                                        <textarea id="antidote_statement" name="antidote_statement" class="form-control" cols="50" rows="4" required>In case of poisoning, contact a doctor immediately and show the can for ingredient details. Treat symptomatically.</textarea>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
+                            {{--                            <div class="row">--}}
+                            {{--                                <div class="col-md-6">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label for="sku_size" class="text-muted">Pack Size <small class="text-success">*</small> :</label>--}}
+                            {{--                                        <input id="sku_size" type="text" name="sku_size" class="form-control" required >--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                                <div class="col-md-6">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label for="txtProductImage" class="text-muted">Product Image <small class="text-success">*</small> :</label>--}}
+                            {{--                                        <input id="txtProductImage" type="file" name="product_image" accept="image/*" class="form-control selectImg btn btn-info">--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                            {{--                            <div class="row">--}}
+                            {{--                                <div class="col-md-12">--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label for="antidote_statement" class="text-muted">Antidote Statement <small class="text-success">*</small> :</label>--}}
+                            {{--                                        <textarea id="antidote_statement" name="antidote_statement" class="form-control" cols="50" rows="4" required>In case of poisoning, contact a doctor immediately and show the can for ingredient details. Treat symptomatically.</textarea>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                            {{--                            <div class="row">--}}
 
-{{--                                <div class="col-md-12">--}}
+                            {{--                                <div class="col-md-12">--}}
 
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="cautionselect" class="text-muted">Caution Logo <small class="text-success">*</small> :</label>--}}
-{{--                                        <br>--}}
-{{--                                        <span style="margin-right: 10px;">--}}
-{{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="1">--}}
-{{--                                            <img src="/caution-images/1.jpg" width="150" style="border-radius: 2%;">--}}
-{{--                                        </span>--}}
+                            {{--                                    <div class="form-group">--}}
+                            {{--                                        <label for="cautionselect" class="text-muted">Caution Logo <small class="text-success">*</small> :</label>--}}
+                            {{--                                        <br>--}}
+                            {{--                                        <span style="margin-right: 10px;">--}}
+                            {{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="1">--}}
+                            {{--                                            <img src="/caution-images/1.jpg" width="150" style="border-radius: 2%;">--}}
+                            {{--                                        </span>--}}
 
-{{--                                        <span style="margin-right: 10px;">--}}
-{{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="2">--}}
-{{--                                            <img src="/caution-images/2.jpg" width="150" style="border-radius: 2%;">--}}
-{{--                                        </span>--}}
+                            {{--                                        <span style="margin-right: 10px;">--}}
+                            {{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="2">--}}
+                            {{--                                            <img src="/caution-images/2.jpg" width="150" style="border-radius: 2%;">--}}
+                            {{--                                        </span>--}}
 
-{{--                                        <span style="margin-right: 10px;">--}}
-{{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="3">--}}
-{{--                                            <img src="/caution-images/3.jpg" width="150" style="border-radius: 2%;">--}}
-{{--                                        </span>--}}
-{{--                                        <span>--}}
-{{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="3">--}}
-{{--                                            <img src="/caution-images/4.jpg" width="150" style="border-radius:2%;">--}}
-{{--                                        </span>--}}
-{{--                                    </div>--}}
+                            {{--                                        <span style="margin-right: 10px;">--}}
+                            {{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="3">--}}
+                            {{--                                            <img src="/caution-images/3.jpg" width="150" style="border-radius: 2%;">--}}
+                            {{--                                        </span>--}}
+                            {{--                                        <span>--}}
+                            {{--                                            <input id="caution1" type="radio" name="caution_id" class="filled-in chk-col-purple" value="3">--}}
+                            {{--                                            <img src="/caution-images/4.jpg" width="150" style="border-radius:2%;">--}}
+                            {{--                                        </span>--}}
+                            {{--                                    </div>--}}
 
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
 
 
                         </div>
@@ -329,12 +318,6 @@
                                     <div class="form-group">
                                         <label for="code" class="text-muted">Withdraw<small class="text-success">*</small> :</label>
                                         <input id="withdraw_edit" type="text" name="withdraw_edit" class="form-control" required >
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="any">
                                     </div>
                                 </div>
 
@@ -390,7 +373,6 @@
                         $('#deposit_edit').val(0);
                         $('#status_edit').val(productData.status);
                         $('#withdraw_edit').val(0);
-                        $('#rate_edit').val(productData.rate);
 
                         // $('#caution'+productData.caution_id+'_edit').prop('checked', true);
                     }

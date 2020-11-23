@@ -21,13 +21,7 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
 
     Route::group(['is'=>'admin'], function(){
 
-        Route::get('list-game', 'Portal\GameController@index')->name('gamelist');
-        Route::get('create-game', 'Portal\GameController@create')->name('creategame');
-        Route::post('save-game', 'Portal\GameController@gamesave')->name('gamesave');
-        Route::get('game-edit/{id}', 'Portal\GameController@editgame')->name('gameedit');
-        Route::post('update-game/{id}', 'Portal\GameController@updategame')->name('gameupdate');
 
-        Route::get('book-total/{id}', 'Portal\GameController@gametotal')->name('booktotal');
     });
 
     Route::group(['is'=>'admin|subadmin'], function(){
@@ -40,6 +34,14 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
     Route::get('game-book-list/{id}', 'Portal\AgentController@index')->name('gamebooklist');
     Route::get('book-history-edit/{id}', 'Portal\AgentController@bookhistoryedit')->name('historyedit');
         Route::post('book-history-update/{id}', 'Portal\AgentController@bookhistoryupdate')->name('historyupdate');
+//        Route::get('list-game-sub', 'Portal\GameController@subgamelist')->name('gamelistsub');
+        Route::get('list-game', 'Portal\GameController@index')->name('gamelist');
+        Route::get('create-game', 'Portal\GameController@create')->name('creategame');
+        Route::post('save-game', 'Portal\GameController@gamesave')->name('gamesave');
+        Route::get('game-edit/{id}', 'Portal\GameController@editgame')->name('gameedit');
+        Route::post('update-game/{id}', 'Portal\GameController@updategame')->name('gameupdate');
+
+        Route::get('book-total/{id}', 'Portal\GameController@gametotal')->name('booktotal');
 
 
 

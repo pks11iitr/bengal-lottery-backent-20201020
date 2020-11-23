@@ -103,12 +103,12 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="text-muted" for="cemail">Game Price <small class="text-success">*</small> :</label>
-                                                            <input type="number" id="price" name="price" class="form-control" placeholder="Price" required min="0">
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-sm-6">--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label class="text-muted" for="cemail">Game Price <small class="text-success">*</small> :</label>--}}
+{{--                                                            <input type="number" id="price" name="price" class="form-control" placeholder="Price" required min="0">--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
