@@ -21,30 +21,44 @@ class GameController extends Controller
                 'status'=>'failed',
                 'message'=>'Please login to continue'
             ];
-        $gamess=Game::where('isactive',1)->get();
+        $gamess=Game::where('isactive',1)->orderBy('close_date','desc')->orderBy('game_time', 'desc')->get();
         $games=array();
         foreach($gamess as $game){
+
+
+
             $date=$game->orginal;
             $time=$game->time;
             $datetime=$date." ".$time;
             // var_dump($datetime);die;
             $enddate=strtotime($datetime);
-            $newdate=date('Y-m-d H:i');
+            $newdate=date('Y-m-d H:i:s');
             $current=strtotime($newdate);
             $remaining=($enddate-$current)*1000;
-            $games[]=array(
 
-                'id'=>$game->id,
-                'name'=>$game->name,
-                'close_date'=>$game->close_date,
-                'game_time'=>$game->game_time,
-                'price'=>$game->price,
-                'degit'=>$game->degit,
-                'bid_qty'=>$game->bid_qty,
-                'orginal'=>$game->orginal,
-                'time'=>$game->time,
-                'remaining'=>$remaining,
-            );
+            if($current>=$enddate){
+                $gam=Game::find($game->id);
+                $gam->isactive=0;
+                $gam->update();
+
+            }else{
+
+
+                $games[]=array(
+
+                    'id'=>$game->id,
+                    'name'=>$game->name,
+                    'close_date'=>$game->close_date,
+                    'game_time'=>$game->game_time,
+                    'price'=>$game->price,
+                    'degit'=>$game->degit,
+                    'bid_qty'=>$game->bid_qty,
+                    'orginal'=>$game->orginal,
+                    'time'=>$game->time,
+                    'remaining'=>$remaining,
+                );
+
+            }
 
         }
 
@@ -58,6 +72,7 @@ class GameController extends Controller
                 'status'=>'success',
                 'data'=>$games,
                 'balance'=>$balance,
+                'username'=>$user->email,
                 'total'=>$total,
             ];
         }else{

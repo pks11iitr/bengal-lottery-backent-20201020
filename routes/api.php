@@ -36,3 +36,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 });
+
+$api->get('privacy-policy', ['as'=>'api.policy', 'uses'=>'Portal\Api\AppUrlController@privacypolicy']);
+$api->get('terms-condition', ['as'=>'api.policy', 'uses'=>'Portal\Api\AppUrlController@termscondition']);
+$api->get('about-us', ['as'=>'api.policy', 'uses'=>'Portal\Api\AppUrlController@aboutus']);
+
+

@@ -24,7 +24,7 @@ class AgentController extends Controller
         $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
         foreach ($agents as $agent){
             $agent->balance=Transaction::balance($agent->id);
-           // var_dump($agents['balance']);die();
+            // var_dump($agents['balance']);die();
             $agent->totaldeposit=Transaction::totaldeposit($agent->id);
             $agent->totalwithdraw=Transaction::totalwithdraw($agent->id);
         }
@@ -42,10 +42,9 @@ class AgentController extends Controller
             "cpassword" => "required|same:cpassword",
         ));
         $checkusername = User::where('email', strtoupper($request->username))->get();
-   ///var_dump($request->status);die();
-            if ($request->password == $request->cpassword) {
-                if ($user->rate <= $request->rate) {
-
+        ///var_dump($request->status);die();
+        if ($request->password == $request->cpassword) {
+            if(auth()->user()->hasRole('admin')){
                 $user = User::create([
                     'email' => strtoupper($request->username),
                     'password' => Hash::make($request->password),
@@ -55,12 +54,34 @@ class AgentController extends Controller
                     'account' => 'SUPER'
                 ]);
                 $user->assignRole('subadmin');
+
+
             }else{
+
+                //  var_dump($user->rate );
+                //  var_dump($request->rate);
+                //  die;
+
+                if ($user->rate <= $request->rate) {
+
+                    $user = User::create([
+                        'email' => strtoupper($request->username),
+                        'password' => Hash::make($request->password),
+                        'parent_id' => $user->id,
+                        'status' => $request->status,
+                        'rate' => $request->rate,
+                        'account' => 'SUPER'
+                    ]);
+                    $user->assignRole('subadmin');
+                }else{
                     return redirect()->back()->with('error', 'Game Rate Not Less Then Our Rate');
+                }
             }
-            } else {
-                return redirect()->back()->with('error', 'Password Does Not Match');
-            }
+
+
+        } else {
+            return redirect()->back()->with('error', 'Password Does Not Match');
+        }
 
         return redirect()->route("agents")->with('success', 'Agent Created Successfully');
     }
@@ -84,33 +105,33 @@ class AgentController extends Controller
             "agent_id" => "required",
 
         ));
-           $user = Auth::user();
-           $balance=Transaction::balance($user->id);
+        $user = Auth::user();
+        $balance=Transaction::balance($user->id);
         if(auth()->user()->hasRole('admin')){
 
-                $agentdetails = User::where("id", $request->agent_id)->first();
-                $agentdetails->deposit = $request->deposit_edit;
-                $agentdetails->withdraw = $request->withdraw_edit;
-                $agentdetails->status = $request->status_edit;
-                $agentdetails->rate = $request->rate_edit;
-                $agentdetails->save();
-                if ($request->deposit_edit >= 0) {
-                    $deposit = Transaction::create([
-                        'user_id' => $request->agent_id,
-                        'amount' => $request->deposit_edit,
-                        'type' => 'Deposit',
-                        'mode' => 'agent',
-                    ]);
-                }
-                if ($request->withdraw_edit >= 0) {
+            $agentdetails = User::where("id", $request->agent_id)->first();
+            $agentdetails->deposit = $request->deposit_edit;
+            $agentdetails->withdraw = $request->withdraw_edit;
+            $agentdetails->status = $request->status_edit;
+            $agentdetails->rate = $request->rate_edit;
+            $agentdetails->save();
+            if ($request->deposit_edit >= 0) {
+                $deposit = Transaction::create([
+                    'user_id' => $request->agent_id,
+                    'amount' => $request->deposit_edit,
+                    'type' => 'Deposit',
+                    'mode' => 'agent',
+                ]);
+            }
+            if ($request->withdraw_edit >= 0) {
 
-                    $withdraw = Transaction::create([
-                        'user_id' => $request->agent_id,
-                        'amount' => $request->withdraw_edit,
-                        'type' => 'Withdraw',
-                        'mode' => 'agent',
-                    ]);
-                }
+                $withdraw = Transaction::create([
+                    'user_id' => $request->agent_id,
+                    'amount' => $request->withdraw_edit,
+                    'type' => 'Withdraw',
+                    'mode' => 'agent',
+                ]);
+            }
 
         }else{
             if($balance>=$request->deposit_edit) {
@@ -131,7 +152,7 @@ class AgentController extends Controller
                         $deposit = Transaction::create([
                             'user_id' => $user->id,
                             'amount' => $request->deposit_edit,
-                            'type' => 'Deposit',
+                            'type' => 'Withdraw',
                             'mode' => 'subagent',
                         ]);
                     }
@@ -143,11 +164,10 @@ class AgentController extends Controller
                             'type' => 'Withdraw',
                             'mode' => 'agent',
                         ]);
-
                         $withdraw1 = Transaction::create([
                             'user_id' => $user->id,
                             'amount' => $request->withdraw_edit,
-                            'type' => 'Withdraw',
+                            'type' => 'Deposit',
                             'mode' => 'subagent',
                         ]);
                     }
@@ -191,7 +211,7 @@ class AgentController extends Controller
             if($v->bid_digit==$request->bid_digit){
 
                 $win = GameBook::where('id', $v->id)->update(['draw_result'=>(int)$request->bid_digit,'winning_amount'=>$request->winning_amount,'status'=>'Won']);
-                  // var_dump($v->id);die();
+                // var_dump($v->id);die();
                 $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
 
 

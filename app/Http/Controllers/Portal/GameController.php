@@ -37,7 +37,7 @@ class GameController extends Controller
             "name" => "required",
             "game_time" => "required",
             "close_date" => "required",
-          //  "price" => "required",
+            //  "price" => "required",
             "degit" => "required",
             "isactive" => "required",
         ));
@@ -46,7 +46,7 @@ class GameController extends Controller
             'name' => $request->name,
             'game_time' => $request->game_time,
             'close_date' => $request->close_date,
-           // 'price' => $request->price,
+            // 'price' => $request->price,
             'degit' => $request->degit,
             'isactive' => $request->isactive,
         ]);
@@ -67,8 +67,8 @@ class GameController extends Controller
 //        if($gameprice->count()>0){
 //            $game = Game::select('game.*','game_price')->leftjoin('game_price','game_price.game_id','=','game.id')->where('game_price.agent_id',$user->id)->find($id);
 //        }else{
-            $game = Game::find($id);
-       // }
+        $game = Game::find($id);
+        // }
 
         return view('portal.game.edit',compact('game'));
     }
@@ -80,23 +80,23 @@ class GameController extends Controller
             "name" => "required",
             "game_time" => "required",
             "close_date" => "required",
-          //  "price" => "required",
+            //  "price" => "required",
             "degit" => "required",
             "isactive" => "required",
 
         ));
         $user=auth()->user();
         $game = Game::find($id);
-      //  if(auth()->user()->hasRole('admin')) {
+        //  if(auth()->user()->hasRole('admin')) {
 
-            $game->name = $request->name;
-            $game->game_time = $request->game_time;
-            $game->close_date = $request->close_date;
-           // $game->price = $request->price;
-            $game->degit = $request->degit;
-            $game->isactive = $request->isactive;
-            $game->save();
-     //   }
+        $game->name = $request->name;
+        $game->game_time = $request->game_time;
+        $game->close_date = $request->close_date;
+        // $game->price = $request->price;
+        $game->degit = $request->degit;
+        $game->isactive = $request->isactive;
+        $game->save();
+        //   }
 //        $gameprice=GamePrice::where('agent_id',$user->id)->where('game_id',$id)->first();
 //        if(auth()->user()->hasRole('admin')) {
 //            if ($gameprice) {
@@ -125,7 +125,7 @@ class GameController extends Controller
 //                }
 //            }
 
-       // }
+        // }
 
 
         return redirect()->route("gamelist");
