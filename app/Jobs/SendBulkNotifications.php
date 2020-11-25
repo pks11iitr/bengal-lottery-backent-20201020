@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Services\Notification\FCMNotification;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -38,23 +39,23 @@ class SendBulkNotifications implements ShouldQueue
     public function handle()
     {
         //var_dump($this->stores);die;
-        $user_ids=Order::whereIn('store_id', $this->stores)->select('user_id')->get();
-
-        $user_ids=$user_ids->map(function($id){
-            return $id->user_id;
-        });
-
-        if(!empty($user_ids)){
-            $tokens=Customer::whereIn('id', $user_ids)
-                ->where('notification_token', '!=', null)
-                ->select('notification_token')
+//        $user_ids=Order::whereIn('store_id', $this->stores)->select('user_id')->get();
+//
+//        $user_ids=$user_ids->map(function($id){
+//            return $id->user_id;
+//        });
+//
+//        if(!empty($user_ids)){
+//            $tokens=User::whereIn('id', $user_ids)
+//                ->where('token', '!=', null)
+//                ->select('token')
+//                ->get();
+//        }else{
+            $tokens=User::
+                where('token', '!=', null)
+                ->select('token')
                 ->get();
-        }else{
-            $tokens=Customer::
-                where('notification_token', '!=', null)
-                ->select('notification_token')
-                ->get();
-        }
+       // }
 
 
         Notification::create([
@@ -67,7 +68,7 @@ class SendBulkNotifications implements ShouldQueue
 
         foreach($tokens as $token){
 
-            FCMNotification::sendNotification($token, $this->title, $this->message);
+            FCMNotification::sendNotification($token, $this->title??'', $this->message??'alam');
 
         }
 
