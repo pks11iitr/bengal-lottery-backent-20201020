@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/AppUrlController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/appurl/about.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/appurl/privacy_policy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/appurl/termscondition.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,14 +250,8 @@
       <workItem from="1605851235545" duration="6541000" />
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
-      <workItem from="1606199919416" duration="9758000" />
-    </task>
-    <task id="LOCAL-00015" summary="registration pages setup">
-      <created>1600955385820</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1600955385820</updated>
+      <workItem from="1606199919416" duration="10479000" />
+      <workItem from="1606283773988" duration="1407000" />
     </task>
     <task id="LOCAL-00016" summary="registration pages setup">
       <created>1600956032818</created>
@@ -604,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606134038479</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="api work">
+      <created>1606224411861</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1606224411862</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,10 +681,10 @@
     </state>
     <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1605956144226" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
-    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606134057412">
+    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606224422678">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1606134057412" />
+    <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1606224422677" />
     <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1603710831521" />
     <state x="406" y="106" width="620" height="580" key="find.popup" timestamp="1601217896931">
       <screen x="67" y="27" width="1299" height="741" />
