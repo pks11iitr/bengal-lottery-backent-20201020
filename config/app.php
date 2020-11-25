@@ -178,6 +178,7 @@ return [
         Aws\Laravel\AwsServiceProvider::class,
         'Kodeine\Acl\AclServiceProvider',
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        LaravelFCM\FCMServiceProvider::class,
     ],
 
     /*
@@ -231,7 +232,9 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
         'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
-        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+        'FCM'      => LaravelFCM\Facades\FCM::class,
+        'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
 
     ],
 
