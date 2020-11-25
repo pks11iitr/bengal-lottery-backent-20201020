@@ -42,7 +42,8 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
         Route::post('update-game/{id}', 'Portal\GameController@updategame')->name('gameupdate');
 
         Route::get('book-total/{id}', 'Portal\GameController@gametotal')->name('booktotal');
-
+        Route::get('send-notification', 'Portal\NotificationController@create')->name('notification');
+        Route::post('notification-save', 'Portal\NotificationController@createsave')->name('notificationsave');
 
 
 

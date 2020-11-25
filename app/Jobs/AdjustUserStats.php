@@ -35,15 +35,16 @@ class AdjustUserStats implements ShouldQueue
     public function handle()
     {
         $user=$this->user;
+        //var_dump($user->id);die;
 
         do{
-
+            //echo 'Working for'.$user->id;
             $stat=UserStat::where('game_id', $this->game->id)
-                ->where('user_id', $this->user->id)
+                ->where('user_id', $user->id)
                 ->first();
             if(!$stat)
                 $stat=UserStat::create([
-                    'user_id'=>$this->user->id,
+                    'user_id'=>$user->id,
                     'game_id'=>$this->game->id,
                     'digit0'=>0,
                     'digit1'=>0,
@@ -70,7 +71,10 @@ class AdjustUserStats implements ShouldQueue
             $stat->save();
 
             $user=$user->agent;
+            //echo 'Parent ffound'.$user->id;
 
         }while($user!=null);
+
+        //die;
     }
 }

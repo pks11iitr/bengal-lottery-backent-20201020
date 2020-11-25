@@ -161,7 +161,7 @@
                                 <a href="" >Old History</a>
                             </li>
                             <li>
-                                <a href="">Profile</a>
+                                <a href="{{route('notification')}}" class="btn btn-info">Notification</a>
                             </li>
                             <li class="p_zero_b">
                             @if(auth()->user())

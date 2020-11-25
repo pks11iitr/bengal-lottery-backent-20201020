@@ -204,7 +204,7 @@ class AgentController extends Controller
 
         ));
 
-        $game = Game::find($id);
+
 
         $values=GameBook::where('game_id',$id)->get();
         foreach ($values as $v){
@@ -213,7 +213,9 @@ class AgentController extends Controller
                 $win = GameBook::where('id', $v->id)->update(['draw_result'=>(int)$request->bid_digit,'winning_amount'=>$request->winning_amount,'status'=>'Won']);
                 // var_dump($v->id);die();
                 $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
-
+                $game = Game::find($id);
+                $game->bid_qty=(int)$request->bid_digit;
+                $game->update();
 
                 $withdraw=Transaction::create([
                     'user_id' => $v->user_id,

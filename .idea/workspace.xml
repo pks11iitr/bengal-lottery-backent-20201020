@@ -19,7 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/NotificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/portal/notification/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -248,14 +258,7 @@
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
       <workItem from="1606199919416" duration="10479000" />
-      <workItem from="1606283773988" duration="1712000" />
-    </task>
-    <task id="LOCAL-00017" summary="login/ register page corrected">
-      <created>1601109995109</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1601109995109</updated>
+      <workItem from="1606283773988" duration="10542000" />
     </task>
     <task id="LOCAL-00018" summary="login/ register page corrected">
       <created>1601113807380</created>
@@ -593,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606286851901</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="api work">
+      <created>1606287070457</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1606287070457</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,10 +651,10 @@
       <screen x="65" y="27" width="1301" height="741" />
     </state>
     <state x="391" y="198" width="639" height="396" key="#com.intellij.fileTypes.FileTypeChooser/65.27.1301.741@65.27.1301.741" timestamp="1604130019579" />
-    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606118080609">
+    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606288807713">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1606118080609" />
+    <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1606288807713" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1601733429688" />
     <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1603710807420">
       <screen x="67" y="27" width="1299" height="741" />
@@ -664,19 +674,19 @@
     </state>
     <state x="185" y="85" width="1040" height="622" key="MergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1604124804941" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1601207056161" />
-    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog" timestamp="1604124804946">
+    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog" timestamp="1606287088769">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="345" y="157" key="MultipleFileMergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1604124804946" />
+    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1606287088769" />
     <state x="347" y="157" width="728" height="478" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1601207056163" />
     <state x="518" y="116" width="386" height="561" key="NewPhpClassDialog" timestamp="1600448527988">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="518" y="116" width="386" height="561" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1600448527988" />
-    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1605956144226">
+    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1606300074255">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1605956144226" />
+    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1606300074255" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
     <state x="309" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606224422678">
       <screen x="65" y="27" width="1301" height="741" />
