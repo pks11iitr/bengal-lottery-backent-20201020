@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/NotificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/NotificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/NotificationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/SendBulkNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendBulkNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/notification/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/notification/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,14 +255,7 @@
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
       <workItem from="1606199919416" duration="10479000" />
-      <workItem from="1606283773988" duration="19523000" />
-    </task>
-    <task id="LOCAL-00025" summary="logout function set">
-      <created>1601220376893</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1601220376893</updated>
+      <workItem from="1606283773988" duration="20235000" />
     </task>
     <task id="LOCAL-00026" summary="logout function set">
       <created>1601220480611</created>
@@ -601,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606307856468</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="api work">
+      <created>1606311330986</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1606311330986</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -686,10 +685,10 @@
     </state>
     <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1606300074255" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
-    <state x="268" y="206" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606307867168">
+    <state x="268" y="206" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606311370136">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="268" y="206" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1606307867168" />
+    <state x="268" y="206" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1606311370136" />
     <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1603710831521" />
     <state x="406" y="106" width="620" height="580" key="find.popup" timestamp="1601217896931">
       <screen x="67" y="27" width="1299" height="741" />

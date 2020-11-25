@@ -79,22 +79,7 @@
                                             <div class="container-fluid" id="detailsC">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Stores</label>
-                                                            <select class="form-control select2" multiple
-                                                                    data-placeholder="Select a subcategory" style="width: 100%;"
-                                                                    name="store_ids[]" id="category_id_sel">
 
-                                                                <option value="">Select Stores</option>
-                                                                @foreach($stores as $store)
-
-                                                                    <option
-                                                                        value="{{$store->id}}"> {{$store->email}}</option>
-
-
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cname">Title <small class="text-success">*</small> :</label>
                                                             <input type="text" id="title" name="title" class="form-control" placeholder="title" required value="">
