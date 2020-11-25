@@ -46,7 +46,7 @@ class LoginController extends Controller
 //            $user=$this->getCustomer($request);
 //            $user->notification_token=$request->notification_token;
 //            $user->save();
-            return $this->sendLoginResponse($this->getCustomer($request), $token);
+            return $this->sendLoginResponse($request,$this->getCustomer($request), $token);
         }
         return [
             'status'=>'failed',
@@ -60,7 +60,7 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         return Auth::guard('api')->attempt(
-            ['email'=>$request->email, 'password'=>$request->password]
+            ['email'=>$request->email, 'password'=>$request->password,'status'=>1]
         );
     }
 
@@ -68,9 +68,11 @@ class LoginController extends Controller
         return User::where('email',$request->email)->first();
     }
 
-    protected function sendLoginResponse($user, $token){
+    protected function sendLoginResponse(Request $request,$user, $token){
 
-
+       $users=User::find($user->id);
+       $users->token=$request->fcm_token;
+        $users->save();
             return ['status'=>'success','check_password'=>$user->check_password, 'message'=>'Login Successfull', 'token'=>$token];
 
     }

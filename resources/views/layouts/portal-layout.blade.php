@@ -131,7 +131,7 @@
 {{--                                <a href="" class="btn btn-info">OLD History</a>--}}
 {{--                            </li>--}}
                             <li>
-                                <a href="#" class="btn btn-info">Profile</a>
+                                <a href="{{route('notification')}}" class="btn btn-info">Notification</a>
                             </li>
                             <li class="p_zero_b">
 
@@ -152,6 +152,7 @@
                             <li>
                                 <a href="{{route('agents')}}" >Agents</a>
                             </li>
+
                             @if(auth()->user()->hasRole('admin'))
                             <li>
                                 <a href="{{route('gamelist')}}" >Add Game</a>

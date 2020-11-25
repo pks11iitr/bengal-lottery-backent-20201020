@@ -28,7 +28,7 @@ class DownlineController extends Controller
             $win0=0;$win1=0;$win2=0;$win3=0;$win4=0;$win5=0;$win6=0;$win7=0;$win8=0;$win9=0;
             $agents=User::where('parent_id',$user->id)->select('id','email')->get();
 
-            $wondegit= Game::where('id',$request->game_id)->first();
+            //$wondegit= Game::where('id',$request->game_id)->first();
             foreach ($agents as $useragent) {
                 $useragent->ticket=array();
                 $totalbid = UserStat::where('user_id', $useragent->id)->where('game_id', $request->game_id)->first();
@@ -47,28 +47,29 @@ class DownlineController extends Controller
                     $finaltotaltan = $finaltotaltan + min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9);
 
                     $finaltotalticket = $finaltotalticket + ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
-
-                    if($wondegit->bid_qty==0){
-                        $win0=$totalbid->digit0??0;
-                    }elseif($wondegit->bid_qty==1){
-                        $win1=$totalbid->digit1??0;
-                    }elseif($wondegit->bid_qty==2){
-                        $win2=$totalbid->digit2??0;
-                    }elseif($wondegit->bid_qty==3){
-                        $win3=$totalbid->digit3??0;
-                    }
-                    elseif($wondegit->bid_qty==4){
-                        $win4=$totalbid->digit4??0;
-                    }elseif($wondegit->bid_qty==5){
-                        $win5=$totalbid->digit5??0;
-                    }elseif($wondegit->bid_qty==6){
-                        $win6=$totalbid->digit6??0;
-                    }elseif($wondegit->bid_qty==7){
-                        $win7=$totalbid->digit??0;
-                    }elseif($wondegit->bid_qty==8){
-                        $win8=$totalbid->digit8??0;
-                    }elseif($wondegit->bid_qty==9){
-                        $win9=$totalbid->digit9??0;
+                    $wondegit= Game::where('id',$request->game_id)->whereNotNull('bid_qty')->first();
+                    if($wondegit) {
+                        if ($wondegit->bid_qty == 0) {
+                            $win0 = $totalbid->digit0 ?? 0;
+                        } elseif ($wondegit->bid_qty == 1) {
+                            $win1 = $totalbid->digit1 ?? 0;
+                        } elseif ($wondegit->bid_qty == 2) {
+                            $win2 = $totalbid->digit2 ?? 0;
+                        } elseif ($wondegit->bid_qty == 3) {
+                            $win3 = $totalbid->digit3 ?? 0;
+                        } elseif ($wondegit->bid_qty == 4) {
+                            $win4 = $totalbid->digit4 ?? 0;
+                        } elseif ($wondegit->bid_qty == 5) {
+                            $win5 = $totalbid->digit5 ?? 0;
+                        } elseif ($wondegit->bid_qty == 6) {
+                            $win6 = $totalbid->digit6 ?? 0;
+                        } elseif ($wondegit->bid_qty == 7) {
+                            $win7 = $totalbid->digit ?? 0;
+                        } elseif ($wondegit->bid_qty == 8) {
+                            $win8 = $totalbid->digit8 ?? 0;
+                        } elseif ($wondegit->bid_qty == 9) {
+                            $win9 = $totalbid->digit9 ?? 0;
+                        }
                     }
                     $finaltotalwin = $finaltotalwin + max($win0,$win1,$win2,$win3,$win4,$win5,$win6,$win7,$win8,$win9);
 

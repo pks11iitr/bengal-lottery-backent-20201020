@@ -2,43 +2,38 @@
 
 namespace App\Http\Controllers\Portal;
 
-use App\Models\Notification;
-use App\Models\Game;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use Response;
-
+use App\Jobs\SendBulkNotifications;
+use App\Models\Notification;
+use App\User;
+use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-//    public function index(Request $request)
-//    {
-//        return view('portal.notification.add');
-//    }
 
-    public function create(Request $request)
-    {
-        return view('portal.notification.add');
+    public function create(Request $request){
+        $stores=User::where('id', '>', 1)->select('email', 'id')->get();
+        return view('portal.notification.add', compact('stores'));
     }
 
-    public function createsave(Request $request)
-    {
-        $this->validate($request, array(
-            "title" => "required",
-            "message" => "required",
-
-        ));
-
-        $notification=   Notification::create([
-            'title' => $request->title,
-            'message' => $request->message,
+    public function createsave(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required'
         ]);
 
+        if($notification=Notification::create([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'type'=>'all',
+            'user_id'=>'0',
 
-        return redirect()->back()->with('success', 'Send Notification Successfully');
+        ]))
+        {
+            dispatch(new SendBulkNotifications($request->title,$request->description, $request->store_ids));
+            return redirect()->back()->with('success', 'Notification Send Successfully');
+        }
+        return redirect()->back()->with('error', 'Notification failed');
     }
-
-
 
 }
