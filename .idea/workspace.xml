@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/NotificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/Api/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,14 +253,7 @@
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
       <workItem from="1606199919416" duration="10479000" />
-      <workItem from="1606283773988" duration="14286000" />
-    </task>
-    <task id="LOCAL-00022" summary="data Syncing work done">
-      <created>1601210037620</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1601210037620</updated>
+      <workItem from="1606283773988" duration="16598000" />
     </task>
     <task id="LOCAL-00023" summary="data Syncing work done">
       <created>1601216265840</created>
@@ -599,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606302334605</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="api work">
+      <created>1606305533102</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1606305533102</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,10 +669,10 @@
     </state>
     <state x="185" y="85" width="1040" height="622" key="MergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1604124804941" />
     <state x="187" y="85" width="1039" height="622" key="MergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1601207056161" />
-    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog" timestamp="1606287088769">
+    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog" timestamp="1606305556226">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1606287088769" />
+    <state x="345" y="157" width="728" height="478" key="MultipleFileMergeDialog/65.27.1301.741@65.27.1301.741" timestamp="1606305556226" />
     <state x="347" y="157" width="728" height="478" key="MultipleFileMergeDialog/67.27.1299.741@67.27.1299.741" timestamp="1601207056163" />
     <state x="518" y="116" width="386" height="561" key="NewPhpClassDialog" timestamp="1600448527988">
       <screen x="67" y="27" width="1299" height="741" />
