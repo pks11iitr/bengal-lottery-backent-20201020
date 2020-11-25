@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/AppUrlController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/appurl/about.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/appurl/privacy_policy.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/appurl/termscondition.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +175,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Portal/Api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -260,6 +251,7 @@
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
       <workItem from="1606199919416" duration="9758000" />
+      <workItem from="1606284795271" duration="1631000" />
     </task>
     <task id="LOCAL-00015" summary="registration pages setup">
       <created>1600955385820</created>

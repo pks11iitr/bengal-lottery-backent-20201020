@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Api;
 
+use App\Jobs\AdjustUserStats;
 use App\Models\Game;
 use App\Models\GameBook;
 use App\Models\GamePrice;
@@ -197,6 +198,9 @@ class GameController extends Controller
             }
 
         }
+
+        dispatch(new AdjustUserStats($user, $games, $request->bid_qty));
+
         $withdraw=Transaction::create([
             'user_id' => $user->id,
             'amount' => round($total),
