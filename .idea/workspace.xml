@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/NotificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/notification/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -258,14 +248,7 @@
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
       <workItem from="1606199919416" duration="10479000" />
-      <workItem from="1606283773988" duration="10542000" />
-    </task>
-    <task id="LOCAL-00018" summary="login/ register page corrected">
-      <created>1601113807380</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1601113807380</updated>
+      <workItem from="1606283773988" duration="10843000" />
     </task>
     <task id="LOCAL-00019" summary="login/ register page corrected">
       <created>1601115026343</created>
@@ -603,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606287070457</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="api work">
+      <created>1606301230141</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1606301230141</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
