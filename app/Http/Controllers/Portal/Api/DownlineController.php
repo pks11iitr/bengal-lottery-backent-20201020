@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Portal\Api;
 
 use App\Models\Order;
 use App\Models\GameBook;
+use App\Models\Game;
 use App\Models\Transaction;
+use App\Models\UserStat;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,43 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class DownlineController extends Controller
 {
-   protected function makeNested($source) {
 
-        $nested = array();
-
-        foreach ( $source as &$s ) {
-
-            if ( is_null($s['parent_id']) ) {
-                // no parent_id so we put it in the root of the array
-
-                $nested[] = &$s;
-
-            }
-
-            else {
-
-                $pid = $s['parent_id'];
-
-                if ( isset($source[$pid]) ) {
-
-                    if ( !isset($source[$pid]['children']) ) {
-
-                        $source[$pid]['children'] = array();
-
-                    }
-
-
-
-                    $source[$pid]['children'][] = &$s;
-                }
-
-            }
-
-        }
-
-        return $nested;
-
-    }
     public function index(Request $request){
         $user=Auth::guard('api')->user();
         if(!$user)
@@ -59,148 +25,72 @@ class DownlineController extends Controller
 
         if($request->game_id){
             $t0 = 0; $t1 = 0; $t2 = 0; $t3 = 0; $t4 = 0; $t5 = 0; $t6 = 0; $t7 = 0; $t8 = 0; $t9 = 0;$finaltotaltan=0;$finaltotalticket=0;$finaltotalwin=0;
+            $win0=0;$win1=0;$win2=0;$win3=0;$win4=0;$win5=0;$win6=0;$win7=0;$win8=0;$win9=0;
             $agents=User::where('parent_id',$user->id)->select('id','email')->get();
 
-           // $all=  makeNested($agents);
-//            foreach ( $agents as &$s ) {
-//
-//                if ( is_null($s['parent_id']) ) {
-//                    // no parent_id so we put it in the root of the array
-//
-//                    $nested[] = &$s;
-//
-//                }
-//
-//                else {
-//
-//                    $pid = $s['parent_id'];
-//
-//                    if ( isset($source[$pid]) ) {
-//
-//                        if ( !isset($source[$pid]['children']) ) {
-//
-//                            $source[$pid]['children'] = array();
-//
-//                        }
-//
-//
-//
-//                        $source[$pid]['children'][] = &$s;
-//
-//                    }
-//
-//                }
-//
-//            }
-//
-
+            $wondegit= Game::where('id',$request->game_id)->first();
             foreach ($agents as $useragent) {
+                $useragent->ticket=array();
+                $totalbid = UserStat::where('user_id', $useragent->id)->where('game_id', $request->game_id)->first();
 
+                if($totalbid) {
+                    $t0 = $t0 + $totalbid->digit0 ?? 0;
+                    $t1 = $t1 + $totalbid->digit1 ?? 0;
+                    $t2 = $t2 + $totalbid->digit2 ?? 0;
+                    $t3 = $t3 + $totalbid->digit3 ?? 0;
+                    $t4 = $t4 + $totalbid->digit4 ?? 0;
+                    $t5 = $t5 + $totalbid->digit5 ?? 0;
+                    $t6 = $t6 + $totalbid->digit6 ?? 0;
+                    $t7 = $t7 + $totalbid->digit7 ?? 0;
+                    $t8 = $t8 + $totalbid->digit8 ?? 0;
+                    $t9 = $t9 + $totalbid->digit9 ?? 0;
+                    $finaltotaltan = $finaltotaltan + min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9);
 
-                    $totalbid = GameBook::where('user_id', $useragent->id)->where('game_id', $request->game_id)->get();
+                    $finaltotalticket = $finaltotalticket + ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
 
-                    $totaltoken = 0;
-                    $totaltoken1 = 0;
-                    $totaltoken2 = 0;
-                    $totaltoken3 = 0;
-                    $totaltoken4 = 0;
-                    $totaltoken5 = 0;
-                    $totaltoken6 = 0;
-                    $totaltoken7 = 0;
-                    $totaltoken8 = 0;
-                    $totaltoken9 = 0;
-
-                    $totaltoken00 = 0;
-                    $totaltoken11 = 0;
-                    $totaltoken21 = 0;
-                    $totaltoken31 = 0;
-                    $totaltoken41 = 0;
-                    $totaltoken51 = 0;
-                    $totaltoken61 = 0;
-                    $totaltoken71 = 0;
-                    $totaltoken81 = 0;
-                    $totaltoken91 = 0;
-
-                    foreach ($totalbid as $bid) {
-
-                        if ($bid->bid_digit == 0) {
-                            $totaltoken = $totaltoken + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 1) {
-                            $totaltoken1 = $totaltoken1 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 2) {
-                            $totaltoken2 = $totaltoken2 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 3) {
-                            $totaltoken3 = $totaltoken3 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 4) {
-                            $totaltoken4 = $totaltoken4 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 5) {
-                            $totaltoken5 = $totaltoken5 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 6) {
-                            $totaltoken6 = $totaltoken6 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 7) {
-                            $totaltoken7 = $totaltoken7 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 8) {
-                            $totaltoken8 = $totaltoken8 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 9) {
-                            $totaltoken9 = $totaltoken9 + $bid->bid_qty;
-                        }
-
-                        if ($bid->bid_digit == 0 && $bid->status == 'Won') {
-                            $totaltoken00 = $totaltoken00 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 1 && $bid->status == 'Won') {
-                            $totaltoken11 = $totaltoken11 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 2 && $bid->status == 'Won') {
-                            $totaltoken21 = $totaltoken21 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 3 && $bid->status == 'Won') {
-                            $totaltoken31 = $totaltoken31 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 4 && $bid->status == 'Won') {
-                            $totaltoken41 = $totaltoken41 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 5 && $bid->status == 'Won') {
-                            $totaltoken51 = $totaltoken51 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 6 && $bid->status == 'Won') {
-                            $totaltoken61 = $totaltoken61 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 7 && $bid->status == 'Won') {
-                            $totaltoken71 = $totaltoken71 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 8 && $bid->status == 'Won') {
-                            $totaltoken81 = $totaltoken81 + $bid->bid_qty;
-                        } elseif ($bid->bid_digit == 9 && $bid->status == 'Won') {
-                            $totaltoken91 = $totaltoken91 + $bid->bid_qty;
-                        }
-
-
+                    if($wondegit->bid_qty==0){
+                        $win0=$totalbid->digit0??0;
+                    }elseif($wondegit->bid_qty==1){
+                        $win1=$totalbid->digit1??0;
+                    }elseif($wondegit->bid_qty==2){
+                        $win2=$totalbid->digit2??0;
+                    }elseif($wondegit->bid_qty==3){
+                        $win3=$totalbid->digit3??0;
                     }
-                    $t0=$t0+$totaltoken;
-                    $t1=$t1+$totaltoken1;
-                    $t2=$t2+$totaltoken2;
-                    $t3=$t3+$totaltoken3;
-                    $t4=$t4+$totaltoken4;
-                    $t5=$t5+$totaltoken5;
-                    $t6=$t6+$totaltoken6;
-                    $t7=$t7+$totaltoken7;
-                    $t8=$t8+$totaltoken8;
-                    $t9=$t9+$totaltoken9;
-                    $finaltotaltan =$finaltotaltan+ min($totaltoken, $totaltoken1, $totaltoken2, $totaltoken3, $totaltoken4, $totaltoken5, $totaltoken6, $totaltoken7, $totaltoken8, $totaltoken9);
-                    $finaltotalticket=$finaltotalticket+ ($totaltoken + $totaltoken1 + $totaltoken2 + $totaltoken3 + $totaltoken4 + $totaltoken5 + $totaltoken6 + $totaltoken7 + $totaltoken8 + $totaltoken9);
-                    $finaltotalwin=$finaltotalwin+ max($totaltoken00, $totaltoken11, $totaltoken21, $totaltoken31, $totaltoken41, $totaltoken51, $totaltoken61, $totaltoken71, $totaltoken81, $totaltoken91);
+                    elseif($wondegit->bid_qty==4){
+                        $win4=$totalbid->digit4??0;
+                    }elseif($wondegit->bid_qty==5){
+                        $win5=$totalbid->digit5??0;
+                    }elseif($wondegit->bid_qty==6){
+                        $win6=$totalbid->digit6??0;
+                    }elseif($wondegit->bid_qty==7){
+                        $win7=$totalbid->digit??0;
+                    }elseif($wondegit->bid_qty==8){
+                        $win8=$totalbid->digit8??0;
+                    }elseif($wondegit->bid_qty==9){
+                        $win9=$totalbid->digit9??0;
+                    }
+                    $finaltotalwin = $finaltotalwin + max($win0,$win1,$win2,$win3,$win4,$win5,$win6,$win7,$win8,$win9);
+
 
                     $useragent->ticket = array(
-                        'totaltoken' => $totaltoken,
-                        'totaltoken1' => $totaltoken1,
-                        'totaltoken2' => $totaltoken2,
-                        'totaltoken3' => $totaltoken3,
-                        'totaltoken4' => $totaltoken4,
-                        'totaltoken5' => $totaltoken5,
-                        'totaltoken6' => $totaltoken6,
-                        'totaltoken7' => $totaltoken7,
-                        'totaltoken8' => $totaltoken8,
-                        'totaltoken9' => $totaltoken9,
-                        'totaltan' => min($totaltoken, $totaltoken1, $totaltoken2, $totaltoken3, $totaltoken4, $totaltoken5, $totaltoken6, $totaltoken7, $totaltoken8, $totaltoken9),
-                        'totalticket' => ($totaltoken + $totaltoken1 + $totaltoken2 + $totaltoken3 + $totaltoken4 + $totaltoken5 + $totaltoken6 + $totaltoken7 + $totaltoken8 + $totaltoken9),
-                        'totalwin' => max($totaltoken00, $totaltoken11, $totaltoken21, $totaltoken31, $totaltoken41, $totaltoken51, $totaltoken61, $totaltoken71, $totaltoken81, $totaltoken91),
+                        'totaltoken' => $totalbid->digit0,
+                        'totaltoken1' => $totalbid->digit1,
+                        'totaltoken2' => $totalbid->digit2,
+                        'totaltoken3' => $totalbid->digit3,
+                        'totaltoken4' => $totalbid->digit4,
+                        'totaltoken5' => $totalbid->digit5,
+                        'totaltoken6' => $totalbid->digit6,
+                        'totaltoken7' => $totalbid->digit7,
+                        'totaltoken8' => $totalbid->digit8,
+                        'totaltoken9' => $totalbid->digit9,
+                        'totaltan' => min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9),
+                        'totalticket' => ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9),
+                        'totalwin' => max($win0,$win1,$win2,$win3,$win4,$win5,$win6,$win7,$win8,$win9)
                     );
-
-
+                }
             }
+
             $total=array(
                 'total0'=>$t0,
                 'total1'=>$t1,
