@@ -10,7 +10,7 @@ class Notification extends Model
 
     protected $hidden = ['deleted_at','updated_at'];
 
-    protected $fillable=['user_id', 'title', 'message', 'data', 'type'];
+    protected $fillable=['user_id', 'title', 'description', 'data', 'type'];
 
 
 }

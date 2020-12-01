@@ -45,6 +45,11 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
         Route::get('send-notification', 'Portal\NotificationController@create')->name('notification');
         Route::post('notification-save', 'Portal\NotificationController@createsave')->name('notificationsave');
 
+        Route::get('payment-history/{id}', 'Portal\AgentController@paymenthistory')->name('paymenthistory');
+
+
+
+
 
 
     Route::get('/products', 'Portal\ProductController@index')->name('products');

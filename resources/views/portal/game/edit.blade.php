@@ -116,7 +116,7 @@
                                                             <input type="text" id="degit" name="degit" class="form-control" placeholder="degit " required  value="{{$game->degit}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
                                                         </div>
                                                     </div>
-
+ 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Is Active</label>
@@ -130,6 +130,7 @@
                                                         </div>
                                                         <!-- /.form-group -->
                                                     </div>
+                                                   
 
                                                 </div>
 
@@ -137,7 +138,7 @@
 
 
                                             <br>
-
+@if(auth()->user()->hasRole('admin'))
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-sm-12">
@@ -145,7 +146,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+ @endif
                                         </form>
                                     </div>
                                     <!-- /.tab-pane -->

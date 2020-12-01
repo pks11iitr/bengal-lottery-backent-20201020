@@ -23,10 +23,13 @@ class AgentController extends Controller
 
         $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
         foreach ($agents as $agent){
-            $agent->balance=Transaction::balance($agent->id);
+            $balance=Transaction::balance($agent->id);
+            $agent->balance=round($balance,2);
             // var_dump($agents['balance']);die();
-            $agent->totaldeposit=Transaction::totaldeposit($agent->id);
-            $agent->totalwithdraw=Transaction::totalwithdraw($agent->id);
+            $totaldeposit=Transaction::totaldeposit($agent->id);
+             $agent->totaldeposit=round($totaldeposit,2);
+            $totalwithdraw=Transaction::totalwithdraw($agent->id);
+            $agent->totalwithdraw=round($totalwithdraw,2);
         }
         //var_dump($balance);die();
         return view('portal.agent.add', compact('agents'));
@@ -115,7 +118,7 @@ class AgentController extends Controller
             $agentdetails->status = $request->status_edit;
             $agentdetails->rate = $request->rate_edit;
             $agentdetails->save();
-            if ($request->deposit_edit >= 0) {
+            if ($request->deposit_edit > 0) {
                 $deposit = Transaction::create([
                     'user_id' => $request->agent_id,
                     'amount' => $request->deposit_edit,
@@ -123,7 +126,7 @@ class AgentController extends Controller
                     'mode' => 'agent',
                 ]);
             }
-            if ($request->withdraw_edit >= 0) {
+            if ($request->withdraw_edit > 0) {
 
                 $withdraw = Transaction::create([
                     'user_id' => $request->agent_id,
@@ -142,7 +145,7 @@ class AgentController extends Controller
                     $agentdetails->status = $request->status_edit;
                     $agentdetails->rate = $request->rate_edit;
                     $agentdetails->save();
-                    if ($request->deposit_edit >= 0) {
+                    if ($request->deposit_edit >0) {
                         $deposit = Transaction::create([
                             'user_id' => $request->agent_id,
                             'amount' => $request->deposit_edit,
@@ -156,7 +159,7 @@ class AgentController extends Controller
                             'mode' => 'subagent',
                         ]);
                     }
-                    if ($request->withdraw_edit >= 0) {
+                    if ($request->withdraw_edit > 0) {
 
                         $withdraw = Transaction::create([
                             'user_id' => $request->agent_id,
@@ -205,7 +208,6 @@ class AgentController extends Controller
         ));
 
 
-
         $values=GameBook::where('game_id',$id)->get();
         foreach ($values as $v){
             if($v->bid_digit==$request->bid_digit){
@@ -215,12 +217,13 @@ class AgentController extends Controller
                 $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
                 $game = Game::find($id);
                 $game->bid_qty=(int)$request->bid_digit;
+                $game->isactive=2;
                 $game->update();
 
                 $withdraw=Transaction::create([
                     'user_id' => $v->user_id,
-                    'amount' => $v->bid_qty*$request->winning_amount,
-                    'type' => 'Deposit',
+                    'amount' => round(($v->bid_qty*$request->winning_amount),2),
+                    'type' => 'win',
                     'mode' => 'Winner',
                 ]);
 
@@ -232,6 +235,12 @@ class AgentController extends Controller
 
         return redirect()->route('gamelist');
 
+    }
+
+    public function paymenthistory(Request $request,$id)
+    {
+        $payments = Transaction::where('user_id', $id)->orderBy('id','DESC')->get();
+        return view('portal.agent.paymenthistory', compact('payments'));
     }
 
 }

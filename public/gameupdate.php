@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 
-$db = mysqli_connect("localhost", "avaskm", "avaskm", "bengallottery");
+$db = mysqli_connect("localhost", "singroav_kuill", "kuill@12345", "singroav_kuill");
 
 
 date_default_timezone_set('Asia/Kolkata');
@@ -31,7 +31,7 @@ if($num>0)
 
         if($currentvalue>=$closedatevalue){
           //  var_dump($row[id]); die('aaa');
-            $update = $db->query("UPDATE game SET isactive =0 where id='$row[id]'");
+            $update = $db->query("UPDATE game SET isactive =3 where id='$row[id]'");
         }
 
         $I++;

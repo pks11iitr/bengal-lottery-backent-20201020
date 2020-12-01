@@ -30,7 +30,22 @@ class DownlineController extends Controller
 
             //$wondegit= Game::where('id',$request->game_id)->first();
             foreach ($agents as $useragent) {
-                $useragent->ticket=array();
+                //$useragent->ticket="";
+                 $useragent->ticket = array(
+                        'totaltoken' =>0,
+                        'totaltoken1' =>0,
+                        'totaltoken2' =>0,
+                        'totaltoken3' =>0,
+                        'totaltoken4' => 0,
+                        'totaltoken5' =>0,
+                        'totaltoken6' => 0,
+                        'totaltoken7' =>0,
+                        'totaltoken8' => 0,
+                        'totaltoken9' => 0,
+                        'totaltan' => 0,
+                        'totalticket' => 0,
+                        'totalwin' =>0
+                    );
                 $totalbid = UserStat::where('user_id', $useragent->id)->where('game_id', $request->game_id)->first();
 
                 if($totalbid) {
@@ -64,7 +79,7 @@ class DownlineController extends Controller
                         } elseif ($wondegit->bid_qty == 6) {
                             $win6 = $totalbid->digit6 ?? 0;
                         } elseif ($wondegit->bid_qty == 7) {
-                            $win7 = $totalbid->digit ?? 0;
+                            $win7 = $totalbid->digit7 ?? 0;
                         } elseif ($wondegit->bid_qty == 8) {
                             $win8 = $totalbid->digit8 ?? 0;
                         } elseif ($wondegit->bid_qty == 9) {
@@ -110,20 +125,20 @@ class DownlineController extends Controller
         }else{
             return [
                 'status'=>'failed',
-                'msg'=>'Parameter Missing'
+                'message'=>'Parameter Missing'
             ];
         }
 
         if($agents->count()>0){
             return [
                 'status'=>'success',
-                'msg'=>'success',
+                'message'=>'success',
                 'data'=>compact('agents','total')
             ];
         }else{
             return [
                 'status'=>'failed',
-                'msg'=>'No Record Found'
+                'message'=>'No Record Found'
             ];
         }
     }

@@ -20,11 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
+      <change afterPath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/NotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/NotificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/SendBulkNotifications.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendBulkNotifications.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/notification/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/notification/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/GameBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GameBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Notification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Notification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gameupdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameupdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +192,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Portal/Api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -255,14 +268,9 @@
       <workItem from="1605938494709" duration="11867000" />
       <workItem from="1606109319534" duration="11197000" />
       <workItem from="1606199919416" duration="10479000" />
-      <workItem from="1606283773988" duration="20235000" />
-    </task>
-    <task id="LOCAL-00026" summary="logout function set">
-      <created>1601220480611</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1601220480611</updated>
+      <workItem from="1606283773988" duration="20618000" />
+      <workItem from="1606739833952" duration="4788000" />
+      <workItem from="1606822012120" duration="2551000" />
     </task>
     <task id="LOCAL-00027" summary="logout function set">
       <created>1601220793311</created>
@@ -600,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606311330986</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="api work">
+      <created>1606312219181</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1606312219181</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,10 +695,10 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="518" y="116" width="386" height="561" key="NewPhpClassDialog/67.27.1299.741@67.27.1299.741" timestamp="1600448527988" />
-    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1606300074255">
+    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog" timestamp="1606743069066">
       <screen x="65" y="27" width="1301" height="741" />
     </state>
-    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1606300074255" />
+    <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1606743069066" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
     <state x="268" y="206" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606311370136">
       <screen x="65" y="27" width="1301" height="741" />

@@ -89,14 +89,21 @@
                             <th style="width: 10%">
                                 Deposit
                             </th>
+                            <th style="width: 10%">
+                                Date
+                            </th>
                             <th style="width: 15%">
                                 Withdraw
                             </th>
                             <th style="width: 15%">
                                 Rate
                             </th>
+
                             <th style="width: 25%">
                                 Status
+                            </th>
+                            <th style="width: 25%">
+                                Details
                             </th>
                              <th style="width: 9%" class="text-center">
                                 Booking
@@ -128,16 +135,25 @@
                                         {{$product->totaldeposit}}
                                     </td>
                                     <td style="text-transform: capitalize;">
+                                        {{date('d-m-Y', strtotime($product->created_at))}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
                                         {{$product->totalwithdraw}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->rate}}
                                     </td>
+
                                     <td style="text-transform: capitalize;">
                                         @if($product->status==1){{'Active'}}@elseif($product->status==0){{'Inactive'}}@else{{'Blocked'}}@endif
                                     </td>
 
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="{{route('paymenthistory',['id'=>$product->id])}}" title="details">
+                                            <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>
+                                        </a>
 
+                                    </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{route('gamebooklist',['id'=>$product->id])}}" title="Edit">
                                             <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>
