@@ -26,8 +26,16 @@ class BookingHistoryController extends Controller
         if($request->game_id){
             $bookgames=Order::where('user_id',$user->id)->where('game_id',$request->game_id)->get();
             foreach ($bookgames as $book){
-                $book->bidlist=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->groupBy('created_at')->select(DB::raw('GROUP_CONCAT(bid_qty) AS bid_qty'),DB::raw('GROUP_CONCAT(bid_digit) AS bid_digit'),DB::raw('GROUP_CONCAT(game_price) AS game_price'), 'created_at')->get();
-                $totalbid=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->get();
+                
+                $book->bidlist=GameBook::where('user_id',$user->id)
+                ->where('game_id',$book->game_id)
+                ->groupBy('attempt_id')
+                ->select(DB::raw('GROUP_CONCAT(bid_digit order by bid_digit asc) AS bid_digit'),DB::raw('GROUP_CONCAT(bid_qty order by bid_digit asc) AS bid_qty'),DB::raw('GROUP_CONCAT(game_price order by bid_digit asc) AS game_price'), 'attempt_id')
+                ->get();
+                
+                $totalbid=GameBook::where('user_id',$user->id)
+                ->where('game_id',$book->game_id)
+                ->get();
                 $token=0;
                 $winamt=0;
                 $winresult=GameBook::where('user_id',$user->id)->where('game_id',$book->game_id)->where('status','Won')->select(DB::raw('SUM(bid_qty) as wintoken'),'winning_amount')->groupBy('winning_amount')->get();
@@ -136,7 +144,7 @@ class BookingHistoryController extends Controller
             return [
                 'status'=>'success',
                 'msg'=>'success',
-                'remaining_balance'=>$remaining_balance,
+                'remaining_balance'=>round($remaining_balance,2),
                 'data'=>compact('bookgames')
             ];
         }else{
@@ -157,7 +165,7 @@ class BookingHistoryController extends Controller
         if($user){
             $game=Order::where('user_id',$user->id)->select('game_id','name')->get();
         }else{
-            $game=Game::select('id as game_id','name')->get();
+            $game=Game::whereNotIn('isactive',[0])->select('id as game_id','name')->orderBy('id','DESC')->get();
         }
         if($game->count()>0){
             return [

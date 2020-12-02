@@ -39,7 +39,7 @@ class GameController extends Controller
 
             if($current>=$enddate){
                 $gam=Game::find($game->id);
-                $gam->isactive=0;
+                $gam->isactive=3;
                 $gam->update();
 
             }else{
@@ -72,7 +72,7 @@ class GameController extends Controller
             return [
                 'status'=>'success',
                 'data'=>$games,
-                'balance'=>$balance,
+                'balance'=>round($balance,2),
                 'username'=>$user->email,
                 'total'=>$total,
             ];
@@ -97,6 +97,9 @@ class GameController extends Controller
 
         // $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();
         // var_dump($game);die;
+
+
+
         if(!$games){
             return [
                 'status'=>'failed',
@@ -115,7 +118,8 @@ class GameController extends Controller
             'time'=>$games->time,
             'price'=>$user->rate
         );
-        $balance=Transaction::balance($user->id);
+        $balance1=Transaction::balance($user->id);
+        $balance=round($balance1,2);
         $totaldeposit=Transaction::totaldeposit($user->id);
         $total=$totaldeposit;
         $date=date('Y-m-d H:i:s');
@@ -144,6 +148,26 @@ class GameController extends Controller
 
         $games=Game::find($request->game_id);
         // $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();
+
+
+         $date=$games->orginal;
+            $time=$games->time;
+            $datetime=$date." ".$time;
+            // var_dump($datetime);die;
+            $enddate=strtotime($datetime);
+            $newdate=date('Y-m-d H:i:s');
+            $current=strtotime($newdate);
+            $remaining=($enddate-$current)*1000;
+
+            if($current>=$enddate){
+            return [
+                 'status'=>'failed',
+                'msg'=>'This Game Has been Expired'
+            ];
+
+
+            }
+
         $game=array(
             'id'=>$games->id,
             'name'=>$games->name,
@@ -179,10 +203,14 @@ class GameController extends Controller
             $bookorder= $havingorder->id;
         }
         $qty=  $request->bid_qty;
+
+        $unique_id=uniqid().rand(11111,99999);
+
         foreach($qty as $key=>$qt){
             if($qt>0){
                 $book=  GameBook::create([
                     'user_id' => $user->id,
+                    'attempt_id'=>$unique_id,
                     'order_id' => $bookorder,
                     'game_id' => $request->game_id,
                     'game_timing' =>$game['game_time'],
@@ -203,8 +231,8 @@ class GameController extends Controller
 
         $withdraw=Transaction::create([
             'user_id' => $user->id,
-            'amount' => round($total),
-            'type' => 'Withdraw',
+            'amount' => round($total,2),
+            'type' => 'booking',
             'mode' => 'book',
         ]);
 

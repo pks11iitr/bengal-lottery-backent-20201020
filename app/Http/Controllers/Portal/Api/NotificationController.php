@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer\Api;
+namespace App\Http\Controllers\Portal\Api;
 
 use App\Models\Notification;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ class NotificationController extends Controller
 {
     public function index(Request $request){
 
-        $user=auth()->guard('customerapi')->user();
+        $user=auth()->guard('api')->user();
         if(!$user){
             $notifications=Notification::where('type', 'all')->select('title', 'description', 'created_at')->orderBy('created_at', 'desc')->get();
 

@@ -68,7 +68,7 @@ class SendBulkNotifications implements ShouldQueue
 
         foreach($tokens as $token){
 
-            FCMNotification::sendNotification($token, $this->title??'', $this->message??'alam');
+            FCMNotification::sendNotification($token->token, $this->title, $this->message);
 
         }
 

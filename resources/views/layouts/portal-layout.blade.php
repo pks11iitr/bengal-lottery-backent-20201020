@@ -130,9 +130,11 @@
 {{--                            <li>--}}
 {{--                                <a href="" class="btn btn-info">OLD History</a>--}}
 {{--                            </li>--}}
+@if(auth()->user()->hasRole('admin'))
                             <li>
                                 <a href="{{route('notification')}}" class="btn btn-info">Notification</a>
                             </li>
+                            @endif
                             <li class="p_zero_b">
 
                             </li>

@@ -21,7 +21,7 @@ class Transaction extends Model
             $balances[$w->type]=$w->total;
         }
 
-        return ($balances['Deposit']??0)-($balances['Withdraw']??0);
+        return ($balances['Deposit']??0)+($balances['win']??0)-($balances['Withdraw']??0)-($balances['booking']??0);
     }
 
     public static function totaldeposit($userid){
