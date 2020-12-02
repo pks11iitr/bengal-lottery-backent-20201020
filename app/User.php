@@ -47,6 +47,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo('App\User', 'parent_id');
     }
 
+    public function childs(){
+        return $this->hasMany('App\User', 'parent_id');
+    }
 
     public function getJWTIdentifier()
     {
