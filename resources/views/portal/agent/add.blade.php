@@ -358,7 +358,7 @@
                                     <div class="form-group">
                                         <label>Isactive</label>
                                         <select class="form-control select2" id="status_edit" name="status_edit">
-                                            <option value="">Please Select Status</option>
+                                            <option value="3">Please Select Status</option>
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
                                             <option value="2">Blocked</option>
@@ -404,7 +404,7 @@
                         $('#productIdEdit').val(productData.id);
                         $('#username_edit').val(productData.email);
                         $('#deposit_edit').val(0);
-                        $('#status_edit').val(productData.status);
+                        $('#status_edit').val();
                         $('#withdraw_edit').val(0);
                         $('#rate_edit').val(productData.rate);
 

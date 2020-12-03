@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Response;
+use App\Jobs\ActiveInactiveUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -115,9 +116,22 @@ class AgentController extends Controller
             $agentdetails = User::where("id", $request->agent_id)->first();
             $agentdetails->deposit = $request->deposit_edit;
             $agentdetails->withdraw = $request->withdraw_edit;
-            $agentdetails->status = $request->status_edit;
+            //var_dump($request->status_edit);die();
+            if($request->status_edit==0){
+
+                $agentdetails->status = 0;
+                dispatch(new ActiveInactiveUser($agentdetails, 0));
+            }elseif($request->status_edit==1){
+                $agentdetails->status = $request->status_edit;
+                dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
+            }elseif($request->status_edit==2){
+                $agentdetails->status = $request->status_edit;
+                dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
+            }
+
             $agentdetails->rate = $request->rate_edit;
             $agentdetails->save();
+
             if ($request->deposit_edit > 0) {
                 $deposit = Transaction::create([
                     'user_id' => $request->agent_id,
