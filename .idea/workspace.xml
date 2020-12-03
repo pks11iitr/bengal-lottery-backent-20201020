@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="minor fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +165,7 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/vendor/brozot/laravel-fcm" />
+      <path value="$PROJECT_DIR$/vendor/rap2hpoutre/laravel-log-viewer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gjdAUezWJBBJYVP0pB2sVar9BE" />
@@ -259,13 +257,6 @@
       <workItem from="1606822012120" duration="3312000" />
       <workItem from="1606907671636" duration="4848000" />
       <workItem from="1606974374193" duration="252000" />
-    </task>
-    <task id="LOCAL-00030" summary="logout function set">
-      <created>1601292784438</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1601292784438</updated>
     </task>
     <task id="LOCAL-00031" summary="logout function set">
       <created>1601292994632</created>
@@ -603,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607018763677</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="adding logviewer">
+      <created>1607019693990</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1607019693990</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +643,8 @@
     <MESSAGE value="admin work" />
     <MESSAGE value="api work" />
     <MESSAGE value="minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
+    <MESSAGE value="adding logviewer" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding logviewer" />
   </component>
   <component name="WindowStateProjectService">
     <state x="391" y="198" width="639" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604130019579">
@@ -657,10 +656,10 @@
     </state>
     <state x="448" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/65.27.1301.741@65.27.1301.741" timestamp="1606302986021" />
     <state x="449" y="154" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1299.741@67.27.1299.741" timestamp="1601733429688" />
-    <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1607019158911">
+    <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2" timestamp="1607019693866">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
-    <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1607019158911" />
+    <state x="255" y="27" width="912" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1607019693866" />
     <state x="187" y="85" width="1039" height="622" key="DiffContextDialog" timestamp="1601216253212">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -689,11 +688,11 @@
     </state>
     <state x="511" y="322" width="399" height="149" key="NewPhpFileDialog/65.27.1301.741@65.27.1301.741" timestamp="1606743069066" />
     <state x="512" y="322" width="399" height="149" key="NewPhpFileDialog/67.27.1299.741@67.27.1299.741" timestamp="1601732946908" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607019166264">
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1607019866874">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="268" y="206" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1606824711108" />
-    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1607019166264" />
+    <state x="311" y="132" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1299.741@67.27.1299.741" timestamp="1607019866874" />
     <state x="406" y="106" width="620" height="580" key="find.popup" timestamp="1607018784179">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
