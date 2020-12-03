@@ -227,7 +227,7 @@ class GameController extends Controller
 
         }
 
-        dispatch(new AdjustUserStats($user, $games, $request->bid_qty));
+        dispatch(new AdjustUserStats($user, $games, $request->bid_qty))->onQueue('instant');
 
         $withdraw=Transaction::create([
             'user_id' => $user->id,
