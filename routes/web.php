@@ -20,8 +20,7 @@ Auth::routes();
 Route::group(['middleware'=>['auth', 'acl']], function(){
 
     Route::group(['is'=>'admin'], function(){
-
-
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     });
 
     Route::group(['is'=>'admin|subadmin'], function(){

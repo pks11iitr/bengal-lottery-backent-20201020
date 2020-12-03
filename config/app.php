@@ -179,6 +179,7 @@ return [
         'Kodeine\Acl\AclServiceProvider',
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
     ],
 
     /*
