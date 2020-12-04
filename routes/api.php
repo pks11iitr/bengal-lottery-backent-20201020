@@ -21,7 +21,6 @@ $api->group(['middleware' => ['isactiveuser']], function ($api) {
     $api->get('game-list', ['as' => 'api.login', 'uses' => 'Portal\Api\GameController@index']);
     $api->get('game-details', ['as' => 'api.details', 'uses' => 'Portal\Api\GameController@gamedetails']);
     $api->get('game-list', ['as' => 'api.game', 'uses' => 'Portal\Api\GameController@index']);
-    $api->post('game-book', ['as' => 'api.gamebooking', 'uses' => 'Portal\Api\GameController@gamebooking']);
     $api->get('game-history', ['as' => 'api.gamehistory', 'uses' => 'Portal\Api\BookingHistoryController@index']);
     $api->get('downline-game', ['as' => 'api.history.game', 'uses' => 'Portal\Api\BookingHistoryController@downlinegame']);
     $api->get('game-result', ['as' => 'api.result.game', 'uses' => 'Portal\Api\BookingHistoryController@gameresult']);
@@ -30,6 +29,7 @@ $api->group(['middleware' => ['isactiveuser']], function ($api) {
 });
 
 $api->get('history-game', ['as' => 'api.history.game', 'uses' => 'Portal\Api\BookingHistoryController@historygame']);
+$api->post('game-book', ['as' => 'api.gamebooking', 'uses' => 'Portal\Api\GameController@gamebooking']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

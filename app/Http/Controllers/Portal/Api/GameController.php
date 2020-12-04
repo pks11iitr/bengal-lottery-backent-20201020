@@ -143,8 +143,15 @@ class GameController extends Controller
         if(!$user)
             return [
                 'status'=>'failed',
-                'message'=>'Please login to continue'
+                'msg'=>'Please login to continue'
             ];
+
+        if($user->status==0)
+            return response()->json([
+                'status'=>'failed',
+                'msg'=>'Please contact to upline'
+            ], 200);
+
 
         $games=Game::find($request->game_id);
         // $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();

@@ -24,7 +24,7 @@ class CheckActiveUser
         if($user->status==0)
             return response()->json([
                 'status'=>'failed',
-                'message'=>'Account is not active'
+                'message'=>'Please contact to upline'
             ], 200);
         return $next($request);
     }
