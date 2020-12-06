@@ -156,6 +156,24 @@ class GameController extends Controller
         $games=Game::find($request->game_id);
         // $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();
 
+        $qty=  $request->bid_qty;
+
+        $total=0;
+        foreach($qty as $key=>$qt){
+            if($qt>0){
+                $total=$total+(($qt??0)*($user->rate??0));
+            }
+        }
+
+        $balance1=Transaction::balance($user->id);
+        $balance=round($balance1,2);
+
+        if($balance < $total)
+            return [
+                'status'=>'failed',
+                'msg'=>'You dont have sufficient balance to place this bid'
+            ];
+
 
          $date=$games->orginal;
             $time=$games->time;
