@@ -8,6 +8,7 @@ use App\Models\GameBook;
 use App\Models\GamePrice;
 use App\Models\Order;
 use App\Models\Transaction;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -145,6 +146,13 @@ class GameController extends Controller
                 'status'=>'failed',
                 'message'=>'Please login to continue'
             ];
+        $active=User::where('status',1)->where('id',$user->id)->first();
+        if(!$active){
+            return [
+                'status'=>'failed',
+                'message'=>'Please login to continue'
+            ];
+        }
 
         $games=Game::find($request->game_id);
         // $games=GamePrice::with('game')->where('agent_id',$user->parent_id)->where('game_id',$request->game_id)->first();
@@ -162,7 +170,7 @@ class GameController extends Controller
             if($current>=$enddate){
             return [
                  'status'=>'failed',
-                'msg'=>'This Game Has been Expired'
+                'message'=>'This Game Has been Expired'
             ];
 
 
