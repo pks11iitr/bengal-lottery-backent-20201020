@@ -42,10 +42,12 @@ class ActiveInactiveUser implements ShouldQueue
     }
 
     private function changeChildsStatus($user, $status){
-        foreach($user->childs as $c){
-            $c->status=$status;
-            $c->save();
-            $this->changeChildsStatus($c, $status);
+        if($user){
+            foreach($user->childs as $c){
+                $c->status=$status;
+                $c->save();
+                $this->changeChildsStatus($c, $status);
+            }
         }
     }
 
