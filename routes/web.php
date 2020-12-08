@@ -26,6 +26,7 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
     Route::group(['is'=>'admin|subadmin'], function(){
     Route::get('/home', 'Portal\DashboardController@dashboard')->name('home');
     Route::get('/dashboard', 'Portal\DashboardController@dashboard')->name('dashboard');
+
     Route::get('/agents', 'Portal\AgentController@userslist')->name('agents');
     Route::post('create-agent', 'Portal\AgentController@createagent')->name('agentcreate');
     Route::get('agentdetails', 'Portal\AgentController@agentdetails')->name('agentdetails');
@@ -45,13 +46,17 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
         Route::post('notification-save', 'Portal\NotificationController@createsave')->name('notificationsave');
 
         Route::get('payment-history/{id}', 'Portal\AgentController@paymenthistory')->name('paymenthistory');
+        //start commission
+        Route::get('commission-create/{id}', 'Portal\AgentController@commissioncreate')->name('commissioncreate');
+        Route::post('commission-save', 'Portal\AgentController@commissionsave')->name('commissionsave');
 
 
 
 
 
 
-    Route::get('/products', 'Portal\ProductController@index')->name('products');
+
+        Route::get('/products', 'Portal\ProductController@index')->name('products');
 
     Route::get('/product-list', 'Portal\ProductController@listing')->name('products.list');
     Route::get('/add-product', 'Portal\ProductController@addProductForm')->name('products.add');

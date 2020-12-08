@@ -75,6 +75,9 @@
                             <th style="width: 15%">
                                 Type
                             </th>
+                            <th style="width: 15%">
+                                Description
+                            </th>
                             <th style="width: 15%">Date
                             </th>
                             <th style="width: 15%">Time
@@ -93,6 +96,9 @@
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$payment->type}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$payment->mode}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{date('d M Y', strtotime($payment->created_at))}}
