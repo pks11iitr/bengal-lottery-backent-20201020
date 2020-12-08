@@ -28,7 +28,8 @@ $api->group(['middleware' => ['isactiveuser']], function ($api) {
     $api->get('notifications', ['as' => 'notifications.list', 'uses' => 'Portal\Api\NotificationController@index']);
 });
 
-$api->get('downline-history-game', ['as' => 'api.downline', 'uses' => 'Portal\Api\DownlinegamehistoryController@index']);
+$api->get('downline-history-game', ['as' => 'api.downline-game', 'uses' => 'Portal\Api\DownlinegamehistoryController@index']);
+$api->get('agent-user-list', ['as' => 'api.downline.agents', 'uses' => 'Portal\Api\DownlinegamehistoryController@agentlist']);
 
 $api->get('history-game', ['as' => 'api.history.game', 'uses' => 'Portal\Api\BookingHistoryController@historygame']);
 $api->post('game-book', ['as' => 'api.gamebooking', 'uses' => 'Portal\Api\GameController@gamebooking']);

@@ -12,43 +12,50 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
 class DownlinegamehistoryController extends Controller
 {
 
-    public function index(Request $request){
-        $user=Auth::guard('api')->user();
-        if(!$user)
+    public function index(Request $request)
+    {
+        $user = Auth::guard('api')->user();
+        if (!$user)
             return [
-                'status'=>'failed',
-                'message'=>'Please login to continue'
+                'status' => 'failed',
+                'message' => 'Please login to continue'
             ];
-        $t0 = 0; $t1 = 0; $t2 = 0; $t3 = 0; $t4 = 0; $t5 = 0; $t6 = 0; $t7 = 0; $t8 = 0; $t9 = 0;$finaltotaltan=0;$finaltotalticket=0;$finaltotalwin=0;
-        $win0=0;$win1=0;$win2=0;$win3=0;$win4=0;$win5=0;$win6=0;$win7=0;$win8=0;$win9=0;
-        $games= Game::whereNotIn('isactive',[0]);
-       // var_dump($request->agent_id);die;
+        $t0 = 0;
+        $t1 = 0;
+        $t2 = 0;
+        $t3 = 0;
+        $t4 = 0;
+        $t5 = 0;
+        $t6 = 0;
+        $t7 = 0;
+        $t8 = 0;
+        $t9 = 0;
+        $finaltotaltan = 0;
+        $finaltotalticket = 0;
+        $finaltotalwin = 0;
+        $win0 = 0;
+        $win1 = 0;
+        $win2 = 0;
+        $win3 = 0;
+        $win4 = 0;
+        $win5 = 0;
+        $win6 = 0;
+        $win7 = 0;
+        $win8 = 0;
+        $win9 = 0;
+        $games = Game::whereNotIn('isactive', [0]);
 
-        $games=$games->where('close_date',$request->close_date)->get();
+        $games = $games->where('close_date', $request->close_date)->get();
         foreach ($games as $game) {
             $totalbid = UserStat::where('user_id', $request->agent_id)->where('game_id', $game->id)->first();
 
-//            $game->ticket = array(
-//               /* 'totaltoken' =>0,
-//                'totaltoken1' =>0,
-//                'totaltoken2' =>0,
-//                'totaltoken3' =>0,
-//                'totaltoken4' => 0,
-//                'totaltoken5' =>0,
-//                'totaltoken6' => 0,
-//                'totaltoken7' =>0,
-//                'totaltoken8' => 0,
-//                'totaltoken9' => 0,*/
-//                'totaltan' => 0,
-//                'totalticket' => 0,
-//                'totalwin' =>0
-//            );
-            $game->totaltan=0;
-            $game->totalticket=0;
-            $game->totalwin=0;
+            $game->totaltan = 0;
+            $game->totalticket = 0;
+            $game->totalwin = 0;
             if ($totalbid) {
                 $t0 = $t0 + $totalbid->digit0 ?? 0;
                 $t1 = $t1 + $totalbid->digit1 ?? 0;
@@ -89,48 +96,59 @@ class DownlinegamehistoryController extends Controller
                 }
                 $finaltotalwin = $finaltotalwin + max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9);
 
-
-//                $game->ticket = array(
-//                   /* 'totaltoken' => $totalbid->digit0,
-//                    'totaltoken1' => $totalbid->digit1,
-//                    'totaltoken2' => $totalbid->digit2,
-//                    'totaltoken3' => $totalbid->digit3,
-//                    'totaltoken4' => $totalbid->digit4,
-//                    'totaltoken5' => $totalbid->digit5,
-//                    'totaltoken6' => $totalbid->digit6,
-//                    'totaltoken7' => $totalbid->digit7,
-//                    'totaltoken8' => $totalbid->digit8,
-//                    'totaltoken9' => $totalbid->digit9,*/
-//                    'totaltan' => min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9),
-//                    'totalticket' => ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9),
-//                    'totalwin' => max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9)
-//                );
-
-                $game->totaltan=min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9);
-                $game->totalticket=($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
-                $game->totalwin=max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9);
+                $game->totaltan = min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9);
+                $game->totalticket = ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
+                $game->totalwin = max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9);
             }
         }
 
-        $total=array(
-            'finaltotaltan'=>$finaltotaltan,
-            'finaltotalticket'=>$finaltotalticket,
-            'finaltotalwin'=>$finaltotalwin,
+        $total = array(
+            'finaltotaltan' => $finaltotaltan,
+            'finaltotalticket' => $finaltotalticket,
+            'finaltotalwin' => $finaltotalwin,
         );
 
-        if($games->count()>0){
+        if ($games->count() > 0) {
             return [
-                'status'=>'success',
-                'message'=>'success',
-                'data'=>compact('games','total')
+                'status' => 'success',
+                'message' => 'success',
+                'data' => compact('games', 'total')
             ];
-        }else{
+        } else {
             return [
-                'status'=>'failed',
-                'message'=>'No Record Found'
+                'status' => 'failed',
+                'message' => 'Please Select Agent and Game Date'
             ];
         }
     }
+
+    public function agentlist(Request $request)
+    {
+        $user = Auth::guard('api')->user();
+        if (!$user)
+            return [
+                'status' => 'failed',
+                'message' => 'Please login to continue'
+            ];
+
+            $agents=User::where('parent_id',$user->id)->whereNotNull('parent_id')->select('id','email','parent_id','rate','status','account')->get();
+
+
+        if ($agents->count() > 0) {
+            return [
+                'status' => 'success',
+                'message' => 'success',
+                'data' => compact('agents')
+            ];
+        } else {
+            return [
+                'status' => 'failed',
+                'message' => 'No Record Found'
+            ];
+        }
+    }
+
+
 
 
 }

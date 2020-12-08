@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission calculation">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -256,14 +256,7 @@
       <workItem from="1606907671636" duration="4848000" />
       <workItem from="1606974374193" duration="252000" />
       <workItem from="1607000357961" duration="662000" />
-      <workItem from="1607406538816" duration="19310000" />
-    </task>
-    <task id="LOCAL-00032" summary="logout function set">
-      <created>1601293100964</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1601293100964</updated>
+      <workItem from="1607406538816" duration="20682000" />
     </task>
     <task id="LOCAL-00033" summary="logout function set">
       <created>1601293253477</created>
@@ -601,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607425769201</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="commission calculation">
+      <created>1607431043614</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1607431043614</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
