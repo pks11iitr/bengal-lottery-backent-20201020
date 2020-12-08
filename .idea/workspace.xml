@@ -19,16 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="api work">
-      <change afterPath="$PROJECT_DIR$/resources/views/portal/agent/commission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission calculation">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,14 +256,7 @@
       <workItem from="1606907671636" duration="4848000" />
       <workItem from="1606974374193" duration="252000" />
       <workItem from="1607000357961" duration="662000" />
-      <workItem from="1607406538816" duration="15425000" />
-    </task>
-    <task id="LOCAL-00031" summary="logout function set">
-      <created>1601292994632</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1601292994632</updated>
+      <workItem from="1607406538816" duration="19310000" />
     </task>
     <task id="LOCAL-00032" summary="logout function set">
       <created>1601293100964</created>
@@ -608,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607407797468</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="commission calculation">
+      <created>1607425769201</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1607425769201</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,6 +642,7 @@
     <MESSAGE value="admin and api work" />
     <MESSAGE value="admin work" />
     <MESSAGE value="api work" />
-    <option name="LAST_COMMIT_MESSAGE" value="api work" />
+    <MESSAGE value="commission calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="commission calculation" />
   </component>
 </project>
