@@ -162,7 +162,7 @@ class DownlinegamehistoryController extends Controller
         $total = 0;$cmc=0;
         foreach ($agents as $agent) {
             $totalcommission = Transaction::totalcommission($agent->id);
-            $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate,$user->rate);
+            $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate);
             $cmc=$cmc+round($totalcommission,2);
             $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
         }
