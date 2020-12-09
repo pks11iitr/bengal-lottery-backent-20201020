@@ -21,6 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission api and game color code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,14 +259,7 @@
       <workItem from="1606974374193" duration="252000" />
       <workItem from="1607000357961" duration="662000" />
       <workItem from="1607406538816" duration="21321000" />
-      <workItem from="1607496598116" duration="2951000" />
-    </task>
-    <task id="LOCAL-00035" summary="logout function set">
-      <created>1601293819344</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1601293819344</updated>
+      <workItem from="1607496598116" duration="5461000" />
     </task>
     <task id="LOCAL-00036" summary="logout function set">
       <created>1601294175503</created>
@@ -601,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607498930938</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="commission api and game color code">
+      <created>1607500545716</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1607500545716</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

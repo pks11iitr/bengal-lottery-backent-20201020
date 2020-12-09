@@ -46,7 +46,7 @@ class GameController extends Controller
             'name' => $request->name,
             'game_time' => $request->game_time,
             'close_date' => $request->close_date,
-            // 'price' => $request->price,
+             'color_code' => $request->color_code,
             'degit' => $request->degit,
             'isactive' => $request->isactive,
         ]);
@@ -92,7 +92,7 @@ class GameController extends Controller
         $game->name = $request->name;
         $game->game_time = $request->game_time;
         $game->close_date = $request->close_date;
-        // $game->price = $request->price;
+         $game->color_code = $request->color_code;
         $game->degit = $request->degit;
         $game->isactive = $request->isactive;
         $game->save();
