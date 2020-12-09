@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class Game extends Model
 {
     protected $table='game';
-    protected $fillable=['name','game_time','degit','close_date','isactive','price','bid_qty'];
+    protected $fillable=['name','color_code','game_time','degit','close_date','isactive','price','bid_qty'];
 
     protected $hidden = ['created_at','deleted_at','updated_at'];
     public function getCloseDateAttribute($value) {

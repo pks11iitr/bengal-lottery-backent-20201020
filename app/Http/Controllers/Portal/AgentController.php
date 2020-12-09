@@ -7,6 +7,7 @@ use App\Models\Game;
 use App\Models\GameBook;
 use App\Models\Order;
 use App\Models\Transaction;
+use App\Models\UserStat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ class AgentController extends Controller
         $user = Auth::user();
 
         $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
+        $total=0;
         foreach ($agents as $agent){
             $balance=Transaction::balance($agent->id);
             $agent->balance=round($balance,2);
@@ -31,6 +33,15 @@ class AgentController extends Controller
              $agent->totaldeposit=round($totaldeposit,2);
             $totalwithdraw=Transaction::totalwithdraw($agent->id);
             $agent->totalwithdraw=round($totalwithdraw,2);
+
+            //commission
+
+            $totalcommission=Transaction::totalcommission($agent->id);
+            $agent->totalcommission=round($totalcommission,2);
+            $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate);
+            $agent->totalprofitcommission=round($totalprofitcommission,2);
+
+           //end commission
         }
         //var_dump($balance);die();
         return view('portal.agent.add', compact('agents'));
@@ -156,7 +167,18 @@ class AgentController extends Controller
                     $agentdetails = User::where("id", $request->agent_id)->first();
                     $agentdetails->deposit = $request->deposit_edit;
                     $agentdetails->withdraw = $request->withdraw_edit;
-                    $agentdetails->status = $request->status_edit;
+                  //  $agentdetails->status = $request->status_edit;
+                    if($request->status_edit==0){
+
+                        $agentdetails->status = 0;
+                        dispatch(new ActiveInactiveUser($agentdetails, 0));
+                    }elseif($request->status_edit==1){
+                        $agentdetails->status = $request->status_edit;
+                        dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
+                    }elseif($request->status_edit==2){
+                        $agentdetails->status = $request->status_edit;
+                        dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
+                    }
                     $agentdetails->rate = $request->rate_edit;
                     $agentdetails->save();
                     if ($request->deposit_edit >0) {
@@ -255,6 +277,50 @@ class AgentController extends Controller
     {
         $payments = Transaction::where('user_id', $id)->orderBy('id','DESC')->get();
         return view('portal.agent.paymenthistory', compact('payments'));
+    }
+
+//startcommission
+    public function commissioncreate(Request $request,$id)
+    {
+        return view('portal.agent.commission',['id'=>$id]);
+    }
+
+    public function commissionsave(Request $request)
+    {
+        $this->validate($request, array(
+            "commission" => "required",
+            "agent_id" => "required",
+        ));
+
+        $user=auth()->user();
+        $agent=User::find($request->agent_id);
+        $totalcommission=Transaction::totalcommission($agent->id);
+        //$totalcommission=round($totalcommission,2);
+        $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate);
+       // $totalprofitcommission=round($totalprofitcommission,2);
+        $balancecommission=round(($totalprofitcommission-$totalcommission),2);
+        if($balancecommission < $request->commission)
+        {
+
+
+            return redirect()->back()->with('error', 'You dont have sufficient Commission to be Deposit');
+        }
+            $commissionDeposit=Transaction::create([
+                'user_id' => $user->id,
+                'amount' => $request->commission,
+                'type' => 'Deposit',
+                'mode' => 'commission',
+            ]);
+
+            $commission=Transaction::create([
+                'user_id' => $request->agent_id,
+                'amount' => $request->commission,
+                'type' => 'commission',
+                'mode' => 'commission',
+            ]);
+
+
+        return redirect()->route('agents')->with('success', 'Commission Deposit Successfully');
     }
 
 }

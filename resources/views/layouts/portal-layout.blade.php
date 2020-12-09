@@ -102,6 +102,9 @@
                     <p style="text-align:left">
                         {{ auth()->user()->email}} (Balance Amount: {{App\Models\Transaction::balance(auth()->user()->id)}}) &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}})
                     </p>
+                    <p style="text-align:left;color:blue;font-weight: bold ">
+    @if(isset($total))Total Commission:   {{$total??0}}@endif
+                    </p>
                     <a href="{{route('login')}}">
 {{--                        <img src="/images/new-logo.jpeg" alt="">--}}
                     </a>

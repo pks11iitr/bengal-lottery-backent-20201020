@@ -19,8 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission calculation and downline game by agent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +45,6 @@
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="master-backup" />
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -176,7 +178,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kundanji" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -257,7 +259,23 @@
       <workItem from="1606822012120" duration="3312000" />
       <workItem from="1606907671636" duration="4848000" />
       <workItem from="1606974374193" duration="252000" />
-      <workItem from="1607087017084" duration="1308000" />
+      <workItem from="1607000357961" duration="662000" />
+      <workItem from="1607406538816" duration="21321000" />
+      <workItem from="1607496598116" duration="2311000" />
+    </task>
+    <task id="LOCAL-00034" summary="logout function set">
+      <created>1601293559707</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1601293559707</updated>
+    </task>
+    <task id="LOCAL-00035" summary="logout function set">
+      <created>1601293819344</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1601293819344</updated>
     </task>
     <task id="LOCAL-00036" summary="logout function set">
       <created>1601294175503</created>
@@ -553,56 +571,42 @@
       <option name="project" value="LOCAL" />
       <updated>1606908060625</updated>
     </task>
-    <task id="LOCAL-00078" summary="minor fix">
-      <created>1607018763677</created>
+    <task id="LOCAL-00078" summary="api work">
+      <created>1607000390988</created>
       <option name="number" value="00078" />
       <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
-      <updated>1607018763677</updated>
+      <updated>1607000390989</updated>
     </task>
-    <task id="LOCAL-00079" summary="adding logviewer">
-      <created>1607019693990</created>
+    <task id="LOCAL-00079" summary="api work">
+      <created>1607407797467</created>
       <option name="number" value="00079" />
       <option name="presentableId" value="LOCAL-00079" />
       <option name="project" value="LOCAL" />
-      <updated>1607019693990</updated>
+      <updated>1607407797468</updated>
     </task>
-    <task id="LOCAL-00080" summary="adding logviewer">
-      <created>1607020001692</created>
+    <task id="LOCAL-00080" summary="commission calculation">
+      <created>1607425769201</created>
       <option name="number" value="00080" />
       <option name="presentableId" value="LOCAL-00080" />
       <option name="project" value="LOCAL" />
-      <updated>1607020001692</updated>
+      <updated>1607425769201</updated>
     </task>
-    <task id="LOCAL-00081" summary="adding logviewer">
-      <created>1607068468958</created>
+    <task id="LOCAL-00081" summary="commission calculation">
+      <created>1607431043614</created>
       <option name="number" value="00081" />
       <option name="presentableId" value="LOCAL-00081" />
       <option name="project" value="LOCAL" />
-      <updated>1607068468958</updated>
+      <updated>1607431043614</updated>
     </task>
-    <task id="LOCAL-00082" summary="adding logviewer">
-      <created>1607074741596</created>
+    <task id="LOCAL-00082" summary="commission calculation and downline game by agent">
+      <created>1607432438511</created>
       <option name="number" value="00082" />
       <option name="presentableId" value="LOCAL-00082" />
       <option name="project" value="LOCAL" />
-      <updated>1607074741596</updated>
+      <updated>1607432438511</updated>
     </task>
-    <task id="LOCAL-00083" summary="adding logviewer">
-      <created>1607075969694</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1607075969694</updated>
-    </task>
-    <task id="LOCAL-00084" summary="stopping when bid greater than balance amount">
-      <created>1607267712251</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1607267712251</updated>
-    </task>
-    <option name="localTasksCounter" value="85" />
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,9 +647,8 @@
     <MESSAGE value="admin and api work" />
     <MESSAGE value="admin work" />
     <MESSAGE value="api work" />
-    <MESSAGE value="minor fix" />
-    <MESSAGE value="adding logviewer" />
-    <MESSAGE value="stopping when bid greater than balance amount" />
-    <option name="LAST_COMMIT_MESSAGE" value="stopping when bid greater than balance amount" />
+    <MESSAGE value="commission calculation" />
+    <MESSAGE value="commission calculation and downline game by agent" />
+    <option name="LAST_COMMIT_MESSAGE" value="commission calculation and downline game by agent" />
   </component>
 </project>
