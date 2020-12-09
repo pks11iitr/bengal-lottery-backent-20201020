@@ -38,7 +38,7 @@ class AgentController extends Controller
 
             $totalcommission=Transaction::totalcommission($agent->id);
             $agent->totalcommission=round($totalcommission,2);
-            $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate);
+            $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate, $user->rate);
             $agent->totalprofitcommission=round($totalprofitcommission,2);
 
            //end commission
@@ -288,7 +288,7 @@ class AgentController extends Controller
     public function commissionsave(Request $request)
     {
         $this->validate($request, array(
-            "commission" => "required",
+            "commission" => "required|min:1",
             "agent_id" => "required",
         ));
 
