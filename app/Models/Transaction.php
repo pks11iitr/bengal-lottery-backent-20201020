@@ -50,7 +50,7 @@ class Transaction extends Model
     public static function totalprofitcommition($userid,$rate,$userrate){
 
             $commision=UserStat::where('user_id',$userid) ;
-           $agenttotalbid= $commision->sum('digit0') + $commision->sum('digit1') +$commision->sum('digit2') +$commision->sum('digit3') +$commision->sum('digit4') + $commision->sum('digit5')+ $commision->sum('digit6')+$commision->sum('digit7') + $commision->sum('digit8') + $commision->sum('digit9');
+           $agenttotalbid= ($commision->sum('digit0')??0) + ($commision->sum('digit1')??0) +($commision->sum('digit2')??0) +($commision->sum('digit3')??0) + ($commision->sum('digit4')??0) + ($commision->sum('digit5')??0)+ ($commision->sum('digit6')??0)+($commision->sum('digit7')??0) + ($commision->sum('digit8')??0) + ($commision->sum('digit9')??0);
         $total= $agenttotalbid*($rate-($userrate));
 
         return ($total??0);
