@@ -288,7 +288,7 @@ class AgentController extends Controller
     public function commissionsave(Request $request)
     {
         $this->validate($request, array(
-            "commission" => "required",
+            "commission" => "required|min:1",
             "agent_id" => "required",
         ));
 
