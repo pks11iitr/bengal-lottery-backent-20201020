@@ -148,7 +148,38 @@ class DownlinegamehistoryController extends Controller
         }
     }
 
+    public function agentcommission(Request $request)
+    {
+        $user = Auth::guard('api')->user();
+        if (!$user)
+            return [
+                'status' => 'failed',
+                'message' => 'Please login to continue'
+            ];
 
+        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
 
+        $total = 0;$cmc=0;
+        foreach ($agents as $agent) {
+            $totalcommission = Transaction::totalcommission($agent->id);
+            $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate);
+            $cmc=$cmc+round($totalcommission,2);
+            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+        }
+        $total=$total+$cmc;
+
+        if ($agents->count() > 0) {
+            return [
+                'status' => 'success',
+                'message' => 'success',
+                'data' => $total
+            ];
+        } else {
+            return [
+                'status' => 'failed',
+                'message' => 'No Record Found'
+            ];
+        }
+    }
 
 }

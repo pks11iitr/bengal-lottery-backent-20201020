@@ -29,11 +29,12 @@ class DashboardController extends Controller
             ->get();
         $totalagent = $ag->count();
         $games = Game::orderBy('id', 'DESC')
-            ->get();
+            ->limit(10)->get();
         $totalgames = $games->count();
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
 
         //commission
+        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+
         $total = 0;$cmc=0;
         foreach ($agents as $agent) {
             $totalcommission = Transaction::totalcommission($agent->id);

@@ -27,8 +27,6 @@ class GameController extends Controller
         $games=array();
         foreach($gamess as $game){
 
-
-
             $date=$game->orginal;
             $time=$game->time;
             $datetime=$date." ".$time;
@@ -50,6 +48,7 @@ class GameController extends Controller
 
                     'id'=>$game->id,
                     'name'=>$game->name,
+                    'color_code'=>$game->color_code,
                     'close_date'=>$game->close_date,
                     'game_time'=>$game->game_time,
                     'price'=>$game->price,
@@ -64,7 +63,24 @@ class GameController extends Controller
 
         }
 
+//commission
+        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+        $ctotal = 0;
+        $cmc = 0;
+       if($agents->count()>0) {
 
+           foreach ($agents as $agent) {
+
+               $totalcommission = Transaction::totalcommission($agent->id);
+
+               $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate,$user->rate);
+               //var_dump($totalprofitcommission);die();
+               $cmc = $cmc + round($totalcommission, 2);
+               $ctotal = $ctotal + (round(($totalprofitcommission - $totalcommission), 2));
+           }
+           $ctotal = $ctotal + $cmc;
+       }
+      //  end commission
 
         $balance=Transaction::balance($user->id);
         $totaldeposit=Transaction::totaldeposit($user->id);
@@ -76,6 +92,7 @@ class GameController extends Controller
                 'balance'=>round($balance,2),
                 'username'=>$user->email,
                 'total'=>$total,
+                'commissiontotal'=>$ctotal,
             ];
         }else{
             return [

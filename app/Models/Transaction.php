@@ -47,12 +47,11 @@ class Transaction extends Model
 
         return ($balances['commission']??0);
     }
-    public static function totalprofitcommition($userid,$rate){
+    public static function totalprofitcommition($userid,$rate,$userrate){
 
-        $user = Auth::user();
             $commision=UserStat::where('user_id',$userid) ;
            $agenttotalbid= $commision->sum('digit0') + $commision->sum('digit1') +$commision->sum('digit2') +$commision->sum('digit3') +$commision->sum('digit4') + $commision->sum('digit5')+ $commision->sum('digit6')+$commision->sum('digit7') + $commision->sum('digit8') + $commision->sum('digit9');
-        $total= $agenttotalbid*($rate-($user->rate));
+        $total= $agenttotalbid*($rate-($userrate));
 
         return ($total??0);
     }
