@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission api and game color code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/game/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,20 +258,11 @@
       <workItem from="1607000357961" duration="662000" />
       <workItem from="1607406538816" duration="21321000" />
       <workItem from="1607496598116" duration="5461000" />
-    </task>
-    <task id="LOCAL-00036" summary="logout function set">
-      <created>1601294175503</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1601294175503</updated>
-    </task>
-    <task id="LOCAL-00037" summary="logout function set">
-      <created>1601294244530</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1601294244530</updated>
+      <workItem from="1607515957013" duration="1101000" />
+      <workItem from="1607517179961" duration="292000" />
+      <workItem from="1607517551911" duration="599000" />
+      <workItem from="1607580785327" duration="288000" />
+      <workItem from="1607607146223" duration="994000" />
     </task>
     <task id="LOCAL-00038" summary="logout function set">
       <created>1601294379253</created>
@@ -604,7 +593,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607500545716</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="commission api and game color code">
+      <created>1607516035384</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1607516035384</updated>
+    </task>
+    <task id="LOCAL-00086" summary="commission api and game color code">
+      <created>1607516095909</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1607516095909</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
