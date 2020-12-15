@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission api and game color code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission api and avl balance">
       <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,7 +173,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../glamology" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../julmsejung" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -269,14 +264,7 @@
       <workItem from="1607607146223" duration="1638000" />
       <workItem from="1607665073011" duration="597000" />
       <workItem from="1607926166893" duration="644000" />
-      <workItem from="1608012081759" duration="16053000" />
-    </task>
-    <task id="LOCAL-00039" summary="logout function set">
-      <created>1601660433373</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1601660433373</updated>
+      <workItem from="1608012081759" duration="17512000" />
     </task>
     <task id="LOCAL-00040" summary="logout function set">
       <created>1601660745834</created>
@@ -614,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607608143286</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="commission api and avl balance">
+      <created>1608032853948</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1608032853949</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,6 +653,7 @@
     <MESSAGE value="commission calculation" />
     <MESSAGE value="commission calculation and downline game by agent" />
     <MESSAGE value="commission api and game color code" />
-    <option name="LAST_COMMIT_MESSAGE" value="commission api and game color code" />
+    <MESSAGE value="commission api and avl balance" />
+    <option name="LAST_COMMIT_MESSAGE" value="commission api and avl balance" />
   </component>
 </project>

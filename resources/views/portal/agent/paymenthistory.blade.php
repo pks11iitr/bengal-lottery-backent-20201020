@@ -127,8 +127,8 @@
                                     <td>  @if($payment->type=='booking')
                                             {{$payment->amount}}@else{{'-'}}@endif</td>
                                     <td>{{$payment->avl_balance}}</td>
-                                    <td>{{$payment->customer->email}}</td>
-                                    <td>{{$payment->tocustomer->email}}</td>
+                                    <td>{{$payment->customer->email??''}}</td>
+                                    <td>{{$payment->tocustomer->email??''}}</td>
 
 {{--                                    <td style="text-transform: capitalize;">--}}
 {{--                                        {{date('h:i A', strtotime($payment->created_at))}}--}}
