@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission api and avl balance">
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Jobs/UpdateWinBalances.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Balance.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +174,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../julmsejung" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Jobs" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -181,11 +182,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Jobs" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Portal/Api" />
       <recent name="$PROJECT_DIR$/app/Services" />
       <recent name="$PROJECT_DIR$/resources/views/portal" />
       <recent name="$PROJECT_DIR$/public/images" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -264,14 +265,7 @@
       <workItem from="1607607146223" duration="1638000" />
       <workItem from="1607665073011" duration="597000" />
       <workItem from="1607926166893" duration="644000" />
-      <workItem from="1608012081759" duration="17512000" />
-    </task>
-    <task id="LOCAL-00040" summary="logout function set">
-      <created>1601660745834</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1601660745834</updated>
+      <workItem from="1608012081759" duration="24197000" />
     </task>
     <task id="LOCAL-00041" summary="logout function set">
       <created>1601661160047</created>
@@ -609,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608032853949</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="commission api and avl balance">
+      <created>1608035450122</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1608035450123</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
