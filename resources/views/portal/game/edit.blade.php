@@ -116,7 +116,14 @@
                                                             <input type="text" id="degit" name="degit" class="form-control" placeholder="degit " required  value="{{$game->degit}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
                                                         </div>
                                                     </div>
- 
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="text-muted" for="cemail">Color Picker <small class="text-success">*</small> :</label>
+                                                            <input type="text" id="color_code" name="color_code" class="form-control" value="{{$game->color_code}}" placeholder="color_code " required >
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Is Active</label>
@@ -130,7 +137,7 @@
                                                         </div>
                                                         <!-- /.form-group -->
                                                     </div>
-                                                   
+
 
                                                 </div>
 

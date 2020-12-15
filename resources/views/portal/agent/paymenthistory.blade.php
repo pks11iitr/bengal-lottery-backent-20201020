@@ -69,19 +69,36 @@
                             <th style="width: 1%">
                                 #
                             </th>
+                            <th style="width: 15%">Date/Time
+                            </th>
                             <th style="width: 10%">
-                                Amount
+                                Deposit
                             </th>
                             <th style="width: 15%">
-                                Type
+                                Withdraw
                             </th>
                             <th style="width: 15%">
-                                Description
+                                Commission
                             </th>
-                            <th style="width: 15%">Date
+                            <th style="width: 15%">
+                                Win
                             </th>
-                            <th style="width: 15%">Time
+                            <th style="width: 15%">
+                                Booking
                             </th>
+                            <th style="width: 15%">
+                                Balance
+                            </th>
+                            <th style="width: 15%">
+                                From Account
+                            </th>
+                            <th style="width: 15%">
+                                To Account
+                            </th>
+
+
+                            {{--                            <th style="width: 15%">Time--}}
+{{--                            </th>--}}
 
                         </tr>
                         </thead>
@@ -90,22 +107,32 @@
                             @foreach($payments as $key => $payment)
                                 <tr>
                                     <td>{{$key+1}}</td>
+                                    <td style="text-transform: capitalize;">
+                                        {{date('d M Y h:i A', strtotime($payment->created_at))}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        @if($payment->type=='Deposit')
+                                        {{$payment->amount}}@else{{'-'}}@endif
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        @if($payment->type=='Withdraw')
+                                            {{$payment->amount}}@else{{'-'}}@endif
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        @if($payment->type=='commission')
+                                            {{$payment->amount}}@else{{'-'}}@endif
+                                    </td>
+                                    <td>  @if($payment->type=='win')
+                                            {{$payment->amount}}@else{{'-'}}@endif</td>
+                                    <td>  @if($payment->type=='booking')
+                                            {{$payment->amount}}@else{{'-'}}@endif</td>
+                                    <td>{{$payment->avl_balance}}</td>
+                                    <td>{{$payment->customer->email??''}}</td>
+                                    <td>{{$payment->tocustomer->email??''}}</td>
 
-                                    <td style="text-transform: capitalize;">
-                                        {{$payment->amount}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$payment->type}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{$payment->mode}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{date('d M Y', strtotime($payment->created_at))}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{date('h:i A', strtotime($payment->created_at))}}
-                                    </td>
+{{--                                    <td style="text-transform: capitalize;">--}}
+{{--                                        {{date('h:i A', strtotime($payment->created_at))}}--}}
+{{--                                    </td>--}}
 
 
                                 </tr>

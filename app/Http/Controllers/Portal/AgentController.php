@@ -122,6 +122,7 @@ class AgentController extends Controller
         ));
         $user = Auth::user();
         $balance=Transaction::balance($user->id);
+        $agentbalance=Transaction::balance($request->agent_id);
         if(auth()->user()->hasRole('admin')){
 
             $agentdetails = User::where("id", $request->agent_id)->first();
@@ -144,19 +145,45 @@ class AgentController extends Controller
             $agentdetails->save();
 
             if ($request->deposit_edit > 0) {
+
                 $deposit = Transaction::create([
+                  //  'user_id' => $request->agent_id,
+                    'to_user_id' => $user->id,
                     'user_id' => $request->agent_id,
                     'amount' => $request->deposit_edit,
+                    'avl_balance' => round($agentbalance,2)+$request->deposit_edit,
                     'type' => 'Deposit',
+                    'mode' => 'agent',
+                ]);
+
+                $deposit = Transaction::create([
+                    //  'user_id' => $request->agent_id,
+                    'user_id' => $user->id,
+                    'to_user_id' => $request->agent_id,
+                    'amount' => $request->deposit_edit,
+                    'avl_balance' => round($balance,2)-$request->deposit_edit,
+                    'type' => 'Withdraw',
                     'mode' => 'agent',
                 ]);
             }
             if ($request->withdraw_edit > 0) {
 
                 $withdraw = Transaction::create([
+                   // 'user_id' => $request->agent_id,
                     'user_id' => $request->agent_id,
+                    'to_user_id' => $user->id,
                     'amount' => $request->withdraw_edit,
+                    'avl_balance' => round($agentbalance,2)-$request->withdraw_edit,
                     'type' => 'Withdraw',
+                    'mode' => 'agent',
+                ]);
+                $withdraw = Transaction::create([
+                    // 'user_id' => $request->agent_id,
+                    'to_user_id' => $request->agent_id,
+                    'user_id' => $user->id,
+                    'amount' => $request->withdraw_edit,
+                    'avl_balance' => round($balance,2)+$request->withdraw_edit,
+                    'type' => 'Deposit',
                     'mode' => 'agent',
                 ]);
             }
@@ -183,32 +210,75 @@ class AgentController extends Controller
                     $agentdetails->save();
                     if ($request->deposit_edit >0) {
                         $deposit = Transaction::create([
+                            'to_user_id' => $user->id,
                             'user_id' => $request->agent_id,
                             'amount' => $request->deposit_edit,
+                            'avl_balance' => round($agentbalance,2)+$request->deposit_edit,
                             'type' => 'Deposit',
                             'mode' => 'agent',
                         ]);
-                        $deposit = Transaction::create([
+//                        $deposit1 = Transaction::create([
+//                            //  'user_id' => $request->agent_id,
+//                            'user_id' => $user->id,
+//                            'to_user_id' => $request->agent_id,
+//                            'amount' => $request->deposit_edit,
+//                            'type' => 'Deposit',
+//                            'mode' => 'agent',
+//                        ]);
+                        $deposit2 = Transaction::create([
                             'user_id' => $user->id,
+                            'to_user_id' => $request->agent_id,
                             'amount' => $request->deposit_edit,
+                            'avl_balance' => round($balance,2)-$request->deposit_edit,
                             'type' => 'Withdraw',
                             'mode' => 'subagent',
                         ]);
+//                        $deposit3 = Transaction::create([
+//                            //'user_id' => $user->id,
+//                            'to_user_id' => $request->agent_id,
+//                            'user_id' => $user->id,
+//                            'amount' => $request->deposit_edit,
+//                            'type' => 'Withdraw',
+//                            'mode' => 'subagent',
+//                        ]);
                     }
                     if ($request->withdraw_edit > 0) {
 
                         $withdraw = Transaction::create([
+                           /// 'user_id' => $request->agent_id,
+                            'to_user_id' => $user->id,
                             'user_id' => $request->agent_id,
                             'amount' => $request->withdraw_edit,
+                            'avl_balance' => round($agentbalance,2)-$request->withdraw_edit,
                             'type' => 'Withdraw',
                             'mode' => 'agent',
                         ]);
+
+//                        $withdraw2 = Transaction::create([
+//                            /// 'user_id' => $request->agent_id,
+//                            'to_user_id' => $user->id,
+//                            'user_id' => $request->agent_id,
+//                            'amount' => $request->withdraw_edit,
+//                            'type' => 'Withdraw',
+//                            'mode' => 'agent',
+//                        ]);
                         $withdraw1 = Transaction::create([
+                            //'user_id' => $user->id,
+                            'to_user_id' => $request->agent_id,
                             'user_id' => $user->id,
                             'amount' => $request->withdraw_edit,
+                            'avl_balance' => round($balance,2)+$request->withdraw_edit,
                             'type' => 'Deposit',
                             'mode' => 'subagent',
                         ]);
+//                        $withdraw3 = Transaction::create([
+//                            //'user_id' => $user->id,
+//                            'user_id' => $request->agent_id,
+//                            'to_user_id' => $user->id,
+//                            'amount' => $request->withdraw_edit,
+//                            'type' => 'Deposit',
+//                            'mode' => 'subagent',
+//                        ]);
                     }
                 }else{
                     return redirect()->back()->with('error', 'Game Rate Not Less Then Our Rate');
@@ -255,10 +325,12 @@ class AgentController extends Controller
                 $game->bid_qty=(int)$request->bid_digit;
                 $game->isactive=2;
                 $game->update();
-
+                $balance=Transaction::balance($v->user_id);
                 $withdraw=Transaction::create([
                     'user_id' => $v->user_id,
+                    'to_user_id' => $v->user_id,
                     'amount' => round(($v->bid_qty*$request->winning_amount),2),
+                    'avl_balance' => round($balance,2)+round(($v->bid_qty*$request->winning_amount),2),
                     'type' => 'win',
                     'mode' => 'Winner',
                 ]);
@@ -296,7 +368,7 @@ class AgentController extends Controller
         $agent=User::find($request->agent_id);
         $totalcommission=Transaction::totalcommission($agent->id);
         //$totalcommission=round($totalcommission,2);
-        $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate);
+        $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate,$user->rate);
        // $totalprofitcommission=round($totalprofitcommission,2);
         $balancecommission=round(($totalprofitcommission-$totalcommission),2);
         if($balancecommission < $request->commission)
@@ -305,16 +377,22 @@ class AgentController extends Controller
 
             return redirect()->back()->with('error', 'You dont have sufficient Commission to be Deposit');
         }
+        $balance=Transaction::balance($user->id);
+        $agentbalance=Transaction::balance($request->agent_id);
             $commissionDeposit=Transaction::create([
+                'to_user_id' => $request->agent_id,
                 'user_id' => $user->id,
                 'amount' => $request->commission,
+                'avl_balance' => round($balance,2)+$request->commission,
                 'type' => 'Deposit',
                 'mode' => 'commission',
             ]);
 
             $commission=Transaction::create([
                 'user_id' => $request->agent_id,
+                'to_user_id' => $user->id,
                 'amount' => $request->commission,
+                'avl_balance' => round($agentbalance,2),
                 'type' => 'commission',
                 'mode' => 'commission',
             ]);

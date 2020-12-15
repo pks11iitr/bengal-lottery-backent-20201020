@@ -19,8 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="commission api and avl balance">
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/paymenthistory.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +173,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../julmsejung" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -256,16 +256,15 @@
       <workItem from="1606974374193" duration="252000" />
       <workItem from="1607000357961" duration="662000" />
       <workItem from="1607406538816" duration="21321000" />
-      <workItem from="1607496598116" duration="2311000" />
-      <workItem from="1607576808182" duration="598000" />
-      <workItem from="1608030976839" duration="1374000" />
-    </task>
-    <task id="LOCAL-00039" summary="logout function set">
-      <created>1601660433373</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1601660433373</updated>
+      <workItem from="1607496598116" duration="5461000" />
+      <workItem from="1607515957013" duration="1101000" />
+      <workItem from="1607517179961" duration="292000" />
+      <workItem from="1607517551911" duration="599000" />
+      <workItem from="1607580785327" duration="288000" />
+      <workItem from="1607607146223" duration="1638000" />
+      <workItem from="1607665073011" duration="597000" />
+      <workItem from="1607926166893" duration="644000" />
+      <workItem from="1608012081759" duration="17512000" />
     </task>
     <task id="LOCAL-00040" summary="logout function set">
       <created>1601660745834</created>
@@ -568,42 +567,49 @@
       <option name="project" value="LOCAL" />
       <updated>1607432438511</updated>
     </task>
-    <task id="LOCAL-00083" summary="commission calculation and downline game by agent">
-      <created>1607499566404</created>
+    <task id="LOCAL-00083" summary="commission api and game color code">
+      <created>1607498930937</created>
       <option name="number" value="00083" />
       <option name="presentableId" value="LOCAL-00083" />
       <option name="project" value="LOCAL" />
-      <updated>1607499566404</updated>
+      <updated>1607498930938</updated>
     </task>
-    <task id="LOCAL-00084" summary="commission calculation and downline game by agent">
-      <created>1607499804682</created>
+    <task id="LOCAL-00084" summary="commission api and game color code">
+      <created>1607500545716</created>
       <option name="number" value="00084" />
       <option name="presentableId" value="LOCAL-00084" />
       <option name="project" value="LOCAL" />
-      <updated>1607499804682</updated>
+      <updated>1607500545716</updated>
     </task>
-    <task id="LOCAL-00085" summary="commission calculation and downline game by agent">
-      <created>1607499886151</created>
+    <task id="LOCAL-00085" summary="commission api and game color code">
+      <created>1607516035384</created>
       <option name="number" value="00085" />
       <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1607499886151</updated>
+      <updated>1607516035384</updated>
     </task>
-    <task id="LOCAL-00086" summary="commission calculation and downline game by agent">
-      <created>1607500337385</created>
+    <task id="LOCAL-00086" summary="commission api and game color code">
+      <created>1607516095909</created>
       <option name="number" value="00086" />
       <option name="presentableId" value="LOCAL-00086" />
       <option name="project" value="LOCAL" />
-      <updated>1607500337385</updated>
+      <updated>1607516095909</updated>
     </task>
-    <task id="LOCAL-00087" summary="remove google tag">
-      <created>1607502858834</created>
+    <task id="LOCAL-00087" summary="commission api and game color code">
+      <created>1607608143285</created>
       <option name="number" value="00087" />
       <option name="presentableId" value="LOCAL-00087" />
       <option name="project" value="LOCAL" />
-      <updated>1607502858834</updated>
+      <updated>1607608143286</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="commission api and avl balance">
+      <created>1608032853948</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1608032853949</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +652,8 @@
     <MESSAGE value="api work" />
     <MESSAGE value="commission calculation" />
     <MESSAGE value="commission calculation and downline game by agent" />
-    <MESSAGE value="remove google tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove google tag" />
+    <MESSAGE value="commission api and game color code" />
+    <MESSAGE value="commission api and avl balance" />
+    <option name="LAST_COMMIT_MESSAGE" value="commission api and avl balance" />
   </component>
 </project>

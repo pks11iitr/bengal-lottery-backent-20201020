@@ -124,6 +124,22 @@ class GameController extends Controller
                 'message'=>'Please Contact to Agent'
             ];
         }
+        $date=$games->orginal;
+        $time=$games->time;
+        $datetime=$date." ".$time;
+         //var_dump($datetime);die;
+        $enddate=strtotime($datetime);
+        $newdate=date('Y-m-d H:i:s');
+        $current=strtotime($newdate);
+        $remaining=($enddate-$current)*1000;
+
+        if($current>=$enddate){
+            $games->isactive=3;
+            $games->update();
+
+        }
+
+
         $game=array(
             'id'=>$games->id,
             'name'=>$games->name,
@@ -134,7 +150,8 @@ class GameController extends Controller
             'bid_qty'=>$games->bid_qty,
             'orginal'=>$games->orginal,
             'time'=>$games->time,
-            'price'=>$user->rate
+            'price'=>$user->rate,
+            'remaining'=>$remaining,
         );
         $balance1=Transaction::balance($user->id);
         $balance=round($balance1,2);
@@ -281,7 +298,9 @@ class GameController extends Controller
 
         $withdraw=Transaction::create([
             'user_id' => $user->id,
+            'to_user_id' => $user->id,
             'amount' => round($total,2),
+            'avl_balance' => round($balance,2)-round($total,2),
             'type' => 'booking',
             'mode' => 'book',
         ]);

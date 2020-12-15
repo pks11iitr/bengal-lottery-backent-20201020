@@ -80,6 +80,7 @@
                             <th style="width: 15%">
                                 Game Time
                             </th>
+                            <th>Color Code</th>
 {{--                            <th style="width: 15%">--}}
 {{--                                Game Price--}}
 {{--                            </th>--}}
@@ -122,6 +123,7 @@
                                     <td style="text-transform: capitalize;">
                                         {{date('h:i A', strtotime($gmae->game_time))}}
                                     </td>
+                                    <td bgcolor="{{$gmae->color_code}}"></td>
 
 {{--                                    <td style="text-transform: capitalize;">--}}
 {{--                                        {{$gmae->price}}--}}

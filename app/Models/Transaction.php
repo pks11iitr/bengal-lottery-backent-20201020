@@ -11,7 +11,7 @@ use DB;
 class Transaction extends Model
 {
     protected $table='transactions';
-    protected $fillable=['user_id','type','amount','mode'];
+    protected $fillable=['user_id','type','amount','mode','to_user_id','avl_balance'];
 
     protected $hidden = ['created_at','deleted_at','updated_at'];
 
@@ -65,5 +65,14 @@ class Transaction extends Model
         }
 
         return ($balances['Withdraw']??0);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+    public function tocustomer()
+    {
+        return $this->belongsTo('App\User', 'to_user_id');
     }
 }

@@ -76,14 +76,14 @@
                             <th style="width: 10%">
                                 Account
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 10%">
                                Name
                             </th>
 
-                            <th style="width: 15%">
+                            <th style="width: 10%">
                                 Parent Name
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 10%">
                                 Balance
                             </th>
                             <th style="width: 10%">
@@ -92,26 +92,26 @@
                             <th style="width: 10%">
                                 Date
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 10%">
                                 Withdraw
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 10%">
                                 Commission
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 10%">
                                 Rate
                             </th>
 
-                            <th style="width: 25%">
+                            <th style="width: 10%">
                                 Status
                             </th>
 {{--                            <th style="width: 25%">--}}
 {{--                                Details--}}
 {{--                            </th>--}}
-                             <th style="width: 9%" class="text-center">
-                                Booking
-                            </th>
-                            <th style="width: 10%; text-align: right">
+{{--                             <th style="width: 9%" class="text-center">--}}
+{{--                                Booking--}}
+{{--                            </th>--}}
+                            <th style="width: 25%; text-align: right" colspan="3">
                                 Action
                             </th>
                         </tr>
@@ -157,22 +157,24 @@
 
 
 
-
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="{{route('gamebooklist',['id'=>$product->id])}}" title="booking list">
-                                            <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>
-                                        </a><br><br>
+{{--                                        <a class="btn btn-primary btn-sm" href="{{route('gamebooklist',['id'=>$product->id])}}" title="booking list">--}}
+{{--                                            <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>--}}
+{{--                                        </a><br><br>--}}
                                         <a class="btn btn-primary btn-sm" href="{{route('paymenthistory',['id'=>$product->id])}}" title="Payment details">
                                             <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>
                                         </a>
-
                                     </td>
+{{--                                    </td>--}}
 
+{{--                                    <td class="project-actions text-right">--}}
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$product->id}})" title="Edit">
                                             <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
                                         </a>
-                                        <br><br>
+                                    </td>
+{{--                                        <br><br>--}}
+                                    <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{route('commissioncreate',['id'=>$product->id])}}" title="Commission create">
                                             <i class="fas fa-list-alt mr-1" aria-hidden="true"></i>
                                         </a>
