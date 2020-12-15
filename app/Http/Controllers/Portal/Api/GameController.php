@@ -298,7 +298,9 @@ class GameController extends Controller
 
         $withdraw=Transaction::create([
             'user_id' => $user->id,
+            'to_user_id' => $user->id,
             'amount' => round($total,2),
+            'avl_balance' => round($balance,2)-round($total,2),
             'type' => 'booking',
             'mode' => 'book',
         ]);
