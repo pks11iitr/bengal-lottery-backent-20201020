@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/home.blade.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,13 +257,8 @@
       <workItem from="1607000357961" duration="662000" />
       <workItem from="1607406538816" duration="21321000" />
       <workItem from="1607496598116" duration="2311000" />
-    </task>
-    <task id="LOCAL-00038" summary="logout function set">
-      <created>1601294379253</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1601294379253</updated>
+      <workItem from="1607576808182" duration="598000" />
+      <workItem from="1608030976839" duration="1374000" />
     </task>
     <task id="LOCAL-00039" summary="logout function set">
       <created>1601660433373</created>
@@ -603,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607500337385</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="remove google tag">
+      <created>1607502858834</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1607502858834</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,6 +646,7 @@
     <MESSAGE value="api work" />
     <MESSAGE value="commission calculation" />
     <MESSAGE value="commission calculation and downline game by agent" />
-    <option name="LAST_COMMIT_MESSAGE" value="commission calculation and downline game by agent" />
+    <MESSAGE value="remove google tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove google tag" />
   </component>
 </project>
