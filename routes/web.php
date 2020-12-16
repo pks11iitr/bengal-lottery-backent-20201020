@@ -49,6 +49,7 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
         //start commission
         Route::get('commission-create/{id}', 'Portal\AgentController@commissioncreate')->name('commissioncreate');
         Route::post('commission-save', 'Portal\AgentController@commissionsave')->name('commissionsave');
+        Route::get('payment-history-parent', 'Portal\AgentController@parent_history')->name('paymenthistoryparent');
 
 
 

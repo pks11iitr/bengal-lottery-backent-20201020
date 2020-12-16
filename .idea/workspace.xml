@@ -19,11 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="manage user total balance">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="manage useravalable balances fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AdjustUserStats.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateCommissionBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateCommissionBalance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,21 +268,7 @@
       <workItem from="1607665073011" duration="597000" />
       <workItem from="1607926166893" duration="644000" />
       <workItem from="1608012081759" duration="24246000" />
-      <workItem from="1608098192310" duration="14297000" />
-    </task>
-    <task id="LOCAL-00046" summary="google analytics added">
-      <created>1603515319381</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1603515319381</updated>
-    </task>
-    <task id="LOCAL-00047" summary="google analytics added">
-      <created>1603515390426</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1603515390426</updated>
+      <workItem from="1608098192310" duration="17501000" />
     </task>
     <task id="LOCAL-00048" summary="google analytics added">
       <created>1603515500513</created>
@@ -613,7 +599,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608117002565</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="manage user total balance">
+      <created>1608123456045</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1608123456045</updated>
+    </task>
+    <task id="LOCAL-00096" summary="manage useravalable balances fix">
+      <created>1608124800744</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1608124800744</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="basic setups" />
     <MESSAGE value="add product" />
     <MESSAGE value="testing qr" />
     <MESSAGE value="map unmap login" />
@@ -658,6 +657,7 @@
     <MESSAGE value="commission api and avl balance" />
     <MESSAGE value="user balance" />
     <MESSAGE value="manage user total balance" />
-    <option name="LAST_COMMIT_MESSAGE" value="manage user total balance" />
+    <MESSAGE value="manage useravalable balances fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="manage useravalable balances fix" />
   </component>
 </project>

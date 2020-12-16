@@ -363,6 +363,13 @@ class AgentController extends Controller
         return view('portal.agent.paymenthistory', compact('payments'));
     }
 
+    public function parent_history(Request $request)
+    {
+        $user = Auth::user();
+        $payments = Transaction::where('user_id', $user->id)->orderBy('id','DESC')->get();
+        return view('portal.agent.paymenthistory', compact('payments'));
+    }
+
 //startcommission
     public function commissioncreate(Request $request,$id)
     {

@@ -108,6 +108,9 @@
                                 <a href="{{route('dashboard')}}" class="btn btn-info">Dashboard</a>
                             </li>
                             <li>
+                                <a href="{{route('paymenthistoryparent')}}" class="btn btn-info">Payment History</a>
+                            </li>
+                            <li>
                                 <a href="{{route('agents')}}" class="btn btn-info">Agents </a>
                             </li>
                             @if(auth()->user()->hasRole('admin'))
