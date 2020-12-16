@@ -50,40 +50,47 @@ class UpdateWinBalances implements ShouldQueue
             if($user_main_iterator) {
 
                 // get user bookings on game
-                $user_parent_iterator = $user_main_iterator;
-                while ($user_parent_iterator && !$user_parent_iterator->hasRole('admin')) {
-                    $digit_wise_bids=[];
+                $digit_wise_bids=[];
 
-                    $users_bids=GameBook::where('game_id', $this->game_id)
-                        ->where('user_id', $user_parent_iterator->id)
-                        ->get();
+                $users_bids=GameBook::where('game_id', $this->game_id)
+                    ->where('user_id', $user_main_iterator->id)
+                    ->get();
 
-                    foreach($users_bids as $bid){
-                        if(!isset($digit_wise_bids[$bid->bid_digit])){
-                            $digit_wise_bids[$bid->bid_digit]=0;
-                        }
-                        $digit_wise_bids[$bid->bid_digit]=$digit_wise_bids[$bid->bid_digit]+$bid->bid_qty;
+                foreach($users_bids as $bid){
+                    if(!isset($digit_wise_bids[$bid->bid_digit])){
+                        $digit_wise_bids[$bid->bid_digit]=0;
                     }
+                    $digit_wise_bids[$bid->bid_digit]=$digit_wise_bids[$bid->bid_digit]+$bid->bid_qty;
+                }
 
-                    //winning_balance
-                    $winning_balance=($digit_wise_bids[$this->winning_digit]*$this->amount)??0;
+                //winning_balance
+                $winning_balance=($digit_wise_bids[$this->winning_digit]*$this->amount)??0;
 
-                    //update user balance
-                    if($winning_balance>0){
+
+
+                //update balances if winbalance is greater than 0
+                if($winning_balance>0){
+
+                    $user_parent_iterator = $user_main_iterator;
+                    while ($user_parent_iterator) {
+
+                        //update user balance
                         $balance=Balance::where('user_id', $user_parent_iterator->id)->first();
                         if($balance){
-                            $balance->amount=round(($balance->amount+$winning_balance),2);
+                            $balance->amount=$balance->amount+$winning_balance;
                             $balance->save();
                         }else{
                             Balance::create([
                                 'user_id'=>$user_parent_iterator->id,
-                                'amount'=>round($winning_balance,2),
+                                'amount'=>$winning_balance,
                             ]);
                         }
-                    }
-                    $user_parent_iterator=$user_parent_iterator->agent;
 
+                        $user_parent_iterator=$user_parent_iterator->agent;
+
+                    }
                 }
+
             }
 
             $offset++;
