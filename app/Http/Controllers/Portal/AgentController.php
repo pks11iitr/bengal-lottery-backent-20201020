@@ -43,7 +43,7 @@ class AgentController extends Controller
             $agent->totalcommission=round($totalcommission,2);
             $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate, $user->rate);
             $agent->totalprofitcommission=round($totalprofitcommission,2);
-
+            $agent->avl_balance=Balance::avl_balance($agent->id);
            //end commission
         }
         //var_dump($balance);die();

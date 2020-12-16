@@ -87,6 +87,9 @@
                                 Balance
                             </th>
                             <th style="width: 10%">
+                              Avl  Balance
+                            </th>
+                            <th style="width: 10%">
                                 Deposit
                             </th>
                             <th style="width: 10%">
@@ -133,6 +136,9 @@
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->balance}}
+                                    </td>
+                                    <td style="text-transform: capitalize;">
+                                        {{$product->avl_balance??0}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->totaldeposit}}

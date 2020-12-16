@@ -67,20 +67,27 @@ class Balance extends Model
         }
     }
 
-    public static function commission_balance($parent_id,$child_id,$amount){
+//    public static function commission_balance($parent_id,$child_id,$amount){
+//
+//        $senderbalance=   Balance::where('user_id',$parent_id)->first();
+//       if(!$senderbalance){
+//
+//           $senderbalance= Balance::create([
+//               'user_id' => $parent_id,
+//               'amount' => round($amount, 2),
+//
+//           ]);
+//
+//       }else{
+//           $senderbalance->amount=$senderbalance->amount+round($amount, 2);
+//           $senderbalance->save();
+//       }
+//    }
 
-        $senderbalance=   Balance::where('user_id',$parent_id)->first();
-       if(!$senderbalance){
+    public static function avl_balance($parent_id){
 
-           $senderbalance= Balance::create([
-               'user_id' => $parent_id,
-               'amount' => round($amount, 2),
-
-           ]);
-
-       }else{
-           $senderbalance->amount=$senderbalance->amount+round($amount, 2);
-           $senderbalance->save();
-       }
+    $avabalance =   Balance::where('user_id',$parent_id)->first();
+    return $avabalance->amount??0;
     }
+
 }
