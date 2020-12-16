@@ -64,7 +64,7 @@ class UpdateWinBalances implements ShouldQueue
                 }
 
                 //winning_balance
-                $winning_balance=($digit_wise_bids[$this->winning_digit]*$this->amount)??0;
+                $winning_balance=(($digit_wise_bids[$this->winning_digit]??0)*$this->amount)??0;
 
 
 
@@ -72,7 +72,7 @@ class UpdateWinBalances implements ShouldQueue
                 if($winning_balance>0){
 
                     $user_parent_iterator = $user_main_iterator;
-                    while ($user_parent_iterator) {
+                    while ($user_parent_iterator && !$user_parent_iterator->hasRole('admin')) {
 
                         //update user balance
                         $balance=Balance::where('user_id', $user_parent_iterator->id)->first();
