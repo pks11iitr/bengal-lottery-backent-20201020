@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="manage user total balance">
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateWinBalances.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateWinBalances.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Balance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Balance.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,14 +265,7 @@
       <workItem from="1607665073011" duration="597000" />
       <workItem from="1607926166893" duration="644000" />
       <workItem from="1608012081759" duration="24246000" />
-      <workItem from="1608098192310" duration="8641000" />
-    </task>
-    <task id="LOCAL-00043" summary="logout function set">
-      <created>1601735799149</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1601735799149</updated>
+      <workItem from="1608098192310" duration="9290000" />
     </task>
     <task id="LOCAL-00044" summary="google analytics added">
       <created>1602393981894</created>
@@ -610,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608114516138</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="manage user total balance">
+      <created>1608115020265</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1608115020265</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

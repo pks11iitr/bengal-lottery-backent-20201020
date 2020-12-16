@@ -22,10 +22,10 @@ class Balance extends Model
 //
 //           ]);
 //       }else{
-        if($senderbalance){
+        /*if($senderbalance){
             $senderbalance->amount=$senderbalance->amount - round($amount, 2);
             $senderbalance->save();
-        }
+        }*/
 
      //  }
        if(!$reciverbalance){
