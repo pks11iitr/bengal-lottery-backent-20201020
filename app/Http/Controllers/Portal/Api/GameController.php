@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal\Api;
 
 use App\Jobs\AdjustUserStats;
+use App\Jobs\UpdateBookingBalance;
 use App\Models\Game;
 use App\Models\GameBook;
 use App\Models\GamePrice;
@@ -294,8 +295,6 @@ class GameController extends Controller
 
         }
 
-        dispatch(new AdjustUserStats($user, $games, $request->bid_qty))->onQueue('instant');
-
         $withdraw=Transaction::create([
             'user_id' => $user->id,
             'to_user_id' => $user->id,
@@ -306,6 +305,8 @@ class GameController extends Controller
         ]);
 
         if($book){
+            dispatch(new AdjustUserStats($user, $games, $request->bid_qty))->onQueue('instant');
+            dispatch(new UpdateBookingBalance($user, $request->bid_qty))->onQueue('instant');
             return [
                 'status'=>'success',
                 'msg'=>'success',

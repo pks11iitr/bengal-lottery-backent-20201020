@@ -11,13 +11,76 @@ class Balance extends Model
 
     protected $hidden = ['created_at','deleted_at','updated_at'];
 
-    public static function updatewinbalance($senderid,$reciverid,$amount){
+    public static function update_deposit_balance($parent_id,$child_id,$amount){
 
-      $senderbalance=   Balance::where('user_id',$senderid)->first();
-      $senderbalance=   Balance::where('user_id',$reciverid)->first();
-       if(!$senderbalance){
-        //Balance::
+      $senderbalance=   Balance::where('user_id',$parent_id)->first();
+      $reciverbalance=   Balance::where('user_id',$child_id)->first();
+//       if(!$senderbalance){
+//           $senderbalance= Balance::create([
+//               'user_id' => $senderid,
+//               'amount' => round($amount, 2),
+//
+//           ]);
+//       }else{
+        if($senderbalance){
+            $senderbalance->amount=$senderbalance->amount - round($amount, 2);
+            $senderbalance->save();
+        }
+
+     //  }
+       if(!$reciverbalance){
+           $reciverbalance= Balance::create([
+               'user_id' => $child_id,
+               'amount' => round($amount, 2),
+           ]);
+       }else{
+           $reciverbalance->amount=$reciverbalance->amount + round($amount, 2);
+           $reciverbalance->save();
        }
-       return ;
+    }
+
+    public static function update_withdraw_balance($withdrawer_id,$parent_id,$amount){
+
+        $senderbalance=   Balance::where('user_id',$withdrawer_id)->first();
+        $reciverbalance=   Balance::where('user_id',$parent_id)->first();
+       /* if(!$senderbalance){
+            $senderbalance= Balance::create([
+                'user_id' => $withdrawer_id,
+                'amount' => round($amount, 2),
+
+            ]);
+        }else{*/
+        if($senderbalance){
+            $senderbalance->amount=$senderbalance->amount-round($amount, 2);
+            $senderbalance->save();
+        }
+
+       // }
+        if(!$reciverbalance){
+            $reciverbalance= Balance::create([
+                'user_id' => $parent_id,
+                'amount' => round($amount, 2),
+            ]);
+        }else{
+            $reciverbalance->amount=$reciverbalance->amount + round($amount, 2);
+            $reciverbalance->save();
+        }
+    }
+
+    public static function commission_balance($parent_id,$child_id,$amount){
+
+        $senderbalance=   Balance::where('user_id',$parent_id)->first();
+       if(!$senderbalance){
+
+           $senderbalance= Balance::create([
+               'user_id' => $parent_id,
+               'amount' => round($amount, 2),
+
+           ]);
+
+       }else{
+           $senderbalance->amount=$senderbalance->amount+round($amount, 2);
+           $senderbalance->save();
+       }
     }
 }

@@ -22,10 +22,10 @@ class UpdateWinBalances implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($winning_digit, $game_digit, $amount)
+    public function __construct($winning_digit, $game_id, $amount)
     {
         $this->winning_digit=$winning_digit;
-        $this->game_id=$game_digit;
+        $this->game_id=$game_id;
         $this->amount=$amount;
     }
 
@@ -40,13 +40,18 @@ class UpdateWinBalances implements ShouldQueue
         $offset=0;
         do{
 
-            $user_main_iterator=User::skip($offset)->take(1)->first();
+            $user_main_iterator=User::whereHas('orders', function($orders) use($game){
+                $orders->where('game_id', $game->id);
+            })
+            ->skip($offset)
+                ->take(1)
+                ->first();
 
             if($user_main_iterator) {
 
                 // get user bookings on game
                 $user_parent_iterator = $user_main_iterator;
-                while ($user_parent_iterator) {
+                while ($user_parent_iterator && !$user_parent_iterator->hasRole('admin')) {
                     $digit_wise_bids=[];
 
                     $users_bids=GameBook::where('game_id', $this->game_id)
@@ -64,17 +69,18 @@ class UpdateWinBalances implements ShouldQueue
                     $winning_balance=($digit_wise_bids[$this->winning_digit]*$this->amount)??0;
 
                     //update user balance
-                    $balance=Balance::where('user_id', $user_parent_iterator->id)->first();
-                    if($balance){
-                        $balance->amount=$balance->amount+$winning_balance;
-                        $balance->save();
-                    }else{
-                        Balance::create([
-                            'user_id'=>$user_parent_iterator->id,
-                            'amount'=>$winning_balance,
-                        ]);
+                    if($winning_balance>0){
+                        $balance=Balance::where('user_id', $user_parent_iterator->id)->first();
+                        if($balance){
+                            $balance->amount=round(($balance->amount+$winning_balance),2);
+                            $balance->save();
+                        }else{
+                            Balance::create([
+                                'user_id'=>$user_parent_iterator->id,
+                                'amount'=>round($winning_balance,2),
+                            ]);
+                        }
                     }
-
                     $user_parent_iterator=$user_parent_iterator->agent;
 
                 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Jobs\UpdateWinBalances;
+use App\Models\Balance;
 use App\Models\CompanyProducts;
 use App\Models\Game;
 use App\Models\GameBook;
@@ -165,6 +167,8 @@ class AgentController extends Controller
                     'type' => 'Withdraw',
                     'mode' => 'agent',
                 ]);
+                $balance=Balance::update_deposit_balance($user->id,$request->agent_id,$request->deposit_edit);
+
             }
             if ($request->withdraw_edit > 0) {
 
@@ -186,6 +190,8 @@ class AgentController extends Controller
                     'type' => 'Deposit',
                     'mode' => 'agent',
                 ]);
+
+                $balance=Balance::update_withdraw_balance($request->agent_id,$user->id,$request->withdraw_edit);
             }
 
         }else{
@@ -241,6 +247,8 @@ class AgentController extends Controller
 //                            'type' => 'Withdraw',
 //                            'mode' => 'subagent',
 //                        ]);
+
+                        $balance=Balance::update_deposit_balance($user->id,$request->agent_id,$request->deposit_edit);
                     }
                     if ($request->withdraw_edit > 0) {
 
@@ -279,6 +287,7 @@ class AgentController extends Controller
 //                            'type' => 'Deposit',
 //                            'mode' => 'subagent',
 //                        ]);
+                        $balance=Balance::update_withdraw_balance($request->agent_id,$user->id,$request->withdraw_edit);
                     }
                 }else{
                     return redirect()->back()->with('error', 'Game Rate Not Less Then Our Rate');
@@ -315,13 +324,13 @@ class AgentController extends Controller
 
 
         $values=GameBook::where('game_id',$id)->get();
+        $game = Game::find($id);
+        $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
         foreach ($values as $v){
             if($v->bid_digit==$request->bid_digit){
 
                 $win = GameBook::where('id', $v->id)->update(['draw_result'=>(int)$request->bid_digit,'winning_amount'=>$request->winning_amount,'status'=>'Won']);
                 // var_dump($v->id);die();
-                $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
-                $game = Game::find($id);
                 $game->bid_qty=(int)$request->bid_digit;
                 $game->isactive=2;
                 $game->update();
@@ -339,7 +348,9 @@ class AgentController extends Controller
                 $win = GameBook::where('id', $v->id)->update(['draw_result'=>$request->bid_digit,'winning_amount'=>0,'status'=>'Loss']);
 
             }
+
         }
+        dispatch(new UpdateWinBalances($request->bid_digit, $id,$request->winning_amount))->onQueue('instant');;
 
         return redirect()->route('gamelist');
 
@@ -374,7 +385,6 @@ class AgentController extends Controller
         if($balancecommission < $request->commission)
         {
 
-
             return redirect()->back()->with('error', 'You dont have sufficient Commission to be Deposit');
         }
         $balance=Transaction::balance($user->id);
@@ -397,6 +407,7 @@ class AgentController extends Controller
                 'mode' => 'commission',
             ]);
 
+        $commission_balance=Transaction::commission_balance($user->id,$request->agent_id,$request->commission);
 
         return redirect()->route('agents')->with('success', 'Commission Deposit Successfully');
     }
