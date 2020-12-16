@@ -37,31 +37,36 @@ class UpdateBookingBalance implements ShouldQueue
     {
         $user = $this->user;
 
-        $bookingbalance = Balance::where('user_id', $user->id)
-            ->first();
         // get user bookings on game
 
-        while ($user && !$user->hasRole('admin')) {
+        $digit_wise_bids = 0;
 
-            $digit_wise_bids = 0;
+        foreach ($this->bid_qty as $bid) {
 
-            foreach ($this->bid_qty as $bid) {
-
-                $digit_wise_bids = $digit_wise_bids + $bid;
-            }
-            if (!$bookingbalance) {
-               /* $stat = Balance::create([
-                    'user_id' => $user->id,
-                    'amount' => round($digit_wise_bids * $user->rate, 2),
-
-                ]);*/
-            }else{
-                $bookingbalance->amount = $bookingbalance->amount - round($digit_wise_bids * $user->rate, 2);
-                $bookingbalance->save();
-            }
-
-            $user = $user->agent;
+            $digit_wise_bids = $digit_wise_bids + $bid;
         }
 
+        $booking_balance=round($digit_wise_bids * $user->rate, 2);
+
+        if($booking_balance>0){
+            while ($user && !$user->hasRole('admin')) {
+
+                $bookingbalance = Balance::where('user_id', $user->id)
+                    ->first();
+
+                if (!$bookingbalance) {
+                    /* $stat = Balance::create([
+                         'user_id' => $user->id,
+                         'amount' => round($digit_wise_bids * $user->rate, 2),
+
+                     ]);*/
+                }else{
+                    $bookingbalance->amount = $bookingbalance->amount - $booking_balance;
+                    $bookingbalance->save();
+                }
+
+                $user = $user->agent;
+            }
+        }
     }
 }
