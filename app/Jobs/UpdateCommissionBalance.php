@@ -12,15 +12,16 @@ use Illuminate\Foundation\Bus\Dispatchable;
 class UpdateCommissionBalance implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
- public $user;
+ public $user,$amount;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user,$amount)
     {
         $this->user = $user;
+        $this->amount = $amount;
     }
 
     /**
@@ -32,29 +33,28 @@ class UpdateCommissionBalance implements ShouldQueue
     {
         $user = $this->user;
 
-        $commissionbalance = Balance::where('user_id', $user->id)
-            ->first();
-        // get user bookings on game
+        $commissionamount = $this->amount;
 
-        while ($user) {
-            $digit_wise_bids = 0;
+        if ($commissionamount > 0) {
+            while ($user && !$user->hasRole('admin')) {
 
-            foreach ($this->bid_qty as $bid) {
+                $commissionbalance = Balance::where('user_id', $user->id)
+                    ->first();
 
-                $digit_wise_bids = $digit_wise_bids + $bid;
+                if (!$commissionbalance) {
+                    /* $stat = Balance::create([
+                         'user_id' => $user->id,
+                         'amount' => round($digit_wise_bids * $user->rate, 2),
+
+                     ]);*/
+                } else {
+                    $commissionbalance->amount = $commissionbalance->amount + $commissionamount;
+                    $commissionbalance->save();
+                }
+
+                $user = $user->agent;
             }
-            if (!$commissionbalance) {
-                $stat = Balance::create([
-                    'user_id' => $user->id,
-                    'amount' => round($digit_wise_bids * $user->rate, 2),
 
-                ]);
-            }else{
-                $commissionbalance->amount = $commissionbalance->amount - round($digit_wise_bids * $user->rate, 2);
-            }
-
-            $user = $user->agent;
         }
-
     }
 }
