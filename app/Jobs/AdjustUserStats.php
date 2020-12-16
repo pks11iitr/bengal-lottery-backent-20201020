@@ -58,16 +58,16 @@ class AdjustUserStats implements ShouldQueue
                     'digit9'=>0,
                 ]);
 
-            $stat->digit0=$stat->digit0+$this->tickets[0]??0;
-            $stat->digit1=$stat->digit1+$this->tickets[1]??0;
-            $stat->digit2=$stat->digit2+$this->tickets[2]??0;
-            $stat->digit3=$stat->digit3+$this->tickets[3]??0;
-            $stat->digit4=$stat->digit4+$this->tickets[4]??0;
-            $stat->digit5=$stat->digit5+$this->tickets[5]??0;
-            $stat->digit6=$stat->digit6+$this->tickets[6]??0;
-            $stat->digit7=$stat->digit7+$this->tickets[7]??0;
-            $stat->digit8=$stat->digit8+$this->tickets[8]??0;
-            $stat->digit9=$stat->digit9+$this->tickets[9]??0;
+            $stat->digit0=$stat->digit0+($this->tickets[0]??0);
+            $stat->digit1=$stat->digit1+($this->tickets[1]??0);
+            $stat->digit2=$stat->digit2+($this->tickets[2]??0);
+            $stat->digit3=$stat->digit3+($this->tickets[3]??0);
+            $stat->digit4=$stat->digit4+($this->tickets[4]??0);
+            $stat->digit5=$stat->digit5+($this->tickets[5]??0);
+            $stat->digit6=$stat->digit6+($this->tickets[6]??0);
+            $stat->digit7=$stat->digit7+($this->tickets[7]??0);
+            $stat->digit8=$stat->digit8+($this->tickets[8]??0);
+            $stat->digit9=$stat->digit9+($this->tickets[9]??0);
             $stat->save();
 
             $user=$user->agent;
