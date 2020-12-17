@@ -89,17 +89,20 @@
                             <th style="width: 10%">
                               Avl  Balance
                             </th>
-                            <th style="width: 10%">
-                                Deposit
-                            </th>
-                            <th style="width: 10%">
-                                Date
-                            </th>
-                            <th style="width: 10%">
-                                Withdraw
-                            </th>
+{{--                            <th style="width: 10%">--}}
+{{--                                Deposit--}}
+{{--                            </th>--}}
+{{--                            <th style="width: 10%">--}}
+{{--                                Date--}}
+{{--                            </th>--}}
+{{--                            <th style="width: 10%">--}}
+{{--                                Withdraw--}}
+{{--                            </th>--}}
                             <th style="width: 10%">
                                 Commission
+                            </th>
+                            <th style="width: 10%">
+                               Avl Commission
                             </th>
                             <th style="width: 10%">
                                 Rate
@@ -140,7 +143,7 @@
                                     <td style="text-transform: capitalize;">
                                         {{$product->avl_balance??0}}
                                     </td>
-                                    <td style="text-transform: capitalize;">
+<!--                                    <td style="text-transform: capitalize;">
                                         {{$product->totaldeposit}}
                                     </td>
                                     <td style="text-transform: capitalize;">
@@ -148,9 +151,12 @@
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->totalwithdraw}}
+                                    </td>-->
+                                    <td style="text-transform: capitalize;">
+                                        {{$product->individual_commission-$product->totalcommission}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{$product->totalprofitcommission-$product->totalcommission}}
+                                        {{$product->avl_commission}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->rate}}

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Jobs\DepositCommissionBalance;
 use App\Jobs\UpdateCommissionBalance;
 use App\Jobs\UpdateWinBalances;
 use App\Models\Balance;
+use App\Models\Commission;
 use App\Models\CompanyProducts;
 use App\Models\Game;
 use App\Models\GameBook;
@@ -26,7 +28,10 @@ class AgentController extends Controller
     {
         $user = Auth::user();
 
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
+
+      //  echo '<pre>';
+      //  print_r($agents->toArray());die;
         $total=0;
         foreach ($agents as $agent){
             $balance=Transaction::balance($agent->id);
@@ -38,12 +43,18 @@ class AgentController extends Controller
             $agent->totalwithdraw=round($totalwithdraw,2);
 
             //commission
+            $individual_commision=0;
+            foreach($agent->childs as $child){
+                $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
+            }
 
+            $agent->individual_commission=$individual_commision;
             $totalcommission=Transaction::totalcommission($agent->id);
             $agent->totalcommission=round($totalcommission,2);
             $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate, $user->rate);
             $agent->totalprofitcommission=round($totalprofitcommission,2);
             $agent->avl_balance=Balance::avl_balance($agent->id);
+            $agent->avl_commission=Commission::avl_commission($agent->id);
            //end commission
         }
         //var_dump($balance);die();
@@ -144,7 +155,7 @@ class AgentController extends Controller
                 dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
             }
 
-            $agentdetails->rate = $request->rate_edit;
+          //  $agentdetails->rate = $request->rate_edit;
             $agentdetails->save();
 
             if ($request->deposit_edit > 0) {
@@ -217,7 +228,7 @@ class AgentController extends Controller
                         $agentdetails->status = $request->status_edit;
                         dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
                     }
-                    $agentdetails->rate = $request->rate_edit;
+                    //$agentdetails->rate = $request->rate_edit;
                     $agentdetails->save();
                     if ($request->deposit_edit >0) {
                         if($balance>=$request->deposit_edit) {
@@ -378,12 +389,17 @@ class AgentController extends Controller
         ));
 
         $user=auth()->user();
-        $agent=User::find($request->agent_id);
+        $agent=User::with('childs.bids')->find($request->agent_id);
         $totalcommission=Transaction::totalcommission($agent->id);
         //$totalcommission=round($totalcommission,2);
         $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate,$user->rate);
+
+        $individual_commision=0;
+        foreach($agent->childs as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
+        }
        // $totalprofitcommission=round($totalprofitcommission,2);
-        $balancecommission=round(($totalprofitcommission-$totalcommission),2);
+        $balancecommission=round(($individual_commision-$totalcommission),2);
         if($balancecommission < $request->commission)
         {
 
@@ -411,6 +427,7 @@ class AgentController extends Controller
 
        // $commission_balance=Transaction::commission_balance($user->id,$request->agent_id,$request->commission);
         dispatch(new UpdateCommissionBalance($user,$request->commission))->onQueue('instant');
+        dispatch(new DepositCommissionBalance($user,$request->commission))->onQueue('instant');
 
         return redirect()->route('agents')->with('success', 'Commission Deposit Successfully');
     }

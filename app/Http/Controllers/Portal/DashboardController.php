@@ -33,14 +33,19 @@ class DashboardController extends Controller
         $totalgames = $games->count();
 
         //commission
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
 
         $total = 0;$cmc=0;
         foreach ($agents as $agent) {
             $totalcommission = Transaction::totalcommission($agent->id);
+
+            $individual_commision=0;
+            foreach($agent->childs as $child){
+                $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
+            }
             $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate, $user->rate);
             $cmc=$cmc+round($totalcommission,2);
-            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+            $total = $total + ( round(($individual_commision-$totalcommission),2));
         }
        $total=$total+$cmc;
         //end commission

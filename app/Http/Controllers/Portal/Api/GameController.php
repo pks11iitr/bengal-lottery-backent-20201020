@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal\Api;
 
 use App\Jobs\AdjustUserStats;
+use App\Jobs\CreateCommissionBalance;
 use App\Jobs\UpdateBookingBalance;
 use App\Models\Game;
 use App\Models\GameBook;
@@ -307,6 +308,7 @@ class GameController extends Controller
         if($book){
             dispatch(new AdjustUserStats($user, $games, $request->bid_qty))->onQueue('instant');
             dispatch(new UpdateBookingBalance($user, $request->bid_qty))->onQueue('instant');
+            dispatch(new CreateCommissionBalance($user, $request->bid_qty))->onQueue('instant');
             return [
                 'status'=>'success',
                 'msg'=>'success',
