@@ -172,31 +172,35 @@ class AgentController extends Controller
 
             }
             if ($request->withdraw_edit > 0) {
-
-                $withdraw = Transaction::create([
-                   // 'user_id' => $request->agent_id,
-                    'user_id' => $request->agent_id,
-                    'to_user_id' => $user->id,
-                    'amount' => $request->withdraw_edit,
-                    'avl_balance' => round($agentbalance,2)-$request->withdraw_edit,
-                    'type' => 'Withdraw',
-                    'mode' => 'agent',
-                ]);
+                if ($agentbalance >= $request->withdraw_edit)
+                {
+                    $withdraw = Transaction::create([
+                        // 'user_id' => $request->agent_id,
+                        'user_id' => $request->agent_id,
+                        'to_user_id' => $user->id,
+                        'amount' => $request->withdraw_edit,
+                        'avl_balance' => round($agentbalance, 2) - $request->withdraw_edit,
+                        'type' => 'Withdraw',
+                        'mode' => 'agent',
+                    ]);
                 $withdraw = Transaction::create([
                     // 'user_id' => $request->agent_id,
                     'to_user_id' => $request->agent_id,
                     'user_id' => $user->id,
                     'amount' => $request->withdraw_edit,
-                    'avl_balance' => round($balance,2)+$request->withdraw_edit,
+                    'avl_balance' => round($balance, 2) + $request->withdraw_edit,
                     'type' => 'Deposit',
                     'mode' => 'agent',
                 ]);
 
-                $balance=Balance::update_withdraw_balance($request->agent_id,$user->id,$request->withdraw_edit);
+                $balance = Balance::update_withdraw_balance($request->agent_id, $user->id, $request->withdraw_edit);
+            }else{
+                    return redirect()->back()->with('error', 'Check Agent balance Amount');
+                }
             }
 
         }else{
-            if($balance>=$request->deposit_edit) {
+
                 if ($user->rate <= $request->rate_edit) {
                     $agentdetails = User::where("id", $request->agent_id)->first();
                     $agentdetails->deposit = $request->deposit_edit;
@@ -216,6 +220,7 @@ class AgentController extends Controller
                     $agentdetails->rate = $request->rate_edit;
                     $agentdetails->save();
                     if ($request->deposit_edit >0) {
+                        if($balance>=$request->deposit_edit) {
                         $deposit = Transaction::create([
                             'to_user_id' => $user->id,
                             'user_id' => $request->agent_id,
@@ -250,11 +255,14 @@ class AgentController extends Controller
 //                        ]);
 
                         $balance=Balance::update_deposit_balance($user->id,$request->agent_id,$request->deposit_edit);
+                    }else{
+                        return redirect()->back()->with('error', 'Check Your balance Amount');
+                    }
                     }
                     if ($request->withdraw_edit > 0) {
-
+                        if ($agentbalance >= $request->withdraw_edit)
+                        {
                         $withdraw = Transaction::create([
-                           /// 'user_id' => $request->agent_id,
                             'to_user_id' => $user->id,
                             'user_id' => $request->agent_id,
                             'amount' => $request->withdraw_edit,
@@ -263,16 +271,8 @@ class AgentController extends Controller
                             'mode' => 'agent',
                         ]);
 
-//                        $withdraw2 = Transaction::create([
-//                            /// 'user_id' => $request->agent_id,
-//                            'to_user_id' => $user->id,
-//                            'user_id' => $request->agent_id,
-//                            'amount' => $request->withdraw_edit,
-//                            'type' => 'Withdraw',
-//                            'mode' => 'agent',
-//                        ]);
                         $withdraw1 = Transaction::create([
-                            //'user_id' => $user->id,
+
                             'to_user_id' => $request->agent_id,
                             'user_id' => $user->id,
                             'amount' => $request->withdraw_edit,
@@ -280,22 +280,16 @@ class AgentController extends Controller
                             'type' => 'Deposit',
                             'mode' => 'subagent',
                         ]);
-//                        $withdraw3 = Transaction::create([
-//                            //'user_id' => $user->id,
-//                            'user_id' => $request->agent_id,
-//                            'to_user_id' => $user->id,
-//                            'amount' => $request->withdraw_edit,
-//                            'type' => 'Deposit',
-//                            'mode' => 'subagent',
-//                        ]);
+
                         $balance=Balance::update_withdraw_balance($request->agent_id,$user->id,$request->withdraw_edit);
+                        }else{
+                            return redirect()->back()->with('error', 'Check Agent balance Amount');
+                        }
                     }
                 }else{
                     return redirect()->back()->with('error', 'Game Rate Not Less Then Our Rate');
                 }
-            }else{
-                return redirect()->back()->with('error', 'Check Your balance Amount');
-            }
+
         }
 
         return redirect()->route("agents");

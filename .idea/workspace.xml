@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="manage useravalable balances fix">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="user history balance view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,14 +266,8 @@
       <workItem from="1607665073011" duration="597000" />
       <workItem from="1607926166893" duration="644000" />
       <workItem from="1608012081759" duration="24246000" />
-      <workItem from="1608098192310" duration="17501000" />
-    </task>
-    <task id="LOCAL-00048" summary="google analytics added">
-      <created>1603515500513</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1603515500513</updated>
+      <workItem from="1608098192310" duration="17879000" />
+      <workItem from="1608184527638" duration="1306000" />
     </task>
     <task id="LOCAL-00049" summary="google analytics added">
       <created>1603515529964</created>
@@ -613,7 +605,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608124800744</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="user history balance view">
+      <created>1608126752659</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1608126752659</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="add product" />
     <MESSAGE value="testing qr" />
     <MESSAGE value="map unmap login" />
     <MESSAGE value="map qr code, razor pay service," />
@@ -658,6 +656,7 @@
     <MESSAGE value="user balance" />
     <MESSAGE value="manage user total balance" />
     <MESSAGE value="manage useravalable balances fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="manage useravalable balances fix" />
+    <MESSAGE value="user history balance view" />
+    <option name="LAST_COMMIT_MESSAGE" value="user history balance view" />
   </component>
 </project>
