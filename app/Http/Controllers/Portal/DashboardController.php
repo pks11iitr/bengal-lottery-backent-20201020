@@ -44,10 +44,10 @@ class DashboardController extends Controller
                 $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
             }
            // $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate, $user->rate);
-           // $cmc=$cmc+round($totalcommission,2);
+            $cmc=$cmc+round($totalcommission,2);
           //  $total = $total + ( round(($individual_commision),2));
         }
-       $total=$individual_commision-$totalcommission;
+       $total=$individual_commision-$cmc;
         //end commission
 
         return view('portal.dashboard', compact('agents', 'totalagent', 'games', 'totalgames', 'total'));

@@ -57,8 +57,9 @@ class AgentController extends Controller
             $agent->avl_commission=Commission::avl_commission($agent->id);
            //end commission
         }
-        //var_dump($balance);die();
-        return view('portal.agent.add', compact('agents'));
+        $total=round($agent->individual_commission-$individual_commision,2);
+       // var_dump($total);die();
+        return view('portal.agent.add', compact('agents','total'));
     }
 
 

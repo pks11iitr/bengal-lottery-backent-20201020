@@ -73,15 +73,15 @@
                             <th style="width: 1%">
                                 #
                             </th>
-                            <th style="width: 10%">
-                                Account
-                            </th>
+{{--                            <th style="width: 10%">--}}
+{{--                                Account--}}
+{{--                            </th>--}}
                             <th style="width: 10%">
                                Name
                             </th>
 
                             <th style="width: 10%">
-                                Parent Name
+                                Upline
                             </th>
                             <th style="width: 10%">
                                 Balance
@@ -127,9 +127,9 @@
                             @foreach($agents as $key => $product)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td style="text-transform: capitalize;">
-                                       {{$product->account?:'MAIN AGENT'}}
-                                    </td>
+{{--                                    <td style="text-transform: capitalize;">--}}
+{{--                                       {{$product->account?:'MAIN AGENT'}}--}}
+{{--                                    </td>--}}
                                     <td style="text-transform: capitalize;">
                                         {{$product->email}}
                                     </td>
