@@ -66,22 +66,33 @@ class GameController extends Controller
         }
 
 //commission
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
-        $ctotal = 0;
-        $cmc = 0;
-       if($agents->count()>0) {
+//        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+//        $ctotal = 0;
+//        $cmc = 0;
+//       if($agents->count()>0) {
+//
+//           foreach ($agents as $agent) {
+//
+//               $totalcommission = Transaction::totalcommission($agent->id);
+//
+//               $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate,$user->rate);
+//               //var_dump($totalprofitcommission);die();
+//               $cmc = $cmc + round($totalcommission, 2);
+//               $ctotal = $ctotal + (round(($totalprofitcommission - $totalcommission), 2));
+//           }
+//           $ctotal = $ctotal + $cmc;
+//       }
+        $agents = User::with('childs.bids')
+            ->where('parent_id', $user->id)
+            ->whereNotNull('parent_id')
+            ->orderBy('id', 'DESC')->get();
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
 
-           foreach ($agents as $agent) {
-
-               $totalcommission = Transaction::totalcommission($agent->id);
-
-               $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate,$user->rate);
-               //var_dump($totalprofitcommission);die();
-               $cmc = $cmc + round($totalcommission, 2);
-               $ctotal = $ctotal + (round(($totalprofitcommission - $totalcommission), 2));
-           }
-           $ctotal = $ctotal + $cmc;
-       }
+        $totalcommission = Transaction::totalcommission($user->id);
+        $ctotal=round(($individual_commision-$totalcommission),2);
       //  end commission
 
         $balance=Transaction::balance($user->id);
