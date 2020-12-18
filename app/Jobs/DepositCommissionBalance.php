@@ -41,18 +41,18 @@ class DepositCommissionBalance implements ShouldQueue
         if($commission_amount>0){
             while ($user && !$user->hasRole('admin')) {
 
-                $commission_amount = Commission::where('user_id', $user->id)
+                $commission = Commission::where('user_id', $user->id)
                     ->first();
 
-                if (!$commission_amount) {
+                if (!$commission) {
                     /* $stat = Balance::create([
                          'user_id' => $user->id,
                          'amount' => round($digit_wise_bids * $user->rate, 2),
 
                      ]);*/
                 }else{
-                    $commission_amount->total_commission = $commission_amount->total_commission - $commission_amount;
-                    $commission_amount->save();
+                    $commission->total_commission = $commission->total_commission - $commission_amount;
+                    $commission->save();
                 }
 
               //  $user=$parent;
