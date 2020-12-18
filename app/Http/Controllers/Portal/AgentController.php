@@ -32,7 +32,8 @@ class AgentController extends Controller
 
       //  echo '<pre>';
       //  print_r($agents->toArray());die;
-        $total=0;
+
+        $total = 0;$cmc=0;
         foreach ($agents as $agent){
             $balance=Transaction::balance($agent->id);
             $agent->balance=round($balance,2);
@@ -56,8 +57,11 @@ class AgentController extends Controller
             $agent->avl_balance=Balance::avl_balance($agent->id);
             $agent->avl_commission=Commission::avl_commission($agent->id);
            //end commission
+            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+            $cmc=$cmc+round($totalcommission,2);
+
         }
-        $total=round($agent->individual_commission-$individual_commision,2);
+        $total=$total+$cmc;
        // var_dump($total);die();
         return view('portal.agent.add', compact('agents','total'));
     }
@@ -373,7 +377,22 @@ class AgentController extends Controller
     {
         $user = Auth::user();
         $payments = Transaction::where('user_id', $user->id)->orderBy('id','DESC')->get();
-        return view('portal.agent.paymenthistory', compact('payments'));
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+
+        $total = 0;$cmc=0;
+        foreach ($agents as $agent) {
+            $totalcommission = Transaction::totalcommission($agent->id);
+
+//            $individual_commision=0;
+//            foreach($agent->childs as $child){
+//                $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
+//            }
+            $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate, $user->rate);
+            $cmc=$cmc+round($totalcommission,2);
+            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+        }
+        $total=$total+$cmc;
+        return view('portal.agent.paymenthistory', compact('payments','total'));
     }
 
 //startcommission
