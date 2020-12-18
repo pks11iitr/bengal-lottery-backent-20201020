@@ -51,7 +51,7 @@ class DepositCommissionBalance implements ShouldQueue
 
                      ]);*/
                 }else{
-                    $commission->total_commission = $commission->total_commission - $commission_amount;
+                    $commission->total_commission = round($commission->total_commission - $commission_amount, 2);
                     $commission->save();
                 }
 
