@@ -26,13 +26,13 @@ class BookingHistoryController extends Controller
         if($request->game_id){
             $bookgames=Order::where('user_id',$user->id)->where('game_id',$request->game_id)->get();
             foreach ($bookgames as $book){
-                
+
                 $book->bidlist=GameBook::where('user_id',$user->id)
                 ->where('game_id',$book->game_id)
                 ->groupBy('attempt_id')
                 ->select(DB::raw('GROUP_CONCAT(bid_digit order by bid_digit asc) AS bid_digit'),DB::raw('GROUP_CONCAT(bid_qty order by bid_digit asc) AS bid_qty'),DB::raw('GROUP_CONCAT(game_price order by bid_digit asc) AS game_price'), 'attempt_id')
                 ->get();
-                
+
                 $totalbid=GameBook::where('user_id',$user->id)
                 ->where('game_id',$book->game_id)
                 ->get();
@@ -163,7 +163,7 @@ class BookingHistoryController extends Controller
         //         'message'=>'Please login to continue'
         //     ];
         if($user){
-            $game=Order::where('user_id',$user->id)->select('game_id','name')->get();
+            $game=Order::where('user_id',$user->id)->select('game_id','name')->orderBy('id','DESC')->get();
         }else{
             $game=Game::whereNotIn('isactive',[0])->select('id as game_id','name')->orderBy('id','DESC')->get();
         }
