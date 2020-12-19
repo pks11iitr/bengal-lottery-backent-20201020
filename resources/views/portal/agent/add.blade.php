@@ -245,7 +245,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate" name="rate" class="form-control" placeholder="Rate" required step="0.01" value="0.0"min="0.01">
+                                        <input type="number" id="rate" name="rate" class="form-control" placeholder="Rate" required step="0.01" value="0.0" min="0.0">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -363,19 +363,19 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="code" class="text-muted">Deposit<small class="text-success">*</small> :</label>
-                                        <input id="deposit_edit" type="number" name="deposit_edit" class="form-control" step="0.01" value="0.0"min="0.01" required >
+                                        <input id="deposit_edit" type="number" name="deposit_edit" class="form-control" step="0.01" value="0.0" min="0.0" required >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="code" class="text-muted">Withdraw<small class="text-success">*</small> :</label>
-                                        <input id="withdraw_edit" type="number" name="withdraw_edit" class="form-control" required step="0.01" value="0.0"min="0.01">
+                                        <input id="withdraw_edit" type="number" name="withdraw_edit" class="form-control" required step="0.01" value="0.0" min="0.0">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="0.01" value="0.0"min="0.01" readonly>
+                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="0.01" value="0.0" min="0.0" readonly>
                                     </div>
                                 </div>
 

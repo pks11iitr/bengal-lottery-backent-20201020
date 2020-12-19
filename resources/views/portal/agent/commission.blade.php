@@ -81,7 +81,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="text-muted" for="cname">Commission Amount <small class="text-success">*</small> :</label>
-                                                            <input type="number" id="commission" name="commission" step="0.01" value="0.0"min="0.01" class="form-control" placeholder="commission" required >
+                                                            <input type="number" id="commission" name="commission" step="0.01" value="0.0" min="0.01" class="form-control" placeholder="commission" required >
                                                         </div>
                                                     </div>
 
