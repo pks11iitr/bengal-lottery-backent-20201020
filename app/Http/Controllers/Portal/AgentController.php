@@ -32,7 +32,8 @@ class AgentController extends Controller
 
       //  echo '<pre>';
       //  print_r($agents->toArray());die;
-        $total=0;
+
+        $total = 0;$cmc=0;
         foreach ($agents as $agent){
             $balance=Transaction::balance($agent->id);
             $agent->balance=round($balance,2);
@@ -56,9 +57,19 @@ class AgentController extends Controller
             $agent->avl_balance=Balance::avl_balance($agent->id);
             $agent->avl_commission=Commission::avl_commission($agent->id);
            //end commission
+            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+            $cmc=$cmc+round($totalcommission,2);
+
         }
-        //var_dump($balance);die();
-        return view('portal.agent.add', compact('agents'));
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
+
+        $totalcommission = Transaction::totalcommission($user->id);
+        $total= round(($individual_commision-$totalcommission),2);
+       // var_dump($total);die();
+        return view('portal.agent.add', compact('agents','total'));
     }
 
 
@@ -372,7 +383,16 @@ class AgentController extends Controller
     {
         $user = Auth::user();
         $payments = Transaction::where('user_id', $user->id)->orderBy('id','DESC')->get();
-        return view('portal.agent.paymenthistory', compact('payments'));
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
+
+        $totalcommission = Transaction::totalcommission($user->id);
+        $total=round(($individual_commision-$totalcommission),2);
+        return view('portal.agent.paymenthistory', compact('payments','total'));
     }
 
 //startcommission

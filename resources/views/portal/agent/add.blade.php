@@ -73,15 +73,15 @@
                             <th style="width: 1%">
                                 #
                             </th>
-                            <th style="width: 10%">
-                                Account
-                            </th>
+{{--                            <th style="width: 10%">--}}
+{{--                                Account--}}
+{{--                            </th>--}}
                             <th style="width: 10%">
                                Name
                             </th>
 
                             <th style="width: 10%">
-                                Parent Name
+                                Upline
                             </th>
                             <th style="width: 10%">
                                 Balance
@@ -127,9 +127,9 @@
                             @foreach($agents as $key => $product)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td style="text-transform: capitalize;">
-                                       {{$product->account?:'MAIN AGENT'}}
-                                    </td>
+{{--                                    <td style="text-transform: capitalize;">--}}
+{{--                                       {{$product->account?:'MAIN AGENT'}}--}}
+{{--                                    </td>--}}
                                     <td style="text-transform: capitalize;">
                                         {{$product->email}}
                                     </td>
@@ -375,7 +375,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="any">
+                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="any" readonly>
                                     </div>
                                 </div>
 

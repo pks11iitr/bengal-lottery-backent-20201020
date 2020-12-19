@@ -23,7 +23,16 @@ class GameController extends Controller
         $user=auth()->user();
         $games = Game::OrderBy('id','DESC')->get();
 
-        return view('portal.game.view', compact('games'));
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
+
+        $totalcommission = Transaction::totalcommission($user->id);
+        $total=round(($individual_commision-$totalcommission),2);
+        return view('portal.game.view', compact('games','total'));
     }
 
     public function create(Request $request)

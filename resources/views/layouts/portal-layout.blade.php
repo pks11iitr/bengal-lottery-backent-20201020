@@ -89,12 +89,11 @@
         <div class="logo_header full_width row_padding box_sizzing" style="padding: 15px 10px !important;">
             <div class="second_heade full_width f_box f_btwn my_admin_head">
                 <div class="logo_container">
-                    <h4>Welcome to,</h4>
+                    <h4>Welcome to, {{ auth()->user()->email}}</h4>
                     <p style="text-align:left">
-                        {{ auth()->user()->email}} (Balance Amount: {{App\Models\Transaction::balance(auth()->user()->id)}}) &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}})
+                         Balance Amount: {{App\Models\Transaction::balance(auth()->user()->id)}} &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}}) &nbsp;&nbsp; @if(isset($total))Total Commission:   {{$total??0}}@endif
                     </p>
                     <p style="text-align:left;color:blue;font-weight: bold ">
-    @if(isset($total))Total Commission:   {{$total??0}}@endif
                     </p>
                     <a href="{{route('login')}}">
 {{--                        <img src="/images/new-logo.jpeg" alt="">--}}

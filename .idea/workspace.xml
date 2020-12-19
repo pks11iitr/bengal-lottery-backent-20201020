@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment=" total commission fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,20 +269,7 @@
       <workItem from="1608184527638" duration="2268000" />
       <workItem from="1608188167867" duration="508000" />
       <workItem from="1608198885916" duration="13300000" />
-    </task>
-    <task id="LOCAL-00052" summary="google analytics added">
-      <created>1603710807617</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1603710807617</updated>
-    </task>
-    <task id="LOCAL-00053" summary="gitignore changes">
-      <created>1604124330918</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1604124330919</updated>
+      <workItem from="1608270534920" duration="8575000" />
     </task>
     <task id="LOCAL-00054" summary="gitignore changes">
       <created>1604124827948</created>
@@ -599,21 +586,35 @@
       <option name="project" value="LOCAL" />
       <updated>1608185856171</updated>
     </task>
-    <task id="LOCAL-00099" summary="minor fix">
-      <created>1608285373138</created>
+    <task id="LOCAL-00099" summary="userwithdraw balance fix">
+      <created>1608286315849</created>
       <option name="number" value="00099" />
       <option name="presentableId" value="LOCAL-00099" />
       <option name="project" value="LOCAL" />
-      <updated>1608285373138</updated>
+      <updated>1608286315850</updated>
     </task>
-    <task id="LOCAL-00100" summary="minor fix">
-      <created>1608285403194</created>
+    <task id="LOCAL-00100" summary="userwithdraw balance fix">
+      <created>1608287302844</created>
       <option name="number" value="00100" />
       <option name="presentableId" value="LOCAL-00100" />
       <option name="project" value="LOCAL" />
-      <updated>1608285403194</updated>
+      <updated>1608287302844</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary=" total commission fix">
+      <created>1608289901034</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1608289901034</updated>
+    </task>
+    <task id="LOCAL-00102" summary=" total commission fix">
+      <created>1608291573881</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1608291573881</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +658,7 @@
     <MESSAGE value="manage useravalable balances fix" />
     <MESSAGE value="user history balance view" />
     <MESSAGE value="userwithdraw balance fix" />
-    <MESSAGE value="minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
+    <MESSAGE value=" total commission fix" />
+    <option name="LAST_COMMIT_MESSAGE" value=" total commission fix" />
   </component>
 </project>
