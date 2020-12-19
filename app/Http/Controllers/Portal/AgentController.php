@@ -447,7 +447,7 @@ class AgentController extends Controller
 
        // $commission_balance=Transaction::commission_balance($user->id,$request->agent_id,$request->commission);
         dispatch(new UpdateCommissionBalance($user,$request->commission))->onQueue('instant');
-        dispatch(new DepositCommissionBalance($user,$request->commission))->onQueue('instant');
+        dispatch(new DepositCommissionBalance($agent,$request->commission))->onQueue('instant');
 
         return redirect()->route('agents')->with('success', 'Commission Deposit Successfully');
     }
