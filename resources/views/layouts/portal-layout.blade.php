@@ -46,7 +46,7 @@
                     <div class="office_sddress">
                     <span> <i class="fa fas-map-marker" aria-hidden="true"></i>
                     </span>
-                        <label for="" class="f_13">BANGAL LOTTERY System</label>
+                        <label for="" class="f_13">KUILL LOTTERY System</label>
                     </div>
 {{--                    <div class="off_timing row_padding">--}}
 {{--                        <span> <i class="fa fas-clock-o" aria-hidden="true"></i></span>--}}
@@ -91,9 +91,11 @@
                 <div class="logo_container">
                     <h4>Welcome to, {{ auth()->user()->email}}</h4>
                     <p style="text-align:left">
-                         Balance Amount: {{App\Models\Transaction::balance(auth()->user()->id)}} &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}}) &nbsp;&nbsp; @if(isset($total))Total Commission:   {{$total??0}}@endif
+                         Balance Amount: {{round(App\Models\Transaction::balance(auth()->user()->id),2)}} &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}}) &nbsp;&nbsp; @if(isset($total))Total Commission:   {{round($total,2)}}@endif
                     </p>
+                    Available Balance: {{round(\App\Models\Balance::avl_balance(auth()->user()->id),2)}} &nbsp;&nbsp;&nbsp;    Available Commission: {{round(\App\Models\Commission::avl_commission(auth()->user()->id),2)}}
                     <p style="text-align:left;color:blue;font-weight: bold ">
+
                     </p>
                     <a href="{{route('login')}}">
 {{--                        <img src="/images/new-logo.jpeg" alt="">--}}
@@ -117,9 +119,9 @@
                                 <a href="{{route('gamelist')}}" class="btn btn-info">Add Game </a>
                             </li>
                             @else
-                            <li>
+                           {{-- <li>
                                 <a href="{{route('gamelist')}}" class="btn btn-info">Add Game </a>
-                            </li>
+                            </li>--}}
 
                             @endif
 

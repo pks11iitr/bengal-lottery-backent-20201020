@@ -37,10 +37,6 @@ $api->post('game-book', ['as' => 'api.gamebooking', 'uses' => 'Portal\Api\GameCo
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 
-
-
-
-
 });
 
 $api->get('privacy-policy', ['as'=>'api.policy', 'uses'=>'Portal\Api\AppUrlController@privacypolicy']);

@@ -117,7 +117,13 @@
 {{--                             <th style="width: 9%" class="text-center">--}}
 {{--                                Booking--}}
 {{--                            </th>--}}
-                            <th style="width: 25%; text-align: right" colspan="3">
+                            <th style="width: 10%;text-align: right">
+                                Payment History
+                            </th>
+                            <th style="width: 10%;text-align: right">
+                                Commission Withdraw
+                            </th>
+                            <th style="width: 5%; text-align: right" >
                                 Action
                             </th>
                         </tr>
@@ -156,7 +162,7 @@
                                         {{round($product->individual_commission-$product->totalcommission,2)}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{round($product->avl_commission)}}
+                                        {{round($product->avl_commission,2)}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->rate}}
@@ -180,11 +186,7 @@
 {{--                                    </td>--}}
 
 {{--                                    <td class="project-actions text-right">--}}
-                                    <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$product->id}})" title="Edit">
-                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
+
 {{--                                        <br><br>--}}
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{route('commissioncreate',['id'=>$product->id])}}" title="Commission create">
@@ -195,6 +197,11 @@
                                             </i>
                                             Delete
                                         </a> -->
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$product->id}})" title="Edit">
+                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -250,12 +257,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Isactive</label>
+                                        <label>Status</label>
                                         <select class="form-control select2" id="status" name="status">
                                             <option value="">Please Select Status</option>
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
-                                            <option value="2">Blocked</option>
+
                                         </select>
                                     </div>
                                     <!-- /.form-group -->
@@ -381,12 +388,12 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Isactive</label>
+                                        <label>Status</label>
                                         <select class="form-control select2" id="status_edit" name="status_edit">
                                             <option value="3">Please Select Status</option>
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
-                                            <option value="2">Blocked</option>
+
                                         </select>
                                     </div>
                                     <!-- /.form-group -->
