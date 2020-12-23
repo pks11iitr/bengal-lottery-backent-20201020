@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment=" total commission fix">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,21 +270,8 @@
       <workItem from="1608188167867" duration="508000" />
       <workItem from="1608198885916" duration="13300000" />
       <workItem from="1608270534920" duration="8575000" />
-      <workItem from="1608365215429" duration="1172000" />
-    </task>
-    <task id="LOCAL-00054" summary="gitignore changes">
-      <created>1604124827948</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1604124827948</updated>
-    </task>
-    <task id="LOCAL-00055" summary="auth user id">
-      <created>1604148394842</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1604148394842</updated>
+      <workItem from="1608365215429" duration="3828000" />
+      <workItem from="1608705100366" duration="521000" />
     </task>
     <task id="LOCAL-00056" summary="admin and api work">
       <created>1604303744475</created>
@@ -616,7 +602,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608291573881</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary=" total commission fix">
+      <created>1608366402235</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1608366402235</updated>
+    </task>
+    <task id="LOCAL-00104" summary=" total commission fix">
+      <created>1608366523729</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1608366523729</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
