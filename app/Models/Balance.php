@@ -56,15 +56,15 @@ class Balance extends Model
         }
 
        // }
-        if(!$reciverbalance){
-            $reciverbalance= Balance::create([
-                'user_id' => $parent_id,
-                'amount' => round($amount, 2),
-            ]);
-        }else{
-            $reciverbalance->amount=$reciverbalance->amount + round($amount, 2);
-            $reciverbalance->save();
-        }
+//        if(!$reciverbalance){
+//            $reciverbalance= Balance::create([
+//                'user_id' => $parent_id,
+//                'amount' => round($amount, 2),
+//            ]);
+//        }else{
+//            $reciverbalance->amount=$reciverbalance->amount + round($amount, 2);
+//            $reciverbalance->save();
+//        }
     }
 
 //    public static function commission_balance($parent_id,$child_id,$amount){

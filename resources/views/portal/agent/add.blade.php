@@ -117,7 +117,13 @@
 {{--                             <th style="width: 9%" class="text-center">--}}
 {{--                                Booking--}}
 {{--                            </th>--}}
-                            <th style="width: 25%; text-align: right" colspan="3">
+                            <th style="width: 10%;text-align: right">
+                                Payment History
+                            </th>
+                            <th style="width: 10%;text-align: right">
+                                Commission Withdraw
+                            </th>
+                            <th style="width: 5%; text-align: right" >
                                 Action
                             </th>
                         </tr>
@@ -156,7 +162,7 @@
                                         {{round($product->individual_commission-$product->totalcommission,2)}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{round($product->avl_commission)}}
+                                        {{round($product->avl_commission,2)}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->rate}}
@@ -180,11 +186,7 @@
 {{--                                    </td>--}}
 
 {{--                                    <td class="project-actions text-right">--}}
-                                    <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$product->id}})" title="Edit">
-                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
+
 {{--                                        <br><br>--}}
                                     <td class="project-actions text-right">
                                         <a class="btn btn-primary btn-sm" href="{{route('commissioncreate',['id'=>$product->id])}}" title="Commission create">
@@ -195,6 +197,11 @@
                                             </i>
                                             Delete
                                         </a> -->
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="javascript:editProduct({{$product->id}})" title="Edit">
+                                            <i class="fas fa-pencil-alt mr-1" aria-hidden="true"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -245,17 +252,17 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate" name="rate" class="form-control" placeholder="Rate" required step="any">
+                                        <input type="number" id="rate" name="rate" class="form-control" placeholder="Rate" required step="0.01" value="0.0" min="0.0">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Isactive</label>
+                                        <label>Status</label>
                                         <select class="form-control select2" id="status" name="status">
                                             <option value="">Please Select Status</option>
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
-                                            <option value="2">Blocked</option>
+
                                         </select>
                                     </div>
                                     <!-- /.form-group -->
@@ -363,30 +370,30 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="code" class="text-muted">Deposit<small class="text-success">*</small> :</label>
-                                        <input id="deposit_edit" type="text" name="deposit_edit" class="form-control" required >
+                                        <input id="deposit_edit" type="number" name="deposit_edit" class="form-control" step="0.01" value="0.0" min="0.0" required >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="code" class="text-muted">Withdraw<small class="text-success">*</small> :</label>
-                                        <input id="withdraw_edit" type="text" name="withdraw_edit" class="form-control" required >
+                                        <input id="withdraw_edit" type="number" name="withdraw_edit" class="form-control" required step="0.01" value="0.0" min="0.0">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="text-muted" for="cemail">Rate <small class="text-success">*</small> :</label>
-                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="any" readonly>
+                                        <input type="number" id="rate_edit" name="rate_edit" class="form-control" placeholder="Rate"  required step="0.01" value="0.0" min="0.0" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Isactive</label>
+                                        <label>Status</label>
                                         <select class="form-control select2" id="status_edit" name="status_edit">
                                             <option value="3">Please Select Status</option>
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
-                                            <option value="2">Blocked</option>
+
                                         </select>
                                     </div>
                                     <!-- /.form-group -->

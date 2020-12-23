@@ -46,7 +46,7 @@
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Total Agents System</span>
+                            <span class="info-box-text">Total Agents</span>
                             <span class="info-box-number">
                   {{$totalagent??'0'}}
 {{--                  <small>%</small>--}}
@@ -62,8 +62,8 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Bengal Lottery</span>
-                            <span class="info-box-number">0</span>
+                            <span class="info-box-text">Main Balance</span>
+                            <span class="info-box-number">{{round(App\Models\Transaction::balance(auth()->user()->id),2)}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -79,8 +79,8 @@
                         <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Total Game</span>
-                            <span class="info-box-number"> {{$totalgames??'0'}}</span>
+                            <span class="info-box-text">Available Balance</span>
+                            <span class="info-box-number"> {{round(\App\Models\Balance::avl_balance(auth()->user()->id),2)}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -93,7 +93,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Commission</span>
-                            <span class="info-box-number">{{$total??0}}</span>
+                            <span class="info-box-number">{{round($total,2)}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -262,7 +262,7 @@
                     <!-- PRODUCT LIST -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Recently Added Agents</h3>
+                            <h3 class="card-title">Recently Added Games</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -290,15 +290,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($games as $gm)
-                                        <tr>
-                                            <td>{{$gm->name??''}}</td>
-                                            <td><span class="badge badge-success">{{$gm->close_date??''}}</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">{{$gm->game_time}}</div></td>
+{{--                                    @foreach($games as $gm)--}}
+{{--                                        <tr>--}}
+{{--                                            <td>{{$gm->name??''}}</td>--}}
+{{--                                            <td><span class="badge badge-success">{{$gm->close_date??''}}</span></td>--}}
+{{--                                            <td>--}}
+{{--                                                <div class="sparkbar" data-color="#00a65a" data-height="20">{{$gm->game_time}}</div></td>--}}
 
-                                        </tr>
-                                    @endforeach
+{{--                                        </tr>--}}
+{{--                                    @endforeach--}}
                                     </tbody>
                                 </table>
                             </div>

@@ -72,6 +72,7 @@ class DownlinegamehistoryController extends Controller
                 $finaltotalticket = $finaltotalticket + ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
                 $wondegit = Game::where('id', $game->id)->whereNotNull('bid_qty')->first();
                 if ($wondegit) {
+                    $win0=$win1=$win2=$win3=$win4=$win5=$win6=$win7=$win8=$win9=0;
                     if ($wondegit->bid_qty == 0) {
                         $win0 = $totalbid->digit0 ?? 0;
                     } elseif ($wondegit->bid_qty == 1) {
@@ -93,12 +94,13 @@ class DownlinegamehistoryController extends Controller
                     } elseif ($wondegit->bid_qty == 9) {
                         $win9 = $totalbid->digit9 ?? 0;
                     }
+                    $game->totalwin = max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9);
                 }
                 $finaltotalwin = $finaltotalwin + max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9);
 
                 $game->totaltan = min($totalbid->digit0, $totalbid->digit1, $totalbid->digit2, $totalbid->digit3, $totalbid->digit4, $totalbid->digit5, $totalbid->digit6, $totalbid->digit7, $totalbid->digit8, $totalbid->digit9);
                 $game->totalticket = ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
-                $game->totalwin = max($win0, $win1, $win2, $win3, $win4, $win5, $win6, $win7, $win8, $win9);
+
             }
         }
 

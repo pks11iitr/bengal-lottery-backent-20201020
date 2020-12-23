@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="downline bill fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Balance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Balance.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,44 +270,12 @@
       <workItem from="1608184527638" duration="2268000" />
       <workItem from="1608188167867" duration="508000" />
       <workItem from="1608198885916" duration="13300000" />
-      <workItem from="1608270534920" duration="8575000" />
-      <workItem from="1608365215429" duration="3828000" />
-      <workItem from="1608705100366" duration="521000" />
-    </task>
-    <task id="LOCAL-00056" summary="admin and api work">
-      <created>1604303744475</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1604303744476</updated>
-    </task>
-    <task id="LOCAL-00057" summary="admin and api work">
-      <created>1604316137231</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1604316137231</updated>
-    </task>
-    <task id="LOCAL-00058" summary="admin work">
-      <created>1604322215261</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1604322215261</updated>
-    </task>
-    <task id="LOCAL-00059" summary="admin work">
-      <created>1604323464450</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1604323464450</updated>
-    </task>
-    <task id="LOCAL-00060" summary="admin work">
-      <created>1604324004964</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1604324004964</updated>
+      <workItem from="1608270534920" duration="9313000" />
+      <workItem from="1608356093176" duration="2635000" />
+      <workItem from="1608380192322" duration="2591000" />
+      <workItem from="1608551748720" duration="5604000" />
+      <workItem from="1608616074941" duration="8050000" />
+      <workItem from="1608704185849" duration="1044000" />
     </task>
     <task id="LOCAL-00061" summary="api work">
       <created>1604581970471</created>
@@ -603,20 +572,55 @@
       <updated>1608291573881</updated>
     </task>
     <task id="LOCAL-00103" summary=" total commission fix">
-      <created>1608366402235</created>
+      <created>1608292887871</created>
       <option name="number" value="00103" />
       <option name="presentableId" value="LOCAL-00103" />
       <option name="project" value="LOCAL" />
-      <updated>1608366402235</updated>
+      <updated>1608292887871</updated>
     </task>
     <task id="LOCAL-00104" summary=" total commission fix">
-      <created>1608366523729</created>
+      <created>1608380833667</created>
       <option name="number" value="00104" />
       <option name="presentableId" value="LOCAL-00104" />
       <option name="project" value="LOCAL" />
-      <updated>1608366523729</updated>
+      <updated>1608380833667</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary=" total commission fix">
+      <created>1608381525374</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1608381525374</updated>
+    </task>
+    <task id="LOCAL-00106" summary=" total commission fix">
+      <created>1608384255033</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1608384255034</updated>
+    </task>
+    <task id="LOCAL-00107" summary=" amin data setting fix">
+      <created>1608554707877</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1608554707877</updated>
+    </task>
+    <task id="LOCAL-00108" summary="downline bill fix">
+      <created>1608644958070</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1608644958071</updated>
+    </task>
+    <task id="LOCAL-00109" summary="downline bill fix">
+      <created>1608645442513</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1608645442513</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,8 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="map qr code, razor pay service," />
-    <MESSAGE value="qrcode generated, mapped is pending" />
     <MESSAGE value="code mapping done" />
     <MESSAGE value="retrieved products added" />
     <MESSAGE value="registration pages setup" />
@@ -661,6 +663,8 @@
     <MESSAGE value="user history balance view" />
     <MESSAGE value="userwithdraw balance fix" />
     <MESSAGE value=" total commission fix" />
-    <option name="LAST_COMMIT_MESSAGE" value=" total commission fix" />
+    <MESSAGE value=" amin data setting fix" />
+    <MESSAGE value="downline bill fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="downline bill fix" />
   </component>
 </project>

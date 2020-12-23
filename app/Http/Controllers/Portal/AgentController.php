@@ -108,7 +108,7 @@ class AgentController extends Controller
                         'email' => strtoupper($request->username),
                         'password' => Hash::make($request->password),
                         'parent_id' => $user->id,
-                        'status' => $request->status,
+                        'status' => $request->status??1,
                         'rate' => $request->rate,
                         'account' => 'SUPER'
                     ]);
