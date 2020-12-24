@@ -19,7 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="downline bill fix">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
@@ -277,13 +278,6 @@
       <workItem from="1608551748720" duration="5604000" />
       <workItem from="1608616074941" duration="8050000" />
       <workItem from="1608704185849" duration="1044000" />
-    </task>
-    <task id="LOCAL-00061" summary="api work">
-      <created>1604581970471</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1604581970472</updated>
     </task>
     <task id="LOCAL-00062" summary="api work">
       <created>1605601272453</created>
@@ -621,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608645442513</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="hiding available balance">
+      <created>1608709942995</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1608709942995</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="code mapping done" />
     <MESSAGE value="retrieved products added" />
     <MESSAGE value="registration pages setup" />
     <MESSAGE value="login/ register page corrected" />
@@ -666,6 +666,7 @@
     <MESSAGE value=" total commission fix" />
     <MESSAGE value=" amin data setting fix" />
     <MESSAGE value="downline bill fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="downline bill fix" />
+    <MESSAGE value="hiding available balance" />
+    <option name="LAST_COMMIT_MESSAGE" value="hiding available balance" />
   </component>
 </project>
