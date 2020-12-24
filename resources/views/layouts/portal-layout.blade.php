@@ -196,7 +196,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-        <strong> <a href="{{route('login')}}">AvaskmTechnology</a>.</strong>
+        <strong> <a href="{{route('login')}}"></a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 3.0.5
