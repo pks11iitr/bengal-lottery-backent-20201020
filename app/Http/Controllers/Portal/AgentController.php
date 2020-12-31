@@ -398,7 +398,9 @@ class AgentController extends Controller
 //startcommission
     public function commissioncreate(Request $request,$id)
     {
-        return view('portal.agent.commission',['id'=>$id]);
+        $agent=User::select('email')->find($id);
+        $name=$agent->email??'';
+        return view('portal.agent.commission',['id'=>$id,'name'=>$name]);
     }
 
     public function commissionsave(Request $request)

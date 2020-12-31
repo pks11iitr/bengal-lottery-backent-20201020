@@ -19,11 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="downline bill fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/gameupdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameupdate.php" afterDir="false" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="fixdate">
+      <change afterPath="$PROJECT_DIR$/resources/views/portal/changepassword/changepassword.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/commission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/commission.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,14 +281,7 @@
       <workItem from="1608616074941" duration="8050000" />
       <workItem from="1608704185849" duration="1894000" />
       <workItem from="1609241175346" duration="1159000" />
-      <workItem from="1609414104235" duration="1009000" />
-    </task>
-    <task id="LOCAL-00062" summary="api work">
-      <created>1605601272453</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1605601272454</updated>
+      <workItem from="1609414104235" duration="3109000" />
     </task>
     <task id="LOCAL-00063" summary="api work">
       <created>1606134038477</created>
@@ -624,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608705586326</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="fixdate">
+      <created>1609415346296</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1609415346297</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="code mapping done" />
     <MESSAGE value="retrieved products added" />
     <MESSAGE value="registration pages setup" />
     <MESSAGE value="login/ register page corrected" />
@@ -669,6 +670,7 @@
     <MESSAGE value=" total commission fix" />
     <MESSAGE value=" amin data setting fix" />
     <MESSAGE value="downline bill fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="downline bill fix" />
+    <MESSAGE value="fixdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixdate" />
   </component>
 </project>

@@ -50,6 +50,8 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
         Route::get('commission-create/{id}', 'Portal\AgentController@commissioncreate')->name('commissioncreate');
         Route::post('commission-save', 'Portal\AgentController@commissionsave')->name('commissionsave');
         Route::get('payment-history-parent', 'Portal\AgentController@parent_history')->name('paymenthistoryparent');
+        Route::get('change-password', 'Portal\ProfileController@changepassword')->name('changepassword');
+        Route::post('update-password', 'Portal\ProfileController@updatepassword')->name('updatepassword');
 
 
 

@@ -132,6 +132,10 @@
                             <li>
                                 <a href="{{route('notification')}}" class="btn btn-info">Notification</a>
                             </li>
+                                <li>
+                                    <a href="{{route('changepassword')}}" class="btn btn-info">Change Password</a>
+                                </li>
+
                             @endif
                             <li class="p_zero_b">
 
