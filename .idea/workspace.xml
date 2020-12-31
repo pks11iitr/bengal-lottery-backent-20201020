@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="downline bill fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Balance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Balance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gameupdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/gameupdate.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,14 +277,9 @@
       <workItem from="1608380192322" duration="2591000" />
       <workItem from="1608551748720" duration="5604000" />
       <workItem from="1608616074941" duration="8050000" />
-      <workItem from="1608704185849" duration="1044000" />
-    </task>
-    <task id="LOCAL-00061" summary="api work">
-      <created>1604581970471</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1604581970472</updated>
+      <workItem from="1608704185849" duration="1894000" />
+      <workItem from="1609241175346" duration="1159000" />
+      <workItem from="1609414104235" duration="1009000" />
     </task>
     <task id="LOCAL-00062" summary="api work">
       <created>1605601272453</created>
@@ -620,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608645442513</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="downline bill fix">
+      <created>1608705586325</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1608705586326</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
