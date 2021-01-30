@@ -17,7 +17,7 @@ class Order extends Model
     }
 
     public function game(){
-         $this->belongsTo('App\Models\Game', 'game_id');
+         return $this->belongsTo('App\Models\Game', 'game_id');
     }
 
 }

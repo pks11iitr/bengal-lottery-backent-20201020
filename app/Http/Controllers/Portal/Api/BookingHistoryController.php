@@ -198,7 +198,7 @@ class BookingHistoryController extends Controller
                         });
                 })
                 ->where('user_id',$user->id)
-                ->select('game_id','name','close_date as enddate','days')
+                ->select('game_id','name','close_date as enddate')
                 //->whereDate('close_date', '>=', $orderclosedate)
                 ->orderBy('id','DESC')
                 ->get();
