@@ -190,14 +190,14 @@ class BookingHistoryController extends Controller
        // $closedate=date("Y-m-d",strtotime('-7 day',$currentdate));
        // $orderclosedate=date("d M Y",strtotime('-7 day',$currentdate));
         if($user){
-            $games=Order::where('user_id',$user->id)
-                ->whereHas('game', function($game){
-                    $game->where('days',0)
+            $games=Order::whereHas('game', function($game){
+                    $game->where('game.days',0)
                         ->orWhere(function($game){
-                            $game->where('days','>',0)
-                                ->where(DB::raw('DATEDIFF("'.date('Y-m-d').'",close_date)'),'<', DB::raw('days'));
+                            $game->where('game.days','>',0)
+                                ->where(DB::raw('DATEDIFF("'.date('Y-m-d').'",game.close_date)'),'<', DB::raw('game.days'));
                         });
                 })
+                ->where('user_id',$user->id)
                 ->select('game_id','name','close_date as enddate','days')
                 //->whereDate('close_date', '>=', $orderclosedate)
                 ->orderBy('id','DESC')
