@@ -119,27 +119,38 @@
 
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
+                                                            <label class="text-muted" for="cemail">Days  <small class="text-success">*</small> :</label>
+                                                            <input type="text" id="days" name="days" class="form-control" placeholder="days "   value="{{$game->days}}" @if(auth()->user()->hasRole('subadmin')) readonly @endif>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
                                                             <label class="text-muted" for="cemail">Color Picker <small class="text-success">*</small> :</label>
                                                             <input type="text" id="color_code" name="color_code" class="form-control" value="{{$game->color_code}}" placeholder="color_code " required >
                                                         </div>
                                                     </div>
+                                    @if($game->isactive==2 || $game->isactive==3)
 
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label>Is Active</label>
-                                                            <select class="form-control" name="isactive" required @if(auth()->user()->hasRole('subadmin')) readonly @endif>
-                                                                <option selected="selected"
-                                                                        value="1" {{$game->isactive==1?'selected':''}}>Active
-                                                                </option>
-                                                                <option value="0" {{$game->isactive==0?'selected':''}}>Inactive
-                                                                </option>
-                                                            </select>
+                                                    @else
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Is Active</label>
+                                                                <select class="form-control" name="isactive" required @if(auth()->user()->hasRole('subadmin')) readonly @endif>
+                                                                    <option selected="selected"
+                                                                            value="1" {{$game->isactive==1?'selected':''}}>Active
+                                                                    </option>
+                                                                    <option value="0" {{$game->isactive==0?'selected':''}}>Inactive
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                            <!-- /.form-group -->
                                                         </div>
-                                                        <!-- /.form-group -->
-                                                    </div>
+                                                    @endif
 
 
                                                 </div>
+
 
                                             </div>
 

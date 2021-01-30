@@ -155,7 +155,7 @@ class BookingHistoryController extends Controller
         }
     }
 
-    public function historygame(Request $request){
+/*    public function historygames(Request $request){
         $user=auth()->guard('api')->user();
         // if(!$user)
         //     return [
@@ -168,6 +168,85 @@ class BookingHistoryController extends Controller
             $game=Game::whereNotIn('isactive',[0])->select('id as game_id','name')->orderBy('id','DESC')->get();
         }
         if($game->count()>0){
+            return [
+                'status'=>'success',
+                'data'=>compact('game'),
+            ];
+        }else{
+            return [
+                'status'=>'No Record Found',
+                'code'=>'402'
+            ];
+        }
+    }*/
+    public function historygame(Request $request){
+        $user=auth()->guard('api')->user();
+        // if(!$user)
+        //     return [
+        //         'status'=>'failed',
+        //         'message'=>'Please login to continue'
+        //     ];
+       // $currentdate=strtotime(date("Y-m-d"));
+       // $closedate=date("Y-m-d",strtotime('-7 day',$currentdate));
+       // $orderclosedate=date("d M Y",strtotime('-7 day',$currentdate));
+        if($user){
+            $games=Order::where('user_id',$user->id)
+                ->whereHas('game', function($game){
+                    $game->where('days',0)
+                        ->orWhere(function($game){
+                            $game->where('days','>',0)
+                                ->where(DB::raw('DATEDIFF("'.date('Y-m-d').'",close_date)'),'<', DB::raw('days'));
+                        });
+                })
+                ->select('game_id','name','close_date as enddate','days')
+                //->whereDate('close_date', '>=', $orderclosedate)
+                ->orderBy('id','DESC')
+                ->get();
+        }else{
+            //DB::enableQueryLog();
+            $games=Game::select('id as game_id','name','close_date as enddate','days','game_time')
+                //->whereDate('close_date', '>=', $closedate)
+                ->where(function($query){
+                    $query->where('days',0)
+                        ->orWhere(function($query){
+                            $query->where('days','>',0)
+                                ->where(DB::raw('DATEDIFF("'.date('Y-m-d').'",close_date)'),'<', DB::raw('days'));
+                        });
+                })
+                ->whereNotIn('isactive',[0])
+                ->orderBy('id','DESC')
+                ->get();
+            //dd(DB::getQueryLog());
+        }
+        $game=$games;
+//        $game=array();
+//        foreach ($games as $g){
+//
+//            if($g->days > 0){
+//
+//                $closedate=strtotime(date("Y-m-d",strtotime('+'.$g->days.' day',strtotime($g->enddate))));
+//                $currentdate=strtotime(date("Y-m-d"));
+//
+//                if($currentdate<$closedate){
+//                    $game[]=array(
+//                        'game_id'=>$g->game_id,
+//                        'name'=>$g->name,
+//                        'orginal'=>$g->orginal,
+//                        'time'=>$g->time,
+//                    );
+//                }
+//
+//            }else{
+//                $game[]=array(
+//                    'game_id'=>$g->game_id,
+//                    'name'=>$g->name,
+//                    'orginal'=>$g->orginal,
+//                    'time'=>$g->time,
+//                );
+//            }
+//
+//        }
+        if(count($game)>0){
             return [
                 'status'=>'success',
                 'data'=>compact('game'),

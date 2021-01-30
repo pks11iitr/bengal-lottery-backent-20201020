@@ -117,6 +117,13 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="text-muted" for="cemail">Days <small class="text-success">*</small> :</label>
+                                                            <input type="number" min="0" id="days" name="days" class="form-control" placeholder="days"  value="4" >
+                                                        </div>
+                                                    </div>
+
 
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
