@@ -109,6 +109,9 @@
                                 <a href="{{route('dashboard')}}" class="btn btn-info">Dashboard</a>
                             </li>
                             <li>
+                                <a href="{{route('dashboard')}}" class="btn btn-info">BidComment</a>
+                            </li>
+                            <li>
                                 <a href="{{route('paymenthistoryparent')}}" class="btn btn-info">Payment History</a>
                             </li>
                             <li>

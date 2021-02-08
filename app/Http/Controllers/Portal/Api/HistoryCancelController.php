@@ -50,7 +50,7 @@ class HistoryCancelController extends Controller
                 'to_user_id' => $user->id,
                 'amount' => round($totaldegits, 2),
                 'avl_balance' => round($balance, 2) + round($totaldegits, 2),
-                'type' => 'booking',
+                'type' => 'Deposit',
                 'mode' => 'cancel degits balance',
             ]);
             if ($digits_array) {

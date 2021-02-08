@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game">
+      <change afterPath="$PROJECT_DIR$/app/Models/BidComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,14 +284,8 @@
       <workItem from="1609414104235" duration="3727000" />
       <workItem from="1611903939428" duration="13702000" />
       <workItem from="1611984156883" duration="9282000" />
-      <workItem from="1612760373250" duration="14883000" />
-    </task>
-    <task id="LOCAL-00068" summary="api work">
-      <created>1606301342938</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1606301342938</updated>
+      <workItem from="1612760373250" duration="18386000" />
+      <workItem from="1612786217132" duration="995000" />
     </task>
     <task id="LOCAL-00069" summary="api work">
       <created>1606301811321</created>
@@ -625,7 +623,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612781151693</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="add days to game">
+      <created>1612782168260</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1612782168260</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
