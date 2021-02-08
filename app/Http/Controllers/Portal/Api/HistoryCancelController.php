@@ -42,7 +42,7 @@ class HistoryCancelController extends Controller
 
             foreach ($bookgames->bits as $bitposition) {
                 $digits_array[$bitposition->bid_digit] = $digits_array[$bitposition->bid_digit] + $bitposition->bid_qty ?? 0;
-                $totaldegits = $totaldegits + $bitposition->bid_qty ?? 0;
+                $totaldegits = $totaldegits + ($bitposition->bid_qty*$user->rate??'0');
 
             }
             $withdraw = Transaction::create([
