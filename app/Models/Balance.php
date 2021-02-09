@@ -31,10 +31,12 @@ class Balance extends Model
        if(!$reciverbalance){
            $reciverbalance= Balance::create([
                'user_id' => $child_id,
-               'amount' => round($amount, 2),
+              // 'amount' => round($amount, 2),
+               'amount' => number_format($amount, 2, '.', ''),
            ]);
        }else{
-           $reciverbalance->amount=$reciverbalance->amount + round($amount, 2);
+         //  $reciverbalance->amount=$reciverbalance->amount + round($amount, 2);
+           $reciverbalance->amount=$reciverbalance->amount + number_format($amount, 2, '.', '');
            $reciverbalance->save();
        }
     }
@@ -51,7 +53,8 @@ class Balance extends Model
             ]);
         }else{*/
         if($senderbalance){
-            $senderbalance->amount=$senderbalance->amount-round($amount, 2);
+            //$senderbalance->amount=$senderbalance->amount-round($amount, 2);
+            $senderbalance->amount=$senderbalance->amount-number_format($amount, 2, '.', '');
             $senderbalance->save();
         }
 

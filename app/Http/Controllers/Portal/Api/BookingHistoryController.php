@@ -144,7 +144,9 @@ class BookingHistoryController extends Controller
             return [
                 'status'=>'success',
                 'msg'=>'success',
-                'remaining_balance'=>round($remaining_balance,2),
+              //  'remaining_balance'=>round($remaining_balance,2),
+                'remaining_balance'=>number_format($remaining_balance, 2, '.', ''),
+
                 'data'=>compact('bookgames')
             ];
         }else{

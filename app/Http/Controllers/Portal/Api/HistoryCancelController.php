@@ -28,7 +28,8 @@ class HistoryCancelController extends Controller
         $games = Game::where('isactive', 1)->where('id',$id)->first();
         if ($games) {
             $balance1 = Transaction::balance($user->id);
-            $balance = round($balance1, 2);
+            //$balance = round($balance1, 2);
+            $balance = number_format($balance1, 2, '.', '');
             $bookgames = Order::with('bits')
                 ->where('user_id', $user->id)
                 ->where('game_id', $id)
@@ -49,8 +50,10 @@ class HistoryCancelController extends Controller
             $withdraw = Transaction::create([
                 'user_id' => $user->id,
                 'to_user_id' => $user->id,
-                'amount' => round($totaldegits, 2),
-                'avl_balance' => round($balance, 2) + round($totaldegits, 2),
+               // 'amount' => round($totaldegits, 2),
+                'amount' => number_format($totaldegits, 2, '.', ''),
+              //  'avl_balance' => round($balance, 2) + round($totaldegits, 2),
+                'avl_balance' => number_format($balance, 2, '.', '') + number_format($totaldegits, 2, '.', ''),
                 'type' => 'Deposit',
                 'mode' => 'cancel degits balance',
             ]);

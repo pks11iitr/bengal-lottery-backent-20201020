@@ -43,7 +43,8 @@ class DashboardController extends Controller
         }
 
         $totalcommission = Transaction::totalcommission($user->id);
-        $total=round(($individual_commision-$totalcommission),2);
+      //  $total=round(($individual_commision-$totalcommission),2);
+        $total=number_format(($individual_commision-$totalcommission), 2, '.', '');
 //        $total = 0;$cmc=0;
 //        foreach ($agents as $agent) {
 //            $totalcommission = Transaction::totalcommission($agent->id);

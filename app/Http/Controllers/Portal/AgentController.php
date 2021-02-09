@@ -36,12 +36,15 @@ class AgentController extends Controller
         $total = 0;$cmc=0;
         foreach ($agents as $agent){
             $balance=Transaction::balance($agent->id);
-            $agent->balance=round($balance,2);
+         //   $agent->balance=round($balance,2);
+            $agent->balance=number_format($balance, 2, '.', '');
             // var_dump($agents['balance']);die();
             $totaldeposit=Transaction::totaldeposit($agent->id);
-             $agent->totaldeposit=round($totaldeposit,2);
+           //  $agent->totaldeposit=round($totaldeposit,2);
+             $agent->totaldeposit=number_format($totaldeposit, 2, '.', '');
             $totalwithdraw=Transaction::totalwithdraw($agent->id);
-            $agent->totalwithdraw=round($totalwithdraw,2);
+           // $agent->totalwithdraw=round($totalwithdraw,2);
+            $agent->totalwithdraw=number_format($totalwithdraw, 2, '.', '');
 
             //commission
             $individual_commision=0;
@@ -51,14 +54,18 @@ class AgentController extends Controller
 
             $agent->individual_commission=$individual_commision;
             $totalcommission=Transaction::totalcommission($agent->id);
-            $agent->totalcommission=round($totalcommission,2);
+           // $agent->totalcommission=round($totalcommission,2);
+            $agent->totalcommission=number_format($totalcommission, 2, '.', '');
             $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate, $user->rate);
-            $agent->totalprofitcommission=round($totalprofitcommission,2);
+           // $agent->totalprofitcommission=round($totalprofitcommission,2);
+            $agent->totalprofitcommission=number_format($totalprofitcommission, 2, '.', '');
             $agent->avl_balance=Balance::avl_balance($agent->id);
             $agent->avl_commission=Commission::avl_commission($agent->id);
            //end commission
-            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
-            $cmc=$cmc+round($totalcommission,2);
+           // $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+            $total = $total + ( number_format(($totalprofitcommission-$totalcommission), 2, '.', ''));
+            //$cmc=$cmc+round($totalcommission,2);
+            $cmc=$cmc+number_format($totalcommission, 2, '.', '');
 
         }
         $individual_commision=0;
@@ -68,6 +75,7 @@ class AgentController extends Controller
 
         $totalcommission = Transaction::totalcommission($user->id);
         $total= round(($individual_commision-$totalcommission),2);
+        $total= number_format(($individual_commision-$totalcommission), 2, '.', '');
        // var_dump($total);die();
         return view('portal.agent.add', compact('agents','total'));
     }
@@ -176,7 +184,8 @@ class AgentController extends Controller
                     'to_user_id' => $user->id,
                     'user_id' => $request->agent_id,
                     'amount' => $request->deposit_edit,
-                    'avl_balance' => round($agentbalance,2)+$request->deposit_edit,
+                  //  'avl_balance' => round($agentbalance,2)+$request->deposit_edit,
+                    'avl_balance' => number_format($agentbalance, 2, '.', '')+$request->deposit_edit,
                     'type' => 'Deposit',
                     'mode' => 'agent',
                 ]);
@@ -186,7 +195,8 @@ class AgentController extends Controller
                     'user_id' => $user->id,
                     'to_user_id' => $request->agent_id,
                     'amount' => $request->deposit_edit,
-                    'avl_balance' => round($balance,2)-$request->deposit_edit,
+                    //'avl_balance' => round($balance,2)-$request->deposit_edit,
+                    'avl_balance' => number_format($balance, 2, '.', '')-$request->deposit_edit,
                     'type' => 'Withdraw',
                     'mode' => 'agent',
                 ]);
@@ -201,7 +211,8 @@ class AgentController extends Controller
                         'user_id' => $request->agent_id,
                         'to_user_id' => $user->id,
                         'amount' => $request->withdraw_edit,
-                        'avl_balance' => round($agentbalance, 2) - $request->withdraw_edit,
+                      //  'avl_balance' => round($agentbalance, 2) - $request->withdraw_edit,
+                        'avl_balance' => number_format($agentbalance, 2, '.', '') - $request->withdraw_edit,
                         'type' => 'Withdraw',
                         'mode' => 'agent',
                     ]);
@@ -210,7 +221,8 @@ class AgentController extends Controller
                     'to_user_id' => $request->agent_id,
                     'user_id' => $user->id,
                     'amount' => $request->withdraw_edit,
-                    'avl_balance' => round($balance, 2) + $request->withdraw_edit,
+                  //  'avl_balance' => round($balance, 2) + $request->withdraw_edit,
+                    'avl_balance' => number_format($balance, 2, '.', '') + $request->withdraw_edit,
                     'type' => 'Deposit',
                     'mode' => 'agent',
                 ]);
@@ -247,7 +259,8 @@ class AgentController extends Controller
                             'to_user_id' => $user->id,
                             'user_id' => $request->agent_id,
                             'amount' => $request->deposit_edit,
-                            'avl_balance' => round($agentbalance,2)+$request->deposit_edit,
+                          //  'avl_balance' => round($agentbalance,2)+$request->deposit_edit,
+                            'avl_balance' => number_format($agentbalance, 2, '.', '')+$request->deposit_edit,
                             'type' => 'Deposit',
                             'mode' => 'agent',
                         ]);
@@ -263,7 +276,8 @@ class AgentController extends Controller
                             'user_id' => $user->id,
                             'to_user_id' => $request->agent_id,
                             'amount' => $request->deposit_edit,
-                            'avl_balance' => round($balance,2)-$request->deposit_edit,
+                         //   'avl_balance' => round($balance,2)-$request->deposit_edit,
+                            'avl_balance' => number_format($balance, 2, '.', '')-$request->deposit_edit,
                             'type' => 'Withdraw',
                             'mode' => 'subagent',
                         ]);
@@ -288,7 +302,8 @@ class AgentController extends Controller
                             'to_user_id' => $user->id,
                             'user_id' => $request->agent_id,
                             'amount' => $request->withdraw_edit,
-                            'avl_balance' => round($agentbalance,2)-$request->withdraw_edit,
+                         //   'avl_balance' => round($agentbalance,2)-$request->withdraw_edit,
+                            'avl_balance' => number_format($agentbalance, 2, '.', '')-$request->withdraw_edit,
                             'type' => 'Withdraw',
                             'mode' => 'agent',
                         ]);
@@ -298,7 +313,8 @@ class AgentController extends Controller
                             'to_user_id' => $request->agent_id,
                             'user_id' => $user->id,
                             'amount' => $request->withdraw_edit,
-                            'avl_balance' => round($balance,2)+$request->withdraw_edit,
+                          //  'avl_balance' => round($balance,2)+$request->withdraw_edit,
+                            'avl_balance' => number_format($balance, 2, '.', '')+$request->withdraw_edit,
                             'type' => 'Deposit',
                             'mode' => 'subagent',
                         ]);
@@ -355,8 +371,10 @@ class AgentController extends Controller
                 $withdraw=Transaction::create([
                     'user_id' => $v->user_id,
                     'to_user_id' => $v->user_id,
-                    'amount' => round(($v->bid_qty*$request->winning_amount),2),
-                    'avl_balance' => round($balance,2)+round(($v->bid_qty*$request->winning_amount),2),
+                   // 'amount' => round(($v->bid_qty*$request->winning_amount),2),
+                    'amount' => number_format(($v->bid_qty*$request->winning_amount), 2, '.', ''),
+                   // 'avl_balance' => round($balance,2)+round(($v->bid_qty*$request->winning_amount),2),
+                    'avl_balance' => number_format($balance, 2, '.', '')+number_format(($v->bid_qty*$request->winning_amount), 2, '.', ''),
                     'type' => 'win',
                     'mode' => 'Winner',
                 ]);
@@ -391,7 +409,8 @@ class AgentController extends Controller
         }
 
         $totalcommission = Transaction::totalcommission($user->id);
-        $total=round(($individual_commision-$totalcommission),2);
+       // $total=round(($individual_commision-$totalcommission),2);
+        $total=number_format(($individual_commision-$totalcommission), 2, '.', '');
         return view('portal.agent.paymenthistory', compact('payments','total'));
     }
 
@@ -421,7 +440,8 @@ class AgentController extends Controller
             $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
         }
        // $totalprofitcommission=round($totalprofitcommission,2);
-        $balancecommission=round(($individual_commision-$totalcommission),2);
+       // $balancecommission=round(($individual_commision-$totalcommission),2);
+        $balancecommission=number_format(($individual_commision-$totalcommission), 2, '.', '');
         if($balancecommission < $request->commission)
         {
 
@@ -433,7 +453,8 @@ class AgentController extends Controller
                 'to_user_id' => $request->agent_id,
                 'user_id' => $user->id,
                 'amount' => $request->commission,
-                'avl_balance' => round($balance,2)+$request->commission,
+              //  'avl_balance' => round($balance,2)+$request->commission,
+                'avl_balance' => number_format($balance, 2, '.', '')+$request->commission,
                 'type' => 'Deposit',
                 'mode' => 'commission',
             ]);
@@ -442,7 +463,8 @@ class AgentController extends Controller
                 'user_id' => $request->agent_id,
                 'to_user_id' => $user->id,
                 'amount' => $request->commission,
-                'avl_balance' => round($agentbalance,2),
+             //   'avl_balance' => round($agentbalance,2),
+                'avl_balance' => number_format($agentbalance, 2, '.', ''),
                 'type' => 'commission',
                 'mode' => 'commission',
             ]);

@@ -21,9 +21,22 @@
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AdjustUserStatsCancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AdjustUserStatsCancel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalanceCancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalanceCancel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/DepositCommissionBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/DepositCommissionBalance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalanceCancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalanceCancel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Balance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Balance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +60,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="commission-calculation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -284,14 +297,7 @@
       <workItem from="1611984156883" duration="9282000" />
       <workItem from="1612760373250" duration="18386000" />
       <workItem from="1612786217132" duration="4231000" />
-      <workItem from="1612847374264" duration="10281000" />
-    </task>
-    <task id="LOCAL-00073" summary="api work">
-      <created>1606307856468</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1606307856468</updated>
+      <workItem from="1612847374264" duration="15530000" />
     </task>
     <task id="LOCAL-00074" summary="api work">
       <created>1606311330986</created>
@@ -629,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612851529744</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="add days to game">
+      <created>1612859045504</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1612859045504</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

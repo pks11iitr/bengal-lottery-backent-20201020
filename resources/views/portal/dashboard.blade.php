@@ -63,7 +63,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Main Balance</span>
-                            <span class="info-box-number">{{round(App\Models\Transaction::balance(auth()->user()->id),2)}}</span>
+                            <span class="info-box-number">  {{number_format(App\Models\Transaction::balance(auth()->user()->id), 2, '.', '')}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -80,7 +80,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Available Balance</span>
-                            <span class="info-box-number"> {{round(\App\Models\Balance::avl_balance(auth()->user()->id),2)}}</span>
+                            <span class="info-box-number">  {{number_format(\App\Models\Balance::avl_balance(auth()->user()->id, 2, '.', ''))}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -93,7 +93,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Total Commission</span>
-                            <span class="info-box-number">{{round($total,2)}}</span>
+                            <span class="info-box-number"> {{number_format($total, 2, '.', '')}}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

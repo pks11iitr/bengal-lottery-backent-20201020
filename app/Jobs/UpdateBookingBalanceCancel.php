@@ -46,7 +46,8 @@ class UpdateBookingBalanceCancel implements ShouldQueue
             $digit_wise_bids = $digit_wise_bids + $bid;
         }
 
-        $booking_balance=round($digit_wise_bids * $user->rate, 2);
+     //   $booking_balance=round($digit_wise_bids * $user->rate, 2);
+        $booking_balance=number_format(($digit_wise_bids * $user->rate), 2, '.', '');
 
         if($booking_balance>0){
             while ($user && !$user->hasRole('admin')) {

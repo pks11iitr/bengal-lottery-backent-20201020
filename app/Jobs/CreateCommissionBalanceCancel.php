@@ -61,10 +61,12 @@ class CreateCommissionBalanceCancel implements ShouldQueue
                 ]);
                 $amount=$amount+round($digit_wise_bids *($user->rate - $parent->rate) , 2);*/
             }else{
-                $commissionbalance->total_commission = $commissionbalance->total_commission - round($digit_wise_bids *($user->rate - $parent->rate) , 2)-$amount;
+             //   $commissionbalance->total_commission = $commissionbalance->total_commission - round($digit_wise_bids *($user->rate - $parent->rate) , 2)-$amount;
+                $commissionbalance->total_commission = $commissionbalance->total_commission - number_format($digit_wise_bids *($user->rate - $parent->rate), 2, '.', '')-$amount;
                 $commissionbalance->save();
 
-                $amount=$amount+round($digit_wise_bids *($user->rate - $parent->rate) , 2);
+             //   $amount=$amount+round($digit_wise_bids *($user->rate - $parent->rate) , 2);
+                $amount=$amount+number_format($digit_wise_bids *($user->rate - $parent->rate), 2, '.', '');
             }
 
             $user=$parent;

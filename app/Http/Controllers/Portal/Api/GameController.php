@@ -93,7 +93,8 @@ class GameController extends Controller
         }
 
         $totalcommission = Transaction::totalcommission($user->id);
-        $ctotal=round(($individual_commision-$totalcommission),2);
+       // $ctotal=round(($individual_commision-$totalcommission),2);
+        $ctotal=number_format(($individual_commision-$totalcommission), 2, '.', '');
       //  end commission
 
         $balance=Transaction::balance($user->id);
@@ -103,7 +104,8 @@ class GameController extends Controller
             return [
                 'status'=>'success',
                 'data'=>$games,
-                'balance'=>round($balance,2),
+               // 'balance'=>round($balance,2),
+                'balance'=>number_format($balance, 2, '.', ''),
                 'username'=>$user->email,
                 'total'=>$total,
                 'commissiontotal'=>$ctotal,
@@ -168,7 +170,8 @@ class GameController extends Controller
             'remaining'=>$remaining,
         );
         $balance1=Transaction::balance($user->id);
-        $balance=round($balance1,2);
+       // $balance=round($balance1,2);
+        $balance=number_format($balance1, 2, '.', '');
         $totaldeposit=Transaction::totaldeposit($user->id);
         $total=$totaldeposit;
         $date=date('Y-m-d H:i:s');
@@ -222,7 +225,8 @@ class GameController extends Controller
         }
 
         $balance1=Transaction::balance($user->id);
-        $balance=round($balance1,2);
+      //  $balance=round($balance1,2);
+        $balance=number_format($balance1, 2, '.', '');
 
         if($balance < $total)
             return [
@@ -318,8 +322,10 @@ class GameController extends Controller
         $withdraw=Transaction::create([
             'user_id' => $user->id,
             'to_user_id' => $user->id,
-            'amount' => round($total,2),
-            'avl_balance' => round($balance,2)-round($total,2),
+          //  'amount' => round($total,2),
+            'amount' => number_format($total, 2, '.', ''),
+          //  'avl_balance' => round($balance,2)-round($total,2),
+            'avl_balance' => number_format($balance, 2, '.', '')-number_format($total, 2, '.', ''),
             'type' => 'booking',
             'mode' => 'book',
         ]);

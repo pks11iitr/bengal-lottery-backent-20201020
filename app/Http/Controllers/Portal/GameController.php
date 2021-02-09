@@ -31,7 +31,8 @@ class GameController extends Controller
         }
 
         $totalcommission = Transaction::totalcommission($user->id);
-        $total=round(($individual_commision-$totalcommission),2);
+        //$total=round(($individual_commision-$totalcommission),2);
+        $total=number_format(($individual_commision-$totalcommission), 2, '.', '');
         return view('portal.game.view', compact('games','total'));
     }
 

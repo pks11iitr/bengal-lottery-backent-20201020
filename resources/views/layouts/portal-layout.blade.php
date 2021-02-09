@@ -91,9 +91,12 @@
                 <div class="logo_container">
                     <h4>Welcome to, {{ auth()->user()->email}}</h4>
                     <p style="text-align:left">
-                         Balance Amount: {{round(App\Models\Transaction::balance(auth()->user()->id),2)}} &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}}) &nbsp;&nbsp; @if(isset($total))Total Commission:   {{round($total,2)}}@endif
+                         Balance Amount:  {{number_format(App\Models\Transaction::balance(auth()->user()->id), 2, '.', '')}}
+                        &nbsp; &nbsp;Rate:({{auth()->user()->rate??0}}) &nbsp;&nbsp; @if(isset($total))Total Commission: {{number_format($total, 2, '.', '')}}@endif
                     </p>
-                    Available Balance: {{round(\App\Models\Balance::avl_balance(auth()->user()->id),2)}} &nbsp;&nbsp;&nbsp;    Available Commission: {{round(\App\Models\Commission::avl_commission(auth()->user()->id),2)}}
+                    Available Balance:
+
+                    {{number_format(\App\Models\Balance::avl_balance(auth()->user()->id), 2, '.', '')}}&nbsp;&nbsp;&nbsp;    Available Commission: {{number_format(\App\Models\Commission::avl_commission(auth()->user()->id), 2, '.', '')}}
                     <p style="text-align:left;color:blue;font-weight: bold ">
 
                     </p>

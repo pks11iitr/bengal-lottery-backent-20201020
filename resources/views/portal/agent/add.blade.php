@@ -159,10 +159,12 @@
                                         {{$product->totalwithdraw}}
                                     </td>-->
                                     <td style="text-transform: capitalize;">
-                                        {{round($product->individual_commission-$product->totalcommission,2)}}
+
+                                        {{number_format(($product->individual_commission-$product->totalcommission), 2, '.', '')}}
                                     </td>
                                     <td style="text-transform: capitalize;">
-                                        {{round($product->avl_commission,2)}}
+
+                                        {{number_format($product->avl_commission, 2, '.', '')}}
                                     </td>
                                     <td style="text-transform: capitalize;">
                                         {{$product->rate}}
