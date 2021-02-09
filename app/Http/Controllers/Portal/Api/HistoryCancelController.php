@@ -45,6 +45,7 @@ class HistoryCancelController extends Controller
                 $totaldegits = $totaldegits + ($bitposition->bid_qty*$user->rate??'0');
 
             }
+           // var_dump($digits_array);die();
             $withdraw = Transaction::create([
                 'user_id' => $user->id,
                 'to_user_id' => $user->id,

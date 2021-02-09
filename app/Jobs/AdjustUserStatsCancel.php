@@ -36,14 +36,15 @@ class AdjustUserStatsCancel implements ShouldQueue
     public function handle()
     {
         $user = $this->user;
-        //var_dump($user->id);die;
+      //  var_dump($this->tickets);die;
 
         do {
-            //echo 'Working for'.$user->id;
+
             $stat = UserStat::where('game_id', $this->game->id)
                 ->where('user_id', $user->id)
                 ->first();
-            if (!$stat)
+          //  var_dump($stat );die();
+           // if (!$stat)
              /*   $stat = UserStat::create([
                     'user_id' => $user->id,
                     'game_id' => $this->game->id,
@@ -58,7 +59,7 @@ class AdjustUserStatsCancel implements ShouldQueue
                     'digit8' => 0,
                     'digit9' => 0,
                 ]);*/
-
+ // var_dump($this->tickets[0]."  ".$user->id. "  " .$this->game->id);die;
             $stat->digit0 = $stat->digit0 - ($this->tickets[0] ?? 0);
             $stat->digit1 = $stat->digit1 - ($this->tickets[1] ?? 0);
             $stat->digit2 = $stat->digit2 - ($this->tickets[2] ?? 0);

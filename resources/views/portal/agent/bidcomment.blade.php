@@ -83,22 +83,22 @@
                         </thead>
                         <tbody>
 
-                            @foreach($commen as  $gmae)
-                                <tr>
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae['game_id']}}
-                                    </td>
-                                    <td>{{$gmae['user_id']}}</td>
+                        @foreach($commen as  $gmae)
+                            <tr>
+                                <td style="text-transform: capitalize;">
+                                    {{$gmae['game_id']}}
+                                </td>
+                                <td>{{$gmae['user_id']}}</td>
 
-                                    <td style="text-transform: capitalize;">
-                                        {{$gmae['comment']}}
-                                    </td>
-                                    <td style="text-transform: capitalize;">
-                                        {{date('d M Y', strtotime($gmae[0]->created_at??''))}}
-                                    </td>
+                                <td style="text-transform: capitalize;">
+                                    {{$gmae['comment']}}
+                                </td>
+                                <td style="text-transform: capitalize;">
+                                    {{date('d M Y', strtotime($gmae[0]->created_at??''))}}
+                                </td>
 
-                                </tr>
-                            @endforeach
+                            </tr>
+                        @endforeach
 
                         </tbody>
                     </table>
