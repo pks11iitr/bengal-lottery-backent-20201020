@@ -52,6 +52,7 @@ Route::group(['middleware'=>['auth', 'acl']], function(){
         Route::get('payment-history-parent', 'Portal\AgentController@parent_history')->name('paymenthistoryparent');
         Route::get('change-password', 'Portal\ProfileController@changepassword')->name('changepassword');
         Route::post('update-password', 'Portal\ProfileController@updatepassword')->name('updatepassword');
+        Route::get('bid-comment', 'Portal\CommentController@comment')->name('createcomment');
 
 
 
