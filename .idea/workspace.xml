@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BidComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BidComment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -286,14 +279,7 @@
       <workItem from="1611984156883" duration="9282000" />
       <workItem from="1612760373250" duration="18386000" />
       <workItem from="1612786217132" duration="4231000" />
-      <workItem from="1612847374264" duration="3386000" />
-    </task>
-    <task id="LOCAL-00071" summary="api work">
-      <created>1606305533102</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1606305533102</updated>
+      <workItem from="1612847374264" duration="4117000" />
     </task>
     <task id="LOCAL-00072" summary="api work">
       <created>1606307844138</created>
@@ -631,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612788234270</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="add days to game">
+      <created>1612850987439</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1612850987440</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

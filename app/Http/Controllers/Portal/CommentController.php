@@ -34,7 +34,7 @@ class CommentController extends Controller
                 );
             }
         }
-        return $commen;
+       // return $commen;
         return view('portal.agent.bidcomment',compact('commen'));
     }
 
