@@ -19,10 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="remark">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryBidCancelController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,21 +286,7 @@
       <workItem from="1612847374264" duration="17211000" />
       <workItem from="1612934670207" duration="1280000" />
       <workItem from="1612948742162" duration="2397000" />
-      <workItem from="1613024104073" duration="4572000" />
-    </task>
-    <task id="LOCAL-00075" summary="api work">
-      <created>1606312219181</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1606312219181</updated>
-    </task>
-    <task id="LOCAL-00076" summary="api work">
-      <created>1606824588449</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1606824588450</updated>
+      <workItem from="1613024104073" duration="7566000" />
     </task>
     <task id="LOCAL-00077" summary="api work">
       <created>1606908060624</created>
@@ -631,7 +617,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612868401970</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="add days to game">
+      <created>1613042168730</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1613042168731</updated>
+    </task>
+    <task id="LOCAL-00125" summary="remark">
+      <created>1613042266182</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1613042266182</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="registration pages setup" />
     <MESSAGE value="login/ register page corrected" />
     <MESSAGE value="major changes done" />
     <MESSAGE value="data Syncing work done" />
@@ -676,6 +675,7 @@
     <MESSAGE value="downline bill fix" />
     <MESSAGE value="fixdate" />
     <MESSAGE value="add days to game" />
-    <option name="LAST_COMMIT_MESSAGE" value="add days to game" />
+    <MESSAGE value="remark" />
+    <option name="LAST_COMMIT_MESSAGE" value="remark" />
   </component>
 </project>

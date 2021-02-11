@@ -36,6 +36,7 @@ $api->post('game-book', ['as' => 'api.gamebooking', 'uses' => 'Portal\Api\GameCo
 
 
 $api->get('game-book-cancel/{id}', ['as' => 'api.gamebooking.cancel', 'uses' => 'Portal\Api\HistoryCancelController@historycancel']);
+$api->get('game-bid-cancel/{id}/{attempt_id}', ['as' => 'api.gamebooking.cancel', 'uses' => 'Portal\Api\HistoryBidCancelController@historyBidcancel']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
