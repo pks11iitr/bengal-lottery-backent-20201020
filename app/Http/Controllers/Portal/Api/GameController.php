@@ -305,6 +305,7 @@ class GameController extends Controller
                     'bid_number' => $game['degit'],
                     'bid_digit' => $key,
                     'bid_qty' => $qt,
+                    'remark' => $request->comment,
 
                 ]);
                 $total=$total+($qt*$user->rate??'0');

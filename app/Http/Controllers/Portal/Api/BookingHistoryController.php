@@ -30,7 +30,7 @@ class BookingHistoryController extends Controller
                 $book->bidlist=GameBook::where('user_id',$user->id)
                 ->where('game_id',$book->game_id)
                 ->groupBy('attempt_id')
-                ->select(DB::raw('GROUP_CONCAT(bid_digit order by bid_digit asc) AS bid_digit'),DB::raw('GROUP_CONCAT(bid_qty order by bid_digit asc) AS bid_qty'),DB::raw('GROUP_CONCAT(game_price order by bid_digit asc) AS game_price'), 'attempt_id')
+                ->select(DB::raw('GROUP_CONCAT(bid_digit order by bid_digit asc) AS bid_digit'),DB::raw('GROUP_CONCAT(bid_qty order by bid_digit asc) AS bid_qty'),DB::raw('GROUP_CONCAT(game_price order by bid_digit asc) AS game_price'),DB::raw('GROUP_CONCAT(remark order by bid_digit asc ) AS remark'), 'attempt_id')
                 ->get();
 
                 $totalbid=GameBook::where('user_id',$user->id)

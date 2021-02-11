@@ -21,22 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/DownlinegamehistoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/GameController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalanceCancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateCommissionBalanceCancel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/DepositCommissionBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/DepositCommissionBalance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalanceCancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UpdateBookingBalanceCancel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Balance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Balance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +175,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../quick-butler" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -297,14 +283,10 @@
       <workItem from="1611984156883" duration="9282000" />
       <workItem from="1612760373250" duration="18386000" />
       <workItem from="1612786217132" duration="4231000" />
-      <workItem from="1612847374264" duration="15530000" />
-    </task>
-    <task id="LOCAL-00074" summary="api work">
-      <created>1606311330986</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1606311330986</updated>
+      <workItem from="1612847374264" duration="17211000" />
+      <workItem from="1612934670207" duration="1280000" />
+      <workItem from="1612948742162" duration="2397000" />
+      <workItem from="1613024104073" duration="4572000" />
     </task>
     <task id="LOCAL-00075" summary="api work">
       <created>1606312219181</created>
@@ -642,7 +624,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612859045504</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="add days to game">
+      <created>1612868401970</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1612868401970</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
