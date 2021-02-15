@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\GameUpdate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+
+        GameUpdate::class
+
     ];
 
     /**
@@ -24,9 +27,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('game:update')
+            ->withoutOverlapping()
+            ->cron('* * * * * *');
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('queue:work --timeout=900')->withoutOverlapping();
+/*        $schedule->command('queue:work --timeout=900')->withoutOverlapping();*/
     }
 
     /**
