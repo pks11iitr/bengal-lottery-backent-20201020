@@ -20,7 +20,7 @@ class HistoryBidCancelController extends Controller
 
         return [
             'status' => 'failed',
-            'message' => 'This feature is temporariry disabled'
+            'msg' => 'This feature is temporariry disabled'
         ];
 
         $user = Auth::guard('api')->user();
