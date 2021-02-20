@@ -12,6 +12,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HistoryBidCancelController extends Controller
 {
@@ -55,9 +56,15 @@ class HistoryBidCancelController extends Controller
 //                ->where('game_id', $id)
 //                ->first();
 
-             $bidcancel=GameBook::where('attempt_id',$attempt_id)->where('user_id',$user->id)->get();
+            //read bid info by locking for update & delete
+            DB::beginTransaction();
+                $bidcancel=GameBook::where('attempt_id',$attempt_id)->where('user_id',$user->id)
+                    ->lockForUpdate()
+                    ->get();
+                GameBook::where('attempt_id',$request->attempt_id)->where('user_id',$user->id)->delete();
+            DB::commit();
 
-             GameBook::where('attempt_id',$request->attempt_id)->where('user_id',$user->id)->delete();
+
 //            foreach ($gamebook as $dgame) {
 //                $dgame->delete();
 //            }
