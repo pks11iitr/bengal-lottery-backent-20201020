@@ -26,21 +26,22 @@ class HistoryCancelController extends Controller
             ];
 
         $games = Game::where('isactive', 1)->where('id',$id)->first();
-        $closedate = $games->close_date;
-        $closetime = $games->game_time;
-        $closedatetime = $closedate . " " . $closetime;
-        $closedatevalue = strtotime($closedatetime);
 
-        $currentdate = date('Y-m-d H:i:s');
-        $currentvalue = strtotime($currentdate);
-
-        if ($currentvalue >= $closedatevalue) {
-            return [
-                'status' => 'failed',
-                'msg' => 'Bid Can Not Caneclled'
-            ];
-        }
         if ($games) {
+            $closedate = $games->close_date;
+            $closetime = $games->game_time;
+            $closedatetime = $closedate . " " . $closetime;
+            $closedatevalue = strtotime($closedatetime);
+
+            $currentdate = date('Y-m-d H:i:s');
+            $currentvalue = strtotime($currentdate);
+
+            if ($currentvalue >= $closedatevalue) {
+                return [
+                    'status' => 'failed',
+                    'msg' => 'Bid Can Not Caneclled'
+                ];
+            }
             $balance1 = Transaction::balance($user->id);
             //$balance = round($balance1, 2);
             $balance = number_format($balance1, 2, '.', '');

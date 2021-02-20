@@ -24,9 +24,10 @@ class BookingHistoryController extends Controller
         $totaldeposit=Transaction::totaldeposit($user->id);
         $total=$totaldeposit;
         if($request->game_id){
-            $bookgames=Order::where('user_id',$user->id)->where('game_id',$request->game_id)->get();
-            foreach ($bookgames as $book){
+            $bookgames=Order::with('game')->where('user_id',$user->id)->where('game_id',$request->game_id)->get();
 
+            foreach ($bookgames as $book){
+            $book->gamestatus=$book->game->isactive;
                 $book->bidlist=GameBook::where('user_id',$user->id)
                 ->where('game_id',$book->game_id)
                 ->groupBy('attempt_id')
@@ -46,6 +47,7 @@ class BookingHistoryController extends Controller
                     }
                     $book->totalwin_amount=$token*$winamt;
                     $book->totalwin_token=$token;
+
                 }
                 $totaltoken=0;$totaltoken1=0;$totaltoken2=0;$totaltoken3=0;$totaltoken4=0;$totaltoken5=0;$totaltoken6=0;$totaltoken7=0;$totaltoken8=0;$totaltoken9=0;
 
