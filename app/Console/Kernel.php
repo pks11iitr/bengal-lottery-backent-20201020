@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('game:update')
             ->withoutOverlapping()
-            ->cron('* * * * * *');
+            ->cron('* * * * *');
         // $schedule->command('inspire')
         //          ->hourly();
 /*        $schedule->command('queue:work --timeout=900')->withoutOverlapping();*/
