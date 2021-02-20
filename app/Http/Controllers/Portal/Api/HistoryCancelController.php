@@ -18,6 +18,11 @@ class HistoryCancelController extends Controller
     public function historycancel(Request $request, $id)
     {
 
+        return [
+            'status' => 'failed',
+            'message' => 'This feature is temporariry disabled'
+        ];
+
         $user = Auth::guard('api')->user();
         if (!$user)
             return [

@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="remark" />
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="remark">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryBidCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryBidCancelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -650,7 +654,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="login/ register page corrected" />
     <MESSAGE value="major changes done" />
     <MESSAGE value="data Syncing work done" />
     <MESSAGE value="logout function set" />
@@ -675,6 +678,7 @@
     <MESSAGE value="fixdate" />
     <MESSAGE value="add days to game" />
     <MESSAGE value="remark" />
-    <option name="LAST_COMMIT_MESSAGE" value="remark" />
+    <MESSAGE value="gamestatus" />
+    <option name="LAST_COMMIT_MESSAGE" value="gamestatus" />
   </component>
 </project>
