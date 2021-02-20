@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="remark">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/BookingHistoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryBidCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryBidCancelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" afterDir="false" />
-    </list>
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="remark" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -290,11 +285,14 @@
       <workItem from="1613024104073" duration="8567000" />
       <workItem from="1613368682241" duration="688000" />
       <workItem from="1613380850510" duration="784000" />
-      <workItem from="1613384646031" duration="4773000" />
-      <workItem from="1613541435668" duration="1190000" />
-      <workItem from="1613625168612" duration="597000" />
-      <workItem from="1613729033197" duration="2099000" />
-      <workItem from="1613796634135" duration="5223000" />
+      <workItem from="1613384646031" duration="4027000" />
+    </task>
+    <task id="LOCAL-00079" summary="api work">
+      <created>1607407797467</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1607407797468</updated>
     </task>
     <task id="LOCAL-00080" summary="commission calculation">
       <created>1607425769201</created>
@@ -632,14 +630,7 @@
       <option name="project" value="LOCAL" />
       <updated>1613388845857</updated>
     </task>
-    <task id="LOCAL-00128" summary="remark">
-      <created>1613389932230</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1613389932231</updated>
-    </task>
-    <option name="localTasksCounter" value="129" />
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
