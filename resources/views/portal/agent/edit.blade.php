@@ -134,9 +134,11 @@
 
                                             <div class="container-fluid">
                                                 <div class="row">
+                                                    @if($game->isactive==3)
                                                     <div class="col-sm-12">
                                                         <input type="submit" name="submit" value="Save" class="btn btn-sm btn-success pull-right float-sm-right">
                                                     </div>
+                                                        @endif
                                                 </div>
                                             </div>
 

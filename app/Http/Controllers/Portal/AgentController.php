@@ -21,6 +21,7 @@ use Response;
 use App\Jobs\ActiveInactiveUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
 {
@@ -355,18 +356,32 @@ class AgentController extends Controller
 
         ));
 
+        DB::beginTransaction();
+            //echo date('Y-m-d H:i:s');
+            $game=Game::where('isactive', 3)->lockForUpdate()->find($id);
 
+//            echo date('Y-m-d H:i:s');
+//            sleep(10);
+//            die;
+            if(!$game){
+                return redirect()->back()->with('error', 'Result cannot be declared for this game');
+            }
+            $game->bid_qty=(int)$request->bid_digit;
+            $game->isactive=2;
+            $game->save();
+        DB::commit();
+//        die;
         $values=GameBook::where('game_id',$id)->get();
-        $game = Game::find($id);
+
         $order=Order::where('game_id',$id)->update(['draw_result'=>(int)$request->bid_digit]);
         foreach ($values as $v){
             if($v->bid_digit==$request->bid_digit){
 
                 $win = GameBook::where('id', $v->id)->update(['draw_result'=>(int)$request->bid_digit,'winning_amount'=>$request->winning_amount,'status'=>'Won']);
                 // var_dump($v->id);die();
-                $game->bid_qty=(int)$request->bid_digit;
+               /* $game->bid_qty=(int)$request->bid_digit;
                 $game->isactive=2;
-                $game->update();
+                $game->update();*/
                 $balance=Transaction::balance($v->user_id);
                 $withdraw=Transaction::create([
                     'user_id' => $v->user_id,
