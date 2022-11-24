@@ -23,7 +23,16 @@ class GameController extends Controller
         $user=auth()->user();
         $games = Game::OrderBy('id','DESC')->get();
 
-        return view('portal.game.view', compact('games'));
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
+
+        $totalcommission = Transaction::totalcommission($user->id);
+        $total=round(($individual_commision-$totalcommission),2);
+        return view('portal.game.view', compact('games','total'));
     }
 
     public function create(Request $request)
@@ -37,7 +46,7 @@ class GameController extends Controller
             "name" => "required",
             "game_time" => "required",
             "close_date" => "required",
-            //  "price" => "required",
+             "days" => "numeric|min:0",
             "degit" => "required",
             "isactive" => "required",
         ));
@@ -48,6 +57,7 @@ class GameController extends Controller
             'close_date' => $request->close_date,
              'color_code' => $request->color_code,
             'degit' => $request->degit,
+            'days' => $request->days??4,
             'isactive' => $request->isactive,
         ]);
 //        GamePrice::create([
@@ -80,9 +90,9 @@ class GameController extends Controller
             "name" => "required",
             "game_time" => "required",
             "close_date" => "required",
-            //  "price" => "required",
+            "days" => "numeric|min:0",
             "degit" => "required",
-            "isactive" => "required",
+           // "isactive" => "required",
 
         ));
         $user=auth()->user();
@@ -94,7 +104,11 @@ class GameController extends Controller
         $game->close_date = $request->close_date;
          $game->color_code = $request->color_code;
         $game->degit = $request->degit;
-        $game->isactive = $request->isactive;
+        $game->days = $request->days;
+        if(isset($request->isactive)){
+            $game->isactive =$request->isactive ;
+        }
+
         $game->save();
         //   }
 //        $gameprice=GamePrice::where('agent_id',$user->id)->where('game_id',$id)->first();
@@ -128,7 +142,7 @@ class GameController extends Controller
         // }
 
 
-        return redirect()->route("gamelist");
+        return redirect()->route("gamelist")->with('success', 'Game Updated Successfully');
 
     }
 

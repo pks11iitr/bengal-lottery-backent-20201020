@@ -152,4 +152,27 @@ class ProfileController extends Controller
 
 
     }
+
+    public function changepassword(Request $request){
+
+        return view('portal.changepassword.changepassword');
+    }
+
+    public function updatepassword(Request $request){
+
+        $request->validate([
+            'password'=>'required',
+            'cpassword'=>'required|same:password',
+
+        ]);
+
+        $user = Auth::user();
+      $role=  auth()->user()->hasRole('admin');
+      if($role){
+          $user->password=Hash::make($request->password);
+          $user->save();
+      }
+
+        return redirect()->route('dashboard')->with('success', 'Change password Successfully');
+    }
 }

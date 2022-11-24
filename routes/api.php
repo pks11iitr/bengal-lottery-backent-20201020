@@ -34,12 +34,11 @@ $api->get('agent-user-list', ['as' => 'api.downline.agents', 'uses' => 'Portal\A
 $api->get('history-game', ['as' => 'api.history.game', 'uses' => 'Portal\Api\BookingHistoryController@historygame']);
 $api->post('game-book', ['as' => 'api.gamebooking', 'uses' => 'Portal\Api\GameController@gamebooking']);
 
+
+$api->get('game-book-cancel/{id}', ['as' => 'api.gamebooking.cancel', 'uses' => 'Portal\Api\HistoryCancelController@historycancel']);
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-
-
-
-
 
 });
 

@@ -19,9 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="user history balance view">
+    <list default="true" id="fcca31d1-9a66-425d-b6cd-18c43c85038c" name="Default Changelist" comment="add days to game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/AgentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Portal/Api/HistoryCancelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AdjustUserStatsCancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AdjustUserStatsCancel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/agent/bidcomment.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +176,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ripsmobile" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -267,175 +269,22 @@
       <workItem from="1607926166893" duration="644000" />
       <workItem from="1608012081759" duration="24246000" />
       <workItem from="1608098192310" duration="17879000" />
-      <workItem from="1608184527638" duration="1306000" />
-    </task>
-    <task id="LOCAL-00049" summary="google analytics added">
-      <created>1603515529964</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1603515529964</updated>
-    </task>
-    <task id="LOCAL-00050" summary="google analytics added">
-      <created>1603701912559</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1603701912559</updated>
-    </task>
-    <task id="LOCAL-00051" summary="google analytics added">
-      <created>1603701941636</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1603701941636</updated>
-    </task>
-    <task id="LOCAL-00052" summary="google analytics added">
-      <created>1603710807617</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1603710807617</updated>
-    </task>
-    <task id="LOCAL-00053" summary="gitignore changes">
-      <created>1604124330918</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1604124330919</updated>
-    </task>
-    <task id="LOCAL-00054" summary="gitignore changes">
-      <created>1604124827948</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1604124827948</updated>
-    </task>
-    <task id="LOCAL-00055" summary="auth user id">
-      <created>1604148394842</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1604148394842</updated>
-    </task>
-    <task id="LOCAL-00056" summary="admin and api work">
-      <created>1604303744475</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1604303744476</updated>
-    </task>
-    <task id="LOCAL-00057" summary="admin and api work">
-      <created>1604316137231</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1604316137231</updated>
-    </task>
-    <task id="LOCAL-00058" summary="admin work">
-      <created>1604322215261</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1604322215261</updated>
-    </task>
-    <task id="LOCAL-00059" summary="admin work">
-      <created>1604323464450</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1604323464450</updated>
-    </task>
-    <task id="LOCAL-00060" summary="admin work">
-      <created>1604324004964</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1604324004964</updated>
-    </task>
-    <task id="LOCAL-00061" summary="api work">
-      <created>1604581970471</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1604581970472</updated>
-    </task>
-    <task id="LOCAL-00062" summary="api work">
-      <created>1605601272453</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1605601272454</updated>
-    </task>
-    <task id="LOCAL-00063" summary="api work">
-      <created>1606134038477</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1606134038479</updated>
-    </task>
-    <task id="LOCAL-00064" summary="api work">
-      <created>1606224411861</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1606224411862</updated>
-    </task>
-    <task id="LOCAL-00065" summary="api work">
-      <created>1606286851901</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1606286851901</updated>
-    </task>
-    <task id="LOCAL-00066" summary="api work">
-      <created>1606287070457</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1606287070457</updated>
-    </task>
-    <task id="LOCAL-00067" summary="api work">
-      <created>1606301230141</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1606301230141</updated>
-    </task>
-    <task id="LOCAL-00068" summary="api work">
-      <created>1606301342938</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1606301342938</updated>
-    </task>
-    <task id="LOCAL-00069" summary="api work">
-      <created>1606301811321</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1606301811321</updated>
-    </task>
-    <task id="LOCAL-00070" summary="api work">
-      <created>1606302334605</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1606302334605</updated>
-    </task>
-    <task id="LOCAL-00071" summary="api work">
-      <created>1606305533102</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1606305533102</updated>
-    </task>
-    <task id="LOCAL-00072" summary="api work">
-      <created>1606307844138</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1606307844138</updated>
+      <workItem from="1608184527638" duration="2268000" />
+      <workItem from="1608188167867" duration="508000" />
+      <workItem from="1608198885916" duration="13300000" />
+      <workItem from="1608270534920" duration="9313000" />
+      <workItem from="1608356093176" duration="2635000" />
+      <workItem from="1608380192322" duration="2591000" />
+      <workItem from="1608551748720" duration="5604000" />
+      <workItem from="1608616074941" duration="8050000" />
+      <workItem from="1608704185849" duration="1894000" />
+      <workItem from="1609241175346" duration="1159000" />
+      <workItem from="1609414104235" duration="3727000" />
+      <workItem from="1611903939428" duration="13702000" />
+      <workItem from="1611984156883" duration="9282000" />
+      <workItem from="1612760373250" duration="18386000" />
+      <workItem from="1612786217132" duration="4231000" />
+      <workItem from="1612847374264" duration="10281000" />
     </task>
     <task id="LOCAL-00073" summary="api work">
       <created>1606307856468</created>
@@ -612,7 +461,175 @@
       <option name="project" value="LOCAL" />
       <updated>1608126752659</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="userwithdraw balance fix">
+      <created>1608185856170</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1608185856171</updated>
+    </task>
+    <task id="LOCAL-00099" summary="userwithdraw balance fix">
+      <created>1608286315849</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1608286315850</updated>
+    </task>
+    <task id="LOCAL-00100" summary="userwithdraw balance fix">
+      <created>1608287302844</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1608287302844</updated>
+    </task>
+    <task id="LOCAL-00101" summary=" total commission fix">
+      <created>1608289901034</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1608289901034</updated>
+    </task>
+    <task id="LOCAL-00102" summary=" total commission fix">
+      <created>1608291573881</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1608291573881</updated>
+    </task>
+    <task id="LOCAL-00103" summary=" total commission fix">
+      <created>1608292887871</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1608292887871</updated>
+    </task>
+    <task id="LOCAL-00104" summary=" total commission fix">
+      <created>1608380833667</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1608380833667</updated>
+    </task>
+    <task id="LOCAL-00105" summary=" total commission fix">
+      <created>1608381525374</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1608381525374</updated>
+    </task>
+    <task id="LOCAL-00106" summary=" total commission fix">
+      <created>1608384255033</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1608384255034</updated>
+    </task>
+    <task id="LOCAL-00107" summary=" amin data setting fix">
+      <created>1608554707877</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1608554707877</updated>
+    </task>
+    <task id="LOCAL-00108" summary="downline bill fix">
+      <created>1608644958070</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1608644958071</updated>
+    </task>
+    <task id="LOCAL-00109" summary="downline bill fix">
+      <created>1608645442513</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1608645442513</updated>
+    </task>
+    <task id="LOCAL-00110" summary="downline bill fix">
+      <created>1608705586325</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1608705586326</updated>
+    </task>
+    <task id="LOCAL-00111" summary="fixdate">
+      <created>1609415346296</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1609415346297</updated>
+    </task>
+    <task id="LOCAL-00112" summary="fixdate">
+      <created>1609417427651</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1609417427651</updated>
+    </task>
+    <task id="LOCAL-00113" summary="add days to game">
+      <created>1611989571269</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1611989571270</updated>
+    </task>
+    <task id="LOCAL-00114" summary="add days to game">
+      <created>1611993021481</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1611993021481</updated>
+    </task>
+    <task id="LOCAL-00115" summary="add days to game">
+      <created>1611993799362</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1611993799362</updated>
+    </task>
+    <task id="LOCAL-00116" summary="add days to game">
+      <created>1612781151692</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1612781151693</updated>
+    </task>
+    <task id="LOCAL-00117" summary="add days to game">
+      <created>1612782168260</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1612782168260</updated>
+    </task>
+    <task id="LOCAL-00118" summary="add days to game">
+      <created>1612787934875</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1612787934876</updated>
+    </task>
+    <task id="LOCAL-00119" summary="add days to game">
+      <created>1612788234270</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1612788234270</updated>
+    </task>
+    <task id="LOCAL-00120" summary="add days to game">
+      <created>1612850987439</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1612850987440</updated>
+    </task>
+    <task id="LOCAL-00121" summary="add days to game">
+      <created>1612851529744</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1612851529744</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,12 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="testing qr" />
-    <MESSAGE value="map unmap login" />
-    <MESSAGE value="map qr code, razor pay service," />
-    <MESSAGE value="qrcode generated, mapped is pending" />
-    <MESSAGE value="code mapping done" />
-    <MESSAGE value="retrieved products added" />
     <MESSAGE value="registration pages setup" />
     <MESSAGE value="login/ register page corrected" />
     <MESSAGE value="major changes done" />
@@ -657,6 +668,12 @@
     <MESSAGE value="manage user total balance" />
     <MESSAGE value="manage useravalable balances fix" />
     <MESSAGE value="user history balance view" />
-    <option name="LAST_COMMIT_MESSAGE" value="user history balance view" />
+    <MESSAGE value="userwithdraw balance fix" />
+    <MESSAGE value=" total commission fix" />
+    <MESSAGE value=" amin data setting fix" />
+    <MESSAGE value="downline bill fix" />
+    <MESSAGE value="fixdate" />
+    <MESSAGE value="add days to game" />
+    <option name="LAST_COMMIT_MESSAGE" value="add days to game" />
   </component>
 </project>

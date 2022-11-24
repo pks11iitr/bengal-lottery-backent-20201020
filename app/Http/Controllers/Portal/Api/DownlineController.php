@@ -63,6 +63,7 @@ class DownlineController extends Controller
 
                     $finaltotalticket = $finaltotalticket + ($totalbid->digit0 + $totalbid->digit1 + $totalbid->digit2 + $totalbid->digit3 + $totalbid->digit4 + $totalbid->digit5 + $totalbid->digit6 + $totalbid->digit7 + $totalbid->digit8 + $totalbid->digit9);
                     $wondegit= Game::where('id',$request->game_id)->whereNotNull('bid_qty')->first();
+
                     if($wondegit) {
                         if ($wondegit->bid_qty == 0) {
                             $win0 = $totalbid->digit0 ?? 0;

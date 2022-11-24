@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Portal\Api;
 
 use App\Jobs\AdjustUserStats;
+use App\Jobs\CreateCommissionBalance;
 use App\Jobs\UpdateBookingBalance;
+use App\Models\BidComment;
 use App\Models\Game;
 use App\Models\GameBook;
 use App\Models\GamePrice;
@@ -13,7 +15,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-date_default_timezone_set('Asia/Kolkata');
+//date_default_timezone_set('Asia/Kolkata');
 class GameController extends Controller
 {
 
@@ -65,22 +67,33 @@ class GameController extends Controller
         }
 
 //commission
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
-        $ctotal = 0;
-        $cmc = 0;
-       if($agents->count()>0) {
+//        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+//        $ctotal = 0;
+//        $cmc = 0;
+//       if($agents->count()>0) {
+//
+//           foreach ($agents as $agent) {
+//
+//               $totalcommission = Transaction::totalcommission($agent->id);
+//
+//               $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate,$user->rate);
+//               //var_dump($totalprofitcommission);die();
+//               $cmc = $cmc + round($totalcommission, 2);
+//               $ctotal = $ctotal + (round(($totalprofitcommission - $totalcommission), 2));
+//           }
+//           $ctotal = $ctotal + $cmc;
+//       }
+        $agents = User::with('childs.bids')
+            ->where('parent_id', $user->id)
+            ->whereNotNull('parent_id')
+            ->orderBy('id', 'DESC')->get();
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
 
-           foreach ($agents as $agent) {
-
-               $totalcommission = Transaction::totalcommission($agent->id);
-
-               $totalprofitcommission = Transaction::totalprofitcommition($agent->id, $agent->rate,$user->rate);
-               //var_dump($totalprofitcommission);die();
-               $cmc = $cmc + round($totalcommission, 2);
-               $ctotal = $ctotal + (round(($totalprofitcommission - $totalcommission), 2));
-           }
-           $ctotal = $ctotal + $cmc;
-       }
+        $totalcommission = Transaction::totalcommission($user->id);
+        $ctotal=round(($individual_commision-$totalcommission),2);
       //  end commission
 
         $balance=Transaction::balance($user->id);
@@ -294,7 +307,14 @@ class GameController extends Controller
             }
 
         }
+        if(isset($request->comment)) {
+            $createcomments = BidComment::create([
+                'user_id' => $user->id,
+                'game_id' => $request->game_id,
+                'comment' => $request->comment
 
+            ]);
+        }
         $withdraw=Transaction::create([
             'user_id' => $user->id,
             'to_user_id' => $user->id,
@@ -307,6 +327,7 @@ class GameController extends Controller
         if($book){
             dispatch(new AdjustUserStats($user, $games, $request->bid_qty))->onQueue('instant');
             dispatch(new UpdateBookingBalance($user, $request->bid_qty))->onQueue('instant');
+            dispatch(new CreateCommissionBalance($user, $request->bid_qty))->onQueue('instant');
             return [
                 'status'=>'success',
                 'msg'=>'success',

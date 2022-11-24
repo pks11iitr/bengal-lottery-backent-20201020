@@ -2,9 +2,11 @@
 
 namespace App;
 
+use Doctrine\DBAL\Driver\IBMDB2\DB2Connection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 use Kodeine\Acl\Traits\HasRole;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -68,6 +70,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function orders(){
         return $this->hasMany('App\Models\Order', 'user_id');
+    }
+
+    public function bids(){
+
+        return $this->hasMany('App\Models\UserStat', 'user_id')->select(DB::raw('(sum(digit0)+sum(digit1)+sum(digit2)+sum(digit3)+sum(digit4)+sum(digit5)+sum(digit6)+sum(digit7)+sum(digit8)+sum(digit9)) as total, user_id'))->groupBy('user_stats.user_id');
+
     }
 
 }

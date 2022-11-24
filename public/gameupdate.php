@@ -4,7 +4,7 @@ error_reporting(0);
 $db = mysqli_connect("localhost", "singroav_kuill", "kuill@12345", "singroav_kuill");
 
 
-date_default_timezone_set('Asia/Kolkata');
+//date_default_timezone_set('Asia/Kolkata');
 
 $days_ago = date('H:i', strtotime('-30 minutes', strtotime("now")));
 

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Jobs\DepositCommissionBalance;
 use App\Jobs\UpdateCommissionBalance;
 use App\Jobs\UpdateWinBalances;
 use App\Models\Balance;
+use App\Models\Commission;
 use App\Models\CompanyProducts;
 use App\Models\Game;
 use App\Models\GameBook;
@@ -26,8 +28,12 @@ class AgentController extends Controller
     {
         $user = Auth::user();
 
-        $agents = User::where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
-        $total=0;
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id','DESC')->get();
+
+      //  echo '<pre>';
+      //  print_r($agents->toArray());die;
+
+        $total = 0;$cmc=0;
         foreach ($agents as $agent){
             $balance=Transaction::balance($agent->id);
             $agent->balance=round($balance,2);
@@ -38,16 +44,32 @@ class AgentController extends Controller
             $agent->totalwithdraw=round($totalwithdraw,2);
 
             //commission
+            $individual_commision=0;
+            foreach($agent->childs as $child){
+                $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
+            }
 
+            $agent->individual_commission=$individual_commision;
             $totalcommission=Transaction::totalcommission($agent->id);
             $agent->totalcommission=round($totalcommission,2);
             $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate, $user->rate);
             $agent->totalprofitcommission=round($totalprofitcommission,2);
             $agent->avl_balance=Balance::avl_balance($agent->id);
+            $agent->avl_commission=Commission::avl_commission($agent->id);
            //end commission
+            $total = $total + ( round(($totalprofitcommission-$totalcommission),2));
+            $cmc=$cmc+round($totalcommission,2);
+
         }
-        //var_dump($balance);die();
-        return view('portal.agent.add', compact('agents'));
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
+
+        $totalcommission = Transaction::totalcommission($user->id);
+        $total= round(($individual_commision-$totalcommission),2);
+       // var_dump($total);die();
+        return view('portal.agent.add', compact('agents','total'));
     }
 
 
@@ -67,7 +89,7 @@ class AgentController extends Controller
                     'email' => strtoupper($request->username),
                     'password' => Hash::make($request->password),
                     'parent_id' => $user->id,
-                    'status' => $request->status,
+                    'status' => $request->status??1,
                     'rate' => $request->rate,
                     'account' => 'SUPER'
                 ]);
@@ -86,7 +108,7 @@ class AgentController extends Controller
                         'email' => strtoupper($request->username),
                         'password' => Hash::make($request->password),
                         'parent_id' => $user->id,
-                        'status' => $request->status,
+                        'status' => $request->status??1,
                         'rate' => $request->rate,
                         'account' => 'SUPER'
                     ]);
@@ -144,7 +166,7 @@ class AgentController extends Controller
                 dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
             }
 
-            $agentdetails->rate = $request->rate_edit;
+          //  $agentdetails->rate = $request->rate_edit;
             $agentdetails->save();
 
             if ($request->deposit_edit > 0) {
@@ -217,7 +239,7 @@ class AgentController extends Controller
                         $agentdetails->status = $request->status_edit;
                         dispatch(new ActiveInactiveUser($agentdetails, $request->status_edit));
                     }
-                    $agentdetails->rate = $request->rate_edit;
+                    //$agentdetails->rate = $request->rate_edit;
                     $agentdetails->save();
                     if ($request->deposit_edit >0) {
                         if($balance>=$request->deposit_edit) {
@@ -361,13 +383,24 @@ class AgentController extends Controller
     {
         $user = Auth::user();
         $payments = Transaction::where('user_id', $user->id)->orderBy('id','DESC')->get();
-        return view('portal.agent.paymenthistory', compact('payments'));
+        $agents = User::with('childs.bids')->where('parent_id', $user->id)->whereNotNull('parent_id')->orderBy('id', 'DESC')->get();
+
+        $individual_commision=0;
+        foreach($agents as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$user->rate));
+        }
+
+        $totalcommission = Transaction::totalcommission($user->id);
+        $total=round(($individual_commision-$totalcommission),2);
+        return view('portal.agent.paymenthistory', compact('payments','total'));
     }
 
 //startcommission
     public function commissioncreate(Request $request,$id)
     {
-        return view('portal.agent.commission',['id'=>$id]);
+        $agent=User::select('email')->find($id);
+        $name=$agent->email??'';
+        return view('portal.agent.commission',['id'=>$id,'name'=>$name]);
     }
 
     public function commissionsave(Request $request)
@@ -378,12 +411,17 @@ class AgentController extends Controller
         ));
 
         $user=auth()->user();
-        $agent=User::find($request->agent_id);
+        $agent=User::with('childs.bids')->find($request->agent_id);
         $totalcommission=Transaction::totalcommission($agent->id);
         //$totalcommission=round($totalcommission,2);
         $totalprofitcommission=Transaction::totalprofitcommition($agent->id,$agent->rate,$user->rate);
+
+        $individual_commision=0;
+        foreach($agent->childs as $child){
+            $individual_commision=$individual_commision+((($child->bids[0]->total)??0)*($child->rate-$agent->rate));
+        }
        // $totalprofitcommission=round($totalprofitcommission,2);
-        $balancecommission=round(($totalprofitcommission-$totalcommission),2);
+        $balancecommission=round(($individual_commision-$totalcommission),2);
         if($balancecommission < $request->commission)
         {
 
@@ -411,6 +449,7 @@ class AgentController extends Controller
 
        // $commission_balance=Transaction::commission_balance($user->id,$request->agent_id,$request->commission);
         dispatch(new UpdateCommissionBalance($user,$request->commission))->onQueue('instant');
+        dispatch(new DepositCommissionBalance($agent,$request->commission))->onQueue('instant');
 
         return redirect()->route('agents')->with('success', 'Commission Deposit Successfully');
     }
